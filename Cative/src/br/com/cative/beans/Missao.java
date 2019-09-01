@@ -1,7 +1,7 @@
 package br.com.cative.beans;
 
 public class Missao {
-	private String idMissao;
+	private int idMissao;
 	private String objetivo;
 	private String descricao;
 	private String dtInicio;
@@ -9,35 +9,14 @@ public class Missao {
 	private String ciclo;
 	private String imgMissao;
 	private String tempoDuracao;
-	
-	public String getTudo() {
-		return "id Missão" + "\n" + 
-				"Objetivo" + "\n" +
-				"Descrição" + "\n" +
-				"Data inicio" + "\n" +
-				"Data final" + "\n" + 
-				"Ciclo" + "\n" +
-				"Imagem da missão" + "\n" +
-				"Tempo de duração" + "\n";
-	}
-	
-	public void setTudo(String im, String o, String d, String di, String df, String c, String img, String td) {
-		this.idMissao=im;
-		this.objetivo=o;
-		this.descricao=d;
-		this.dtInicio=di;
-		this.dtFinal=df;
-		this.ciclo=c;
-		this.imgMissao=img;
-		this.tempoDuracao=td;
-	}
+	private int pontos;
 	
 	public Missao() {
 		super();
 	}
-
-	public Missao(String idMissao, String objetivo, String descricao, String dtInicio, String dtFinal, String ciclo,
-			String imgMissao, String tempoDuracao) {
+	
+	public Missao(int idMissao, String objetivo, String descricao, String dtInicio, String dtFinal, String ciclo,
+			String imgMissao, String tempoDuracao, int pontos) {
 		super();
 		this.idMissao = idMissao;
 		this.objetivo = objetivo;
@@ -47,12 +26,13 @@ public class Missao {
 		this.ciclo = ciclo;
 		this.imgMissao = imgMissao;
 		this.tempoDuracao = tempoDuracao;
+		this.pontos = pontos;
 	}
-	
-	public String getIdMissao() {
+
+	public int getIdMissao() {
 		return idMissao;
 	}
-	public void setIdMissao(String idMissao) {
+	public void setIdMissao(int idMissao) {
 		this.idMissao = idMissao;
 	}
 	public String getObjetivo() {
@@ -96,6 +76,12 @@ public class Missao {
 	}
 	public void setTempoDuracao(String tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
+	}
+	public int getPontos() {
+		return pontos;
+	}
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
 	}
 	
 }

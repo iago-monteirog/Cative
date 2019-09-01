@@ -17,6 +17,19 @@ public class UsuarioDAO {
 			con = Conexao.getConexao();
 		}
 		
+		public int addUsuario(Usuario user) throws Exception {
+			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(ID_USUARIO, NOME_USUARIO, SOBRENOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
+			stmt.setInt(1, user.getIdUsuario());
+			stmt.setString(2, user.getNome());
+			stmt.setString(3, user.getSobrenome());
+			stmt.setString(4, user.getSenha());
+			stmt.setString(5, user.getEmail());
+			stmt.setString(6, user.getTipoUsuario());
+			stmt.setString(7, user.getFoto());
+			stmt.setString(8, user.getTema());
+			return stmt.executeUpdate();
+		}
+		
 		public Usuario getUsuario(int cod) throws Exception{
 			stmt = con.prepareStatement
 					("select * from USUARIO where NOME_USUARIO=?");
@@ -25,7 +38,6 @@ public class UsuarioDAO {
 			
 			if(rs.next()) {
 				return new Usuario(
-						
 						);
 			}else {
 				return new Usuario();

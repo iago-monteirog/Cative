@@ -1,37 +1,24 @@
 package br.com.cative.beans;
 
 public class Turma {
-	private String idTurma;
+	private int idTurma;
 	private String nomeTurma;
 	private String corTurma;
-	
-	public String getTudo() {
-		return "ID Turma " + "\n" +
-				"Nome da turma:" + "\n" +
-				"Cor da turma:" + "\n";
-	}
-	
-	public void setTudo(String it, String nt, String ct) {
-		this.idTurma = it;
-		this.nomeTurma = nt;
-		this.corTurma = ct;
-	}
 	
 	public Turma() {
 		super();
 	}
-	
-	public Turma(String idTurma, String nomeTurma, String corTurma) {
+	public Turma(int idTurma, String nomeTurma, String corTurma) {
 		super();
 		this.idTurma = idTurma;
 		this.nomeTurma = nomeTurma;
 		this.corTurma = corTurma;
 	}
 	
-	public String getIdTurma() {
+	public int getIdTurma() {
 		return idTurma;
 	}
-	public void setIdTurma(String idTurma) {
+	public void setIdTurma(int idTurma) {
 		this.idTurma = idTurma;
 	}
 	public String getNomeTurma() {

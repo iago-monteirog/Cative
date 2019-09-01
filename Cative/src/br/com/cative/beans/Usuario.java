@@ -4,29 +4,30 @@ public class Usuario {
 	
 	private int idUsuario;
 	private String nome;
-	private String apelido;
+	private String sobrenome;
+	private String senha;
 	private String email;
 	private String tipoUsuario;
-	private String senha;
 	private String foto;
-	
+	private String tema;
+	private String pontuacao;
 	
 	public Usuario() {
 		super();
 	}
-	
-	public Usuario(int idUsuario, String nome, String apelido, String email, String tipoUsuario, String senha,
-			String foto) {
+	public Usuario(int idUsuario, String nome, String sobrenome, String senha, String email, String tipoUsuario,
+			String foto, String tema, String pontuacao) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
-		this.apelido = apelido;
+		this.sobrenome = sobrenome;
+		this.senha = senha;
 		this.email = email;
 		this.tipoUsuario = tipoUsuario;
-		this.senha = senha;
 		this.foto = foto;
+		this.tema = tema;
+		this.pontuacao = pontuacao;
 	}
-	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -39,11 +40,11 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getApelido() {
-		return apelido;
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 	public String getEmail() {
 		return email;
@@ -69,26 +70,21 @@ public class Usuario {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
-	public void setTudo(int idUsuario, String nome, String apelido, String email, String tipoUsuario, String senha,
-			String foto) {
-		this.idUsuario = idUsuario;
-		this.nome = nome;
-		this.apelido = apelido;
-		this.email = email;
-		this.tipoUsuario = tipoUsuario;
-		this.senha = senha;
-		this.foto = foto;
+
+	public String getTema() {
+		return tema;
 	}
 	
-	public String getTudo() {
-		return "Usuario" + "\n" +
-				"Nome" + "\n" + 
-				"Apelido" + "\n" + 
-				"Email" + "\n" +
-				"Tipo de Usuario" + "\n" +
-				"Senha" + "\n" + 
-				"Foto" + "\n";
-	}	
+	public void setTema(String tema) {
+		this.tema = tema;
+	}
+	
+	public String getPontuacao() {
+		return pontuacao;
+	}
+	
+	public void setPontuacao(String pontuacao) {
+		this.pontuacao = pontuacao;
+	}
 	
 }
