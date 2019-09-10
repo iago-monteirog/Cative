@@ -11,7 +11,7 @@
    
    String nomeMissao = request.getParameter("nomeMissao");
    
-   try {
+  try {
 	   con = Conexao.getConexao();
 	   String sql = "INSERT INTO TB_MISSAO(nome) value(?)";
 	   stmt = con.prepareStatement(sql);
