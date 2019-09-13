@@ -45,7 +45,7 @@ public class MissaoDAO {
 		}
 	}
 	
-	public int excMissao(int idMissao) throws Exception {
+	public int delMissao(int idMissao) throws Exception {
 		stmt = con.prepareStatement
 				("delete from TB_MISSAO where ID_MISSAO=?");
 		stmt.setInt(1, idMissao);
