@@ -7,7 +7,7 @@ public class Conexao {
 	public static Connection getConexao() throws Exception{
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://localhost/cative","root","");
+		return DriverManager.getConnection("jdbc:mysql://localhost/db_cative","root","");
 	} catch(ClassNotFoundException e) {
 		throw new SQLException(e.getException());
 	}
