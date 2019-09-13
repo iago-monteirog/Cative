@@ -45,11 +45,22 @@ public class MissaoDAO {
 		}
 	}
 	
-	public int kill(int idMissao) throws Exception {
+	public int excMissao(int idMissao) throws Exception {
 		stmt = con.prepareStatement
 				("delete from TB_MISSAO where ID_MISSAO=?");
 		stmt.setInt(1, idMissao);
 		return stmt.executeUpdate();
+	}
+	
+	public int attMissao(int idMissao) throws Exception {
+		stmt = con.prepareStatement("update * from tb_missao where id_missao=?");
+		stmt.setInt(1, idMissao);
+		int rs = stmt.executeUpdate();
+		return rs;
+	}
+	
+	public void fechar() throws Exception{
+		con.close();
 	}
 
 }
