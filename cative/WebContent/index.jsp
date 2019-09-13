@@ -8,7 +8,7 @@
 
 <% 
 	Missao missao = new Missao();
-   	missao.setNome("Nome Qualquer");
+   	missao.setObjetivo("Nome Qualquer");
    
-   	out.println(missao.getNome());
+   	out.println(missao.getObjetivo());
 %>
