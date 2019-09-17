@@ -25,12 +25,14 @@
             </button>
             <div class="modal-missao__header">
                 <div class="modal-missao__header-image">
+                <!-- Pegar parametro imagem -->
                     <img src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
                 </div>
             </div>
             <div class="modal-missao__body">
                 <div class="modal-missao__body-container">
                     <div class="missao__body-title">
+                    <!-- Pegar parametro objetivo -->
                         <h2>
                             Escove os dentes
                         </h2>
@@ -38,6 +40,7 @@
                     <div class="missao__body-points">
                         <span class="missao__body-points-icone"></span>
                         <span class="missao__body-points-text">
+                        <!-- Pegar parametro pontos -->
                             <span class="">
                                 200
                             </span>
@@ -47,6 +50,7 @@
                         </span>
                     </div>
                     <div class="missao__body-descricao">
+                    <!-- Pegar parametro descrição -->
                         <article>
                             <p>
                                 Escove os dentes durante o dia e ganhe pontos
