@@ -33,12 +33,16 @@ public class MissaoDAO {
 	
 	public Missao getMissao(int idMissao) throws Exception{
 		stmt = con.prepareStatement
-				("select * from TB_MiSSAO where ID_MISSAO=?");
+				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO  from TB_MiSSAO where ID_MISSAO=?");
 		stmt.setInt(1, idMissao);
 		rs = stmt.executeQuery();
-		
 		if(rs.next()) {
 			return new Missao(
+					rs.getInt("ID_MISSAO"),
+					rs.getString("OBJETIVO_MISSAO"),
+					rs.getString("DESCRICAO_MISSAO"),
+					rs.getString("IMG_MISSAO"),
+					rs.getInt("PONTOS_MISSAO")
 					);
 		}else {
 			return new Missao();

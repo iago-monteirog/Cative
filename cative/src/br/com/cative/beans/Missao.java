@@ -15,6 +15,15 @@ public class Missao {
 		super();
 	}
 	
+	public Missao(int idMissao, String objetivo, String descricao, String imgMissao, int pontos) {
+		super();
+		this.idMissao = idMissao;
+		this.objetivo = objetivo;
+		this.descricao = descricao;
+		this.imgMissao = imgMissao;
+		this.pontos = pontos;
+	}
+
 	public Missao(int idMissao, String objetivo, String descricao, String dtInicio, String dtFinal, String ciclo,
 			String imgMissao, String tempoDuracao, int pontos) {
 		super();
