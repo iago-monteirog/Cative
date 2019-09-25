@@ -10,18 +10,20 @@ public class Missao {
 	private String imgMissao;
 	private String tempoDuracao;
 	private int pontos;
+	private String corMissao;
 	
 	public Missao() {
 		super();
 	}
 	
-	public Missao(int idMissao, String objetivo, String descricao, String imgMissao, int pontos) {
+	public Missao(int idMissao, String objetivo, String descricao, String imgMissao, int pontos, String corMissao) {
 		super();
 		this.idMissao = idMissao;
 		this.objetivo = objetivo;
 		this.descricao = descricao;
 		this.imgMissao = imgMissao;
 		this.pontos = pontos;
+		this.corMissao = corMissao;
 	}
 
 	public Missao(int idMissao, String objetivo, String descricao, String dtInicio, String dtFinal, String ciclo,
@@ -92,5 +94,12 @@ public class Missao {
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
 	}
+	public String getCorMissao() {
+		return corMissao;
+	}
+	public void setCorMissao(String corMissao) {
+		this.corMissao = corMissao;
+	}
+	
 	
 }
