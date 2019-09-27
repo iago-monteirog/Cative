@@ -34,6 +34,7 @@
                     <div class="missao__body-title">
                     <!-- Pegar parametro objetivo -->
                         <h2>
+                        <% %>
                             Escove os dentes
                         </h2>
                     </div>

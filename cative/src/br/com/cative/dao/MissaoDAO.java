@@ -33,7 +33,7 @@ public class MissaoDAO {
 	
 	public Missao getMissao(int idMissao) throws Exception{
 		stmt = con.prepareStatement
-				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO, COR_MISSAO  from TB_MiSSAO where ID_MISSAO=?");
+				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO, COR_MISSAO  from TB_MiSSAO where ID_MISSAO=1");
 		stmt.setInt(1, idMissao);
 		rs = stmt.executeQuery();
 		if(rs.next()) {
