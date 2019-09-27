@@ -52,6 +52,21 @@ public class MissaoDAO {
 		}
 	}
 	
+	public Missao getTitulo(int idMissao) throws Exception{
+		stmt = con.prepareStatement
+				("select * from MISSÃO");
+		stmt.setInt(1, idMissao);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			return new Missao(
+					rs.getString("OBJETIVO")
+					);
+		}else {
+			return new Missao();
+		}
+	}
+	
+	
 	public int delMissao(int idMissao) throws Exception {
 		stmt = con.prepareStatement
 				("delete from TB_MISSAO where ID_MISSAO=?");

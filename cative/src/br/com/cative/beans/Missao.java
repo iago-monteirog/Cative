@@ -16,6 +16,14 @@ public class Missao {
 		super();
 	}
 	
+	
+	public Missao(String objetivo) {
+		super();
+		this.objetivo = objetivo;
+	}
+
+
+
 	public Missao(int idMissao, String objetivo, String descricao, String imgMissao, int pontos, String corMissao) {
 		super();
 		this.idMissao = idMissao;
