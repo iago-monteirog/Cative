@@ -34,8 +34,10 @@
                     <div class="missao__body-title">
                     <!-- Pegar parametro objetivo -->
                         <h2>
-                        <% %>
-                            out.println(rs.getString());
+                        <%
+                        
+                        %>
+                            
                         </h2>
                     </div>
                     <div class="missao__body-points">

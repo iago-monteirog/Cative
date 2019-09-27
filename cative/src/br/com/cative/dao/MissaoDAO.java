@@ -9,12 +9,14 @@ import br.com.cative.conexao.Conexao;
 
 public class MissaoDAO {
 	private Connection con;
+	private Connection con1;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 
 
 	public	MissaoDAO() throws Exception {
 		con = Conexao.getConexao();
+		con1 = Conexao.getConexaoORCL();
 		}
 	
 	public int AddMissao(Missao m) throws Exception {
