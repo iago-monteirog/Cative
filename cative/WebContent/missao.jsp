@@ -35,7 +35,7 @@
                     <!-- Pegar parametro objetivo -->
                         <h2>
                         <% %>
-                            Escove os dentes
+                            out.println(rs.getString());
                         </h2>
                     </div>
                     <div class="missao__body-points">
