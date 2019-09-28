@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+    pageEncoding="ISO-8859-1"
+    %>
+  
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,8 +35,16 @@
                     <div class="missao__body-title">
                     <!-- Pegar parametro objetivo -->
                         <h2>
-                        <%
                         
+                        <%@ page import="br.com.cative.dao.*" %>
+                        <%@ page import="br.com.cative.beans.*" %>
+			
+                        <%
+	                		MissaoDAO missaoDAO = new MissaoDAO();
+	                		
+	                		Missao missao = missaoDAO.getObjetivoMissao(3);
+	                		String objetivo = missao.getObjetivo();
+	                		out.println(objetivo);
                         %>
                             
                         </h2>

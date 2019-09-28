@@ -16,7 +16,7 @@ public class MissaoDAO {
 
 	public	MissaoDAO() throws Exception {
 		con = Conexao.getConexao();
-		con1 = Conexao.getConexaoORCL();
+//		con1 = Conexao.getConexaoORCL();
 		}
 	
 	public int AddMissao(Missao m) throws Exception {
@@ -52,14 +52,14 @@ public class MissaoDAO {
 		}
 	}
 	
-	public Missao getTitulo(int idMissao) throws Exception{
+	public Missao getObjetivoMissao(int idMissao) throws Exception{
 		stmt = con.prepareStatement
-				("select * from MISSÃO");
+				("SELECT OBJETIVO_MISSAO from TB_MISSAO WHERE ID_MISSAO = ?");
 		stmt.setInt(1, idMissao);
 		rs = stmt.executeQuery();
 		if(rs.next()) {
 			return new Missao(
-					rs.getString("OBJETIVO")
+					rs.getString("OBJETIVO_MISSAO")
 					);
 		}else {
 			return new Missao();
