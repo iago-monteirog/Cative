@@ -3,6 +3,7 @@ package br.com.cative.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import br.com.cative.beans.Missao;
 import br.com.cative.conexao.Conexao;
@@ -50,6 +51,30 @@ public class MissaoDAO {
 		}else {
 			return new Missao();
 		}
+	}
+
+	
+	public ArrayList getMissoes() throws Exception{
+		stmt = con.prepareStatement
+				("SELECT * FROM TB_MISSAO ");
+
+		rs = stmt.executeQuery();
+		
+		ArrayList missoes = new ArrayList();
+		
+		while(rs.next()) {
+			missoes.add(
+				new Missao(
+						rs.getInt("ID_MISSAO"),
+						rs.getString("OBJETIVO_MISSAO"),
+						rs.getString("DESCRICAO_MISSAO"),
+						rs.getString("DESCRICAO_MISSAO"), //TODO: mudar pra IMG_MISSAO
+						rs.getInt("ID_MISSAO"), //TODO: mudar pra PONTOS_MISSAO
+						rs.getString("OBJETIVO_MISSAO") // TODO: mudar pra COR_MISSAO
+					));
+		}
+		
+		return missoes;
 	}
 	
 	public Missao getObjetivoMissao(int idMissao) throws Exception{

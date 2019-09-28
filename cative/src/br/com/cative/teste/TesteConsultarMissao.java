@@ -1,8 +1,8 @@
 package br.com.cative.teste;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
-import br.com.cative.conexao.Conexao;
 import br.com.cative.dao.MissaoDAO;
 
 public class TesteConsultarMissao {
@@ -13,8 +13,10 @@ public class TesteConsultarMissao {
 //		minhaConexao = Conexao.getConexao();
 		MissaoDAO missaoDAO = new MissaoDAO();
 		
-		missaoDAO.getObjetivoMissao(1);
+		ArrayList missoes = missaoDAO.getMissoes();
 		
+		
+		System.out.println(missoes.get(1).getObjetivo());
 		System.out.println("Conectou");
 		}catch(Exception e) {
 			

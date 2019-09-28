@@ -24,6 +24,16 @@
                 </h2>
             </div>
             <div class="missoes">
+        
+                <%@ page import="br.com.cative.dao.*" %>
+                <%@ page import="br.com.cative.beans.*" %>
+
+                <%
+	         		MissaoDAO missaoDAO = new MissaoDAO();
+	         		
+	         		Missao missao = missaoDAO.getMissoes();
+                %>
+                                    
                 <div class="card-missao">
                     <div class="card-missao__imagem">
                         <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
