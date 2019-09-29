@@ -7,15 +7,24 @@ public class Usuario {
 	private String sobrenome;
 	private String senha;
 	private String email;
-	private String tipoUsuario;
+	private int tipoUsuario;
 	private String foto;
 	private String tema;
 	private String pontuacao;
 	
+	public Usuario(int idUsuario, String nome, String senha, String email, int tipoUsuario, String pontuacao) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nome = nome;
+		this.senha = senha;
+		this.email = email;
+		this.tipoUsuario = tipoUsuario;
+		this.pontuacao = pontuacao;
+	}
 	public Usuario() {
 		super();
 	}
-	public Usuario(int idUsuario, String nome, String sobrenome, String senha, String email, String tipoUsuario,
+	public Usuario(int idUsuario, String nome, String sobrenome, String senha, String email, int tipoUsuario,
 			String foto, String tema, String pontuacao) {
 		super();
 		this.idUsuario = idUsuario;
@@ -52,11 +61,11 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTipoUsuario() {
+	public int getTipoUsuario() {
 		return tipoUsuario;
 	}
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setTipoUsuario(int i) {
+		this.tipoUsuario = i;
 	}
 	public String getSenha() {
 		return senha;
