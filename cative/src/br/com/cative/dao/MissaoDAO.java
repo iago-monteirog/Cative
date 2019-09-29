@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cative.beans.Missao;
 import br.com.cative.conexao.Conexao;
@@ -64,13 +65,13 @@ public class MissaoDAO {
 	}
 
 	
-	public ArrayList getMissoes() throws Exception{
+	public List getMissoes() throws Exception{
 		stmt = con.prepareStatement
 				("SELECT * FROM TB_MISSAO ");
 
 		rs = stmt.executeQuery();
 		
-		ArrayList missoes = new ArrayList();
+		List<Missao> missoes = new ArrayList<Missao>();
 		
 		while(rs.next()) {
 			missoes.add(

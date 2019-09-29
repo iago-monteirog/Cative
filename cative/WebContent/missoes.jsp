@@ -27,69 +27,30 @@
         
                 <%@ page import="br.com.cative.dao.*" %>
                 <%@ page import="br.com.cative.beans.*" %>
+                <%@ page import="java.util.List" %>
 
                 <%
 	         		MissaoDAO missaoDAO = new MissaoDAO();
-	         		
-	         		Missao missao = missaoDAO.getMissoes();
+	                List<Missao> missoes = missaoDAO.getMissoes();
+	        		
+	        		for(Missao m: missoes) {	        	
+	        			out.println("<div class='card-missao'>");
+		        			out.println("<div class='card-missao__imagem'>");
+		        				out.println("<img src='./assets/img/missao-mochila.png' alt='Imagem da missão'>");
+		        			out.println("</div>");
+		        			out.println("<div class='card-missao__body'>");
+			        			out.println("<div class='card-missao__titulo'>");
+			        				out.println("<h3>"+m.getObjetivo()+"</h3>");
+		        				out.println("</div>");
+		        				out.println("<div class='card-missao__pontos'>");
+		        					out.println("<i class='icon icon-star'></i>");
+		        					out.println("<span>"+m.getPontos()+" estrelas</span>");
+		        				out.println("</div>");
+		        			out.println("</div>");
+	        			out.println("</div>");    			
+	        		}
+	        		
                 %>
-                                    
-                <div class="card-missao">
-                    <div class="card-missao__imagem">
-                        <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-                    </div>
-                    <div class="card-missao__body">
-                        <div class="card-missao__titulo">
-                            <h3>Arrume sua mochila</h3>
-                        </div>
-                        <div class="card-missao__pontos">
-                            <i class="icon icon-star"></i>
-                            <span>200 estrelas</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-missao">
-                    <div class="card-missao__imagem">
-                        <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-                    </div>
-                    <div class="card-missao__body">
-                        <div class="card-missao__titulo">
-                            <h3>Arrume sua mochila</h3>
-                        </div>
-                        <div class="card-missao__pontos">
-                            <i class="icon icon-star"></i>
-                            <span>200 estrelas</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-missao">
-                    <div class="card-missao__imagem">
-                        <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-                    </div>
-                    <div class="card-missao__body">
-                        <div class="card-missao__titulo">
-                            <h3>Arrume sua mochila</h3>
-                        </div>
-                        <div class="card-missao__pontos">
-                            <i class="icon icon-star"></i>
-                            <span>200 estrelas</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-missao">
-                    <div class="card-missao__imagem">
-                        <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-                    </div>
-                    <div class="card-missao__body">
-                        <div class="card-missao__titulo">
-                            <h3>Arrume sua mochila</h3>
-                        </div>
-                        <div class="card-missao__pontos">
-                            <i class="icon icon-star"></i>
-                            <span>200 estrelas</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
