@@ -81,6 +81,28 @@ public class MissaoDAO {
 		return rs;
 	}
 	
+	public Missao getMissaoAll(int idMissao) throws Exception{
+		stmt = con.prepareStatement
+				("select ID_MISSAO, OBJETIVO_MISSAO, TEMPO_DURACAO,DT_INICIO, DT_FINAL,CICLO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, COR_MISSAO, PONTOS_MISSAO  from TB_MiSSAO where ID_MISSAO=1");
+		stmt.setInt(1, idMissao);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			return new Missao(
+					rs.getInt("ID_MISSAO"),
+					rs.getString("OBJETIVO_MISSAO"),
+					rs.getString("DESCRICAO_MISSAO"),
+					rs.getString("DT_INICIO"),
+					rs.getString("DT_FINAL"),
+					rs.getString("CICLO_MISSAO"),
+					rs.getString("IMG_MISSAO"),
+					rs.getString("COR_MISSAO"),
+					rs.getInt("PONTOS_MISSAO")
+					);
+		}else {
+			return new Missao();
+		}
+	}
+	
 	public void fechar() throws Exception{
 		con.close();
 	}

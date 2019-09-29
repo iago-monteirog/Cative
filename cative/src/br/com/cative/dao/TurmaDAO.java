@@ -30,9 +30,11 @@ public class TurmaDAO {
 				("select * from TB_TURMA where ID_TURMA=?");
 		stmt.setInt(1, idTurma);
 		rs = stmt.executeQuery();
-		
 		if(rs.next()) {
 			return new Turma(
+					rs.getInt("ID_TURMA"),
+					rs.getString("NOME_TURMA"),
+					rs.getString("COR_TURMA")
 					);
 		}else {
 			return new Turma();
@@ -45,4 +47,16 @@ public class TurmaDAO {
 		stmt.setInt(1, idTurma);
 		return stmt.executeUpdate();
 	}
+	
+	public int attTurma(int idTurma) throws Exception {
+		stmt = con.prepareStatement("update * from tb_turma where id_turma=?");
+		stmt.setInt(1, idTurma);
+		int rs = stmt.executeUpdate();
+		return rs;
+	}
+	
+	public void fechar() throws Exception{
+		con.close();
+	}
+
 }

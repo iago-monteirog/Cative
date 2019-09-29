@@ -52,6 +52,13 @@ public class UsuarioDAO {
 			return stmt.executeUpdate();
 		}
 		
+		public int attUsuario(int idUsuario) throws Exception {
+			stmt = con.prepareStatement("update * from tb_usuario where id_usuario=?");
+			stmt.setInt(1, idUsuario);
+			int rs = stmt.executeUpdate();
+			return rs;
+		}
+		
 		public void fechar() throws Exception{
 			con.close();
 		}
