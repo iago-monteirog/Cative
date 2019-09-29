@@ -18,7 +18,7 @@ public class TesteCadastroMissao {
 			m.setPontos(Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de pontos")));
 			MissaoDAO dao = new MissaoDAO();
 			dao.AddMissaoBasic(m);
-			System.out.println("Missão registrada com sucesso, Alguns detalhes" + m.getObjetivo() + m.getDescricao() + m.getPontos());
+			System.out.println("Missão registrada com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
