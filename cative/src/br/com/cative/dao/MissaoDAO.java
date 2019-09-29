@@ -33,6 +33,16 @@ public class MissaoDAO {
 		return stmt.executeUpdate();
 	}
 	
+	public void AddMissaoBasic(Missao m) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO,PONTOS_MISSAO) VALUES(?, ?, ?)");
+		stmt.setString(1, m.getObjetivo());
+		stmt.setString(2, m.getDescricao());
+		stmt.setInt(3, m.getPontos());
+		stmt.execute();
+		stmt.close();
+	}
+	
+	
 	public Missao getMissao(int idMissao) throws Exception{
 		stmt = con.prepareStatement
 				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO, COR_MISSAO  from TB_MiSSAO where ID_MISSAO=1");
