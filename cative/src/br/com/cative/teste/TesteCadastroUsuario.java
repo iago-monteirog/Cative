@@ -12,7 +12,7 @@ public class TesteCadastroUsuario {
 			Usuario u = new Usuario();
 			String[] choices = {"Aluno", "Professor", "Responsavel"};
 			u.setTipoUsuario(JOptionPane.showOptionDialog(null, "Selecione seu tipo de usuario", "Tipo de usuario", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, choices, "Aluno"));
-			u.setIdUsuario(2);
+			u.setIdUsuario(0);
 			u.setNome(JOptionPane.showInputDialog("Digite seu nome"));
 			u.setSenha(JOptionPane.showInputDialog("Digite sua senha"));
 			u.setEmail(JOptionPane.showInputDialog("Digite seu email"));
