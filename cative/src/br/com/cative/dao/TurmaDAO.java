@@ -17,6 +17,13 @@ public class TurmaDAO {
 		con = Conexao.getConexao();
 		}
 	
+	public void addAluno(int idUsuario) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(ID_USUARIO) VALUES(?)");
+		stmt.setInt(1, idUsuario);
+		stmt.execute();
+		stmt.close();
+	}
+	
 	public int addTurma(Turma t) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_TURMA(ID_TURMA, NOME_TURMA, COR_TURMA) VALUES(? , ?, ?)");
 		stmt.setInt(1, t.getIdTurma());
