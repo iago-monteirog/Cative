@@ -9,7 +9,7 @@ public class TesteCadastroTurma {
 		public static void main(String[] args) throws Exception {
 			try {
 				Turma t = new Turma();
-				t.setIdTurma(1);
+				t.setIdTurma(0);
 				t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
 				TurmaDAO dao = new TurmaDAO();
 				dao.addTurma(t);
