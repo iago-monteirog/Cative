@@ -80,7 +80,7 @@ public class MissaoDAO {
 						rs.getString("OBJETIVO_MISSAO"),
 						rs.getString("DESCRICAO_MISSAO"),
 						rs.getString("DESCRICAO_MISSAO"), //TODO: mudar pra IMG_MISSAO
-						rs.getInt("ID_MISSAO"), //TODO: mudar pra PONTOS_MISSAO
+						rs.getInt("PONTOS_MISSAO"), //TODO: mudar pra PONTOS_MISSAO
 						rs.getString("OBJETIVO_MISSAO") // TODO: mudar pra COR_MISSAO
 					));
 		}
