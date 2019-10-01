@@ -1,11 +1,9 @@
 package br.com.cative.teste;
 
-import java.sql.Connection;
-
 import javax.swing.JOptionPane;
 
 import br.com.cative.beans.Missao;
-import br.com.cative.dao.MissaoDAO;
+import br.com.cative.bo.MissaoBO;
 
 public class TesteCadastroMissao {
 
@@ -16,9 +14,8 @@ public class TesteCadastroMissao {
 			m.setObjetivo(JOptionPane.showInputDialog("Digite o objetivo da missao"));
 			m.setDescricao(JOptionPane.showInputDialog("Digite os detalhes da missão"));
 			m.setPontos(Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de pontos")));
-			MissaoDAO dao = new MissaoDAO();
-			dao.AddMissaoBasic(m);
-			System.out.println("Missão registrada com sucesso");
+			MissaoBO bo = new MissaoBO();
+			System.out.println(bo.novaMissao(m));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

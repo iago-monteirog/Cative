@@ -19,7 +19,6 @@ public class MissaoBO {
 			System.out.println("Datas inválidas, data do inicio não pode ser maior que a final!");
 			return false;
 		}
-		
 		MissaoDAO dao = new MissaoDAO();
 		Missao missao = dao.getMissao(m.getIdMissao());
 		

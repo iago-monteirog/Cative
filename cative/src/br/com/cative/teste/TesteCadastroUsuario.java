@@ -3,7 +3,7 @@ package br.com.cative.teste;
 import javax.swing.JOptionPane;
 
 import br.com.cative.beans.Usuario;
-import br.com.cative.dao.UsuarioDAO;
+import br.com.cative.bo.UsuarioBO;
 
 public class TesteCadastroUsuario {
 
@@ -16,8 +16,8 @@ public class TesteCadastroUsuario {
 			u.setNome(JOptionPane.showInputDialog("Digite seu nome"));
 			u.setSenha(JOptionPane.showInputDialog("Digite sua senha"));
 			u.setEmail(JOptionPane.showInputDialog("Digite seu email"));
-			UsuarioDAO dao = new UsuarioDAO();
-			dao.addUsuarioBasic(u);
+			UsuarioBO bo = new UsuarioBO();
+			bo.verificaUsuario(u);
 			System.out.println("Usuario cadastrado com sucesso");
 		}catch(Exception e) {
 			e.printStackTrace();
