@@ -28,6 +28,7 @@ public class UsuarioBO {
 	UsuarioDAO dao = new UsuarioDAO();
 	Usuario usu = dao.getUsuario(user.getIdUsuario());
 	if (usu.getIdUsuario()==0) {
+		dao.addUsuario(user);
 		System.out.println("Usuário Cadastrado!");
 		return true;
 	}else {
