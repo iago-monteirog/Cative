@@ -71,6 +71,22 @@ public class UsuarioDAO {
 			stmt.close();
 		}
 		
+		public Usuario retornaEmail(String e) throws Exception {
+			stmt = con.prepareStatement
+					("select email_usuario from tb_usuario where email_usuario=?");
+			stmt.setString(1, e);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				Usuario usu = new Usuario();
+				usu.setEmail(rs.getString("email_usuario"));
+				return usu;
+			}else {
+				return new Usuario();
+			}
+			
+		}
+		
 		public void fechar() throws Exception{
 			con.close();
 		}

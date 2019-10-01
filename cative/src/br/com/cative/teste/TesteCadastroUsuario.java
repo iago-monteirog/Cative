@@ -17,7 +17,7 @@ public class TesteCadastroUsuario {
 			u.setSenha(JOptionPane.showInputDialog("Digite sua senha"));
 			u.setEmail(JOptionPane.showInputDialog("Digite seu email"));
 			UsuarioBO bo = new UsuarioBO();
-			bo.verificaUsuario(u);
+			
 			System.out.println(bo.verificaUsuario(u));
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -8,7 +8,7 @@ import br.com.cative.dao.UsuarioDAO;
 public class UsuarioBO {
 	
 	
-	public String verificaUsuario(Usuario user) throws Exception{
+		public String verificaUsuario(Usuario user) throws Exception{
 		if(user.getNome().length()>20) {
 			return "Nome inválido";
 		}
@@ -22,15 +22,16 @@ public class UsuarioBO {
 		if (!matcher.find()) {
 			return "E-mail inválido";
 		}
+		
+		UsuarioDAO dao = new UsuarioDAO();
+		Usuario usu = dao.retornaEmail(user.getEmail());
 	
-	UsuarioDAO dao = new UsuarioDAO();
-	Usuario usu = dao.getUsuario(user.getIdUsuario());
-	if (usu.getIdUsuario()==0) {
-		return dao.addUsuario(user) + "Usuário Cadastrado!";
-	}else {
-		return "Usuário já existe!";
-	}
-	
+		if(usu.getEmail() == null) {
+			dao.addUsuarioBasic(user);
+			return "Usuário Cadastrado!";
+		} else {
+			return "Usuário já existe!";
+		}
 	}
 	
 
