@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import br.com.cative.beans.Turma;
+import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
 public class TurmaDAO {
@@ -17,9 +18,10 @@ public class TurmaDAO {
 		con = Conexao.getConexao();
 		}
 	
-	public void addAluno(int idUsuario) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(ID_USUARIO) VALUES(?)");
-		stmt.setInt(1, idUsuario);
+	public void addAluno(int u, int t) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma) VALUES(?, ?)");
+		stmt.setInt(1, u);
+		stmt.setInt(2, t);
 		stmt.execute();
 		stmt.close();
 	}
