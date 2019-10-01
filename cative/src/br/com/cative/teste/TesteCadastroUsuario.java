@@ -21,8 +21,6 @@ public class TesteCadastroUsuario {
 			System.out.println(bo.verificaUsuario(u));
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-
 	}
-
+	}
 }

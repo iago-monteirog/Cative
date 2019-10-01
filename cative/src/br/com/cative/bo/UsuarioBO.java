@@ -1,4 +1,7 @@
 package br.com.cative.bo;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
@@ -9,12 +12,14 @@ public class UsuarioBO {
 		if(user.getNome().length()>20) {
 			return "Nome inválido";
 		}
-		if(user.getSenha().length()<8 || user.getSenha().length()>10){
+		if(user.getSenha().length()<5 || user.getSenha().length()>21){
 			return "Senha inválida";
 		}
 		
-		if (user.getEmail().indexOf("@") > 0 && 
-				user.getEmail().indexOf(".") > -1 && user.getEmail().indexOf("@.") == -1) {
+		Pattern pattern = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");  
+		Matcher matcher = pattern.matcher(user.getEmail());  
+
+		if (!matcher.find()) {
 			return "E-mail inválido";
 		}
 	
