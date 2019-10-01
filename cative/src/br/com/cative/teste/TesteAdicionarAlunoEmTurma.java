@@ -15,7 +15,7 @@ public class TesteAdicionarAlunoEmTurma {
 			Usuario u = new Usuario();
 			u.setIdUsuario(Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno")));
 			TurmaDAO dao = new TurmaDAO();
-			dao.addAluno(u.getIdUsuario(), t.getIdTurma());
+			dao.addAluno(u.getIdUsuario(), t.getIdTurma(), u.getNome());
 			System.out.println("Aluno adicionado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
