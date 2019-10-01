@@ -6,9 +6,6 @@ public class UsuarioBO {
 	
 	
 	public String verificaUsuario(Usuario user) throws Exception{
-		if (user.getIdUsuario()<=0) {
-			return "Código inválido!";
-		}
 		if(user.getNome().length()>20) {
 			return "Nome inválido";
 		}

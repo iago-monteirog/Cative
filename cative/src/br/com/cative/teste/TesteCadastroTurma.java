@@ -14,7 +14,7 @@ public class TesteCadastroTurma {
 				t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
 				TurmaBO bo = new TurmaBO();
 				bo.novaTurma(t);
-				System.out.println("Turma " + t.getNomeTurma() + " Criada com sucesso");
+				System.out.println(bo.novaTurma(t));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
