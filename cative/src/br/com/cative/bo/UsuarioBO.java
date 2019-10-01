@@ -5,35 +5,28 @@ import br.com.cative.dao.UsuarioDAO;
 public class UsuarioBO {
 	
 	
-	public boolean verificaUsuario(Usuario user) throws Exception{
+	public String verificaUsuario(Usuario user) throws Exception{
 		if (user.getIdUsuario()<=0) {
-			System.out.println("Código inválido!");
-			return false;
+			return "Código inválido!";
 		}
 		if(user.getNome().length()>20) {
-			System.out.println("Nome inválido");
-			return false;
+			return "Nome inválido";
 		}
 		if(user.getSenha().length()<8 || user.getSenha().length()>10){
-			System.out.println("Senha inválida");
-			return false;
+			return "Senha inválida";
 		}
 		
 		if (user.getEmail().indexOf("@") > 0 && 
 				user.getEmail().indexOf(".") > -1 && user.getEmail().indexOf("@.") == -1) {
-			System.out.println("E-mail inválido");
-			return false;
+			return "E-mail inválido";
 		}
 	
 	UsuarioDAO dao = new UsuarioDAO();
 	Usuario usu = dao.getUsuario(user.getIdUsuario());
 	if (usu.getIdUsuario()==0) {
-		dao.addUsuario(user);
-		System.out.println("Usuário Cadastrado!");
-		return true;
+		return dao.addUsuario(user) + "Usuário Cadastrado!";
 	}else {
-		System.out.println("Usuário já existe!");
-		return false;
+		return "Usuário já existe!";
 	}
 	
 	}
