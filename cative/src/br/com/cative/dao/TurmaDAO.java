@@ -3,6 +3,8 @@ package br.com.cative.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cative.beans.Turma;
 import br.com.cative.conexao.Conexao;
@@ -17,11 +19,12 @@ public class TurmaDAO {
 		con = Conexao.getConexao();
 		}
 	
-	public void addAluno(int u, int t, String n) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma, nome_usuario ) VALUES(?, ?, ?)");
+	public void addAluno(int u, int t, String nu, String nt) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma, nome_usuario, nome_turma) VALUES(?, ?, ?, ?)");
 		stmt.setInt(1, u);
 		stmt.setInt(2, t);
-		stmt.setString(3, n);
+		stmt.setString(3, nu);
+		stmt.setString(4, nt);
 		stmt.execute();
 		stmt.close();
 	}
@@ -66,6 +69,31 @@ public class TurmaDAO {
 		return rs;
 	}
 	
+	public List getTurmaAluno() throws Exception {
+		stmt = con.prepareStatement("SELECT NOME_TURMA FROM TB_TURMA");
+		rs = stmt.executeQuery();
+		List<Turma> turmas = new ArrayList<Turma>();
+		while(rs.next()) {
+			turmas.add(new Turma(rs.getString("NOME_TURMA")));
+		}
+		return turmas;
+	}
+	
+	public int getTurmaAlu(String n) throws Exception{
+		stmt = con.prepareStatement
+				("select ID_TURMA from TB_TURMA where NOME_TURMA LIKE ?");
+		stmt.setString(1, "%" + n + "%");
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			return(
+					rs.getInt("ID_TURMA")
+					);
+		}else {
+			return rs.getInt("ID_TURMA");
+		}
+	}
+	
+
 	public void fechar() throws Exception{
 		con.close();
 	}

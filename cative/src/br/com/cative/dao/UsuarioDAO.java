@@ -84,7 +84,20 @@ public class UsuarioDAO {
 			}else {
 				return new Usuario();
 			}
-			
+		}
+		
+		public int getAluTurma(String u) throws Exception{
+			stmt = con.prepareStatement
+					("select ID_USUARIO from TB_USUARIO where NOME_USUARIO LIKE ?");
+			stmt.setString(1, "%" + u + "%");
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				return (
+						rs.getInt("ID_USUARIO")
+						);
+			}else {
+				return rs.getInt("ID_USUARIO");
+			}
 		}
 		
 		public void fechar() throws Exception{

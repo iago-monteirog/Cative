@@ -5,6 +5,14 @@ public class Turma {
 	private String nomeTurma;
 	private String corTurma;
 	
+	public Turma(int idTurma) {
+		super();
+		this.idTurma = idTurma;
+	}
+	public Turma(String nomeTurma) {
+		super();
+		this.nomeTurma = nomeTurma;
+	}
 	public Turma() {
 		super();
 	}

@@ -119,7 +119,7 @@ public class MissaoDAO {
 	
 	public Missao getMissaoAll(int idMissao) throws Exception{
 		stmt = con.prepareStatement
-				("select ID_MISSAO, OBJETIVO_MISSAO, TEMPO_DURACAO,DT_INICIO, DT_FINAL,CICLO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, COR_MISSAO, PONTOS_MISSAO  from TB_MiSSAO where ID_MISSAO=1");
+				("select * from TB_MiSSAO where ID_MISSAO=1");
 		stmt.setInt(1, idMissao);
 		rs = stmt.executeQuery();
 		if(rs.next()) {
