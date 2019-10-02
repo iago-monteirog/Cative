@@ -27,10 +27,12 @@ public class TurmaDAO {
 	}
 	
 	public int addTurma(Turma t) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_TURMA(ID_TURMA, NOME_TURMA, COR_TURMA) VALUES(? , ?, ?)");
-		stmt.setInt(1, t.getIdTurma());
-		stmt.setString(2, t.getNomeTurma());
-		stmt.setString(3, t.getCorTurma());
+		
+		System.out.println("Turma: "+t.getNomeTurma());
+		
+		stmt = con.prepareStatement("INSERT INTO TB_TURMA(NOME_TURMA) VALUES(?)");
+		stmt.setString(1, t.getNomeTurma());
+		
 		return stmt.executeUpdate();
 	}
 	

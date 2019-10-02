@@ -5,19 +5,14 @@ import br.com.cative.dao.TurmaDAO;
 
 public class TurmaBO {
 	public boolean novaTurma(Turma t) throws Exception{
-		if (t.getNomeTurma().length() > 10) {
+		if (t.getNomeTurma().length() < 5 || t.getNomeTurma().length() > 15) {
 			System.out.println("Nome da turma inválido!");
 			return false;
 		}
 		
 		TurmaDAO dao = new TurmaDAO();
-		Turma turma = dao.getTurma(t.getIdTurma());
-		if(turma.getIdTurma() == 0) {
-			System.out.println(dao.addTurma(turma) + "Turma cadastrada!");
-			return true;
-		}else {
-			System.out.println("Turma já cadastrada!");
-			return false;
-		}
+		dao.addTurma(t);
+		System.out.println("Turma cadastrada!");
+		return true;
 	}
 }

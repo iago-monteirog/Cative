@@ -15,7 +15,7 @@ public class TesteCadastroMissao {
 			m.setDescricao(JOptionPane.showInputDialog("Digite os detalhes da missão"));
 			m.setPontos(Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de pontos")));
 			MissaoBO bo = new MissaoBO();
-			System.out.println(bo.novaMissao(m));
+			bo.novaMissao(m);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,11 +10,10 @@ public class TesteCadastroTurma {
 		public static void main(String[] args) throws Exception {
 			try {
 				Turma t = new Turma();
-				t.setIdTurma(0);
 				t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
+				
 				TurmaBO bo = new TurmaBO();
 				bo.novaTurma(t);
-				System.out.println(bo.novaTurma(t));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
