@@ -634,7 +634,9 @@ th {
         .form-control .radio-cores .radio-cores__row .radio__cor .radio-cores__input {
           display: none; }
       .form-control .radio-cores .radio-cores__row .radio__cor.ativo {
-        border: 3px solid #636E72; }
+        border: 3px solid #2D3436; }
+      .form-control .radio-cores .radio-cores__row .radio__cor:focus {
+        outline: 0.1px solid #0984E3; }
   @media only screen and (min-width: 768px) {
     .form-control .radio-cores {
       height: 134px; }
