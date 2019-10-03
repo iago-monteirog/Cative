@@ -29,20 +29,20 @@
         <div class="form-control">
           <label for="" class="form-label">Cadastrar como</label>
           <div class="grupo-opcoes">
-            <div class="grupo-opcoes__opcao ativo" tabindex="0">
-              <input type="radio" name="professor" class="grupo-opcoes__input">
+            <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario ativo" tabindex="0">
+              <input type="radio" name="tipo_usuario" value="professor" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Professor
               </div>
             </div>
-            <div class="grupo-opcoes__opcao" tabindex="0">
-              <input type="radio" name="professor" class="grupo-opcoes__input">
+            <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
+              <input type="radio" name="tipo_usuario" value="aluno" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Aluno
               </div>
             </div>
-            <div class="grupo-opcoes__opcao" tabindex="0">
-              <input type="radio" name="professor" class="grupo-opcoes__input">
+            <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
+              <input type="radio" name="tipo_usuario" value="responsavel" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Responsável
               </div>
@@ -73,5 +73,5 @@
   
 </body>
 
-<script src="./assets/js/main.js"></script>
+<script src="./assets/js/cadastre-se.js"></script>
 </html>
