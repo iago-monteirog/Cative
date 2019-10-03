@@ -47,7 +47,7 @@ public class MissaoDAO {
 	
 	public Missao getMissao(int idMissao) throws Exception{
 		stmt = con.prepareStatement
-				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO, COR_MISSAO  from TB_MiSSAO where ID_MISSAO=1");
+				("select ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMG_MISSAO, PONTOS_MISSAO, COR_MISSAO  from TB_MiSSAO where ID_MISSAO=?");
 		stmt.setInt(1, idMissao);
 		rs = stmt.executeQuery();
 		if(rs.next()) {
@@ -68,11 +68,8 @@ public class MissaoDAO {
 	public List getMissoes() throws Exception{
 		stmt = con.prepareStatement
 				("SELECT * FROM TB_MISSAO ");
-
 		rs = stmt.executeQuery();
-		
 		List<Missao> missoes = new ArrayList<Missao>();
-		
 		while(rs.next()) {
 			missoes.add(
 				new Missao(
@@ -87,21 +84,6 @@ public class MissaoDAO {
 		
 		return missoes;
 	}
-	
-	public Missao getObjetivoMissao(int idMissao) throws Exception{
-		stmt = con.prepareStatement
-				("SELECT OBJETIVO_MISSAO from TB_MISSAO WHERE ID_MISSAO = ?");
-		stmt.setInt(1, idMissao);
-		rs = stmt.executeQuery();
-		if(rs.next()) {
-			return new Missao(
-					rs.getString("OBJETIVO_MISSAO")
-					);
-		}else {
-			return new Missao();
-		}
-	}
-	
 	
 	public int delMissao(int idMissao) throws Exception {
 		stmt = con.prepareStatement

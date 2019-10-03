@@ -10,9 +10,9 @@ import br.com.cative.beans.Turma;
 import br.com.cative.conexao.Conexao;
 
 public class TurmaDAO {
-	private Connection con;
-	private PreparedStatement stmt;
-	private ResultSet rs;
+	private static Connection con;
+	private static PreparedStatement stmt;
+	private static ResultSet rs;
 
 
 	public	TurmaDAO() throws Exception {
@@ -69,30 +69,22 @@ public class TurmaDAO {
 		return rs;
 	}
 	
-	public List getTurmaAluno() throws Exception {
-		stmt = con.prepareStatement("SELECT NOME_TURMA FROM TB_TURMA");
-		rs = stmt.executeQuery();
-		List<Turma> turmas = new ArrayList<Turma>();
-		while(rs.next()) {
-			turmas.add(new Turma(rs.getString("NOME_TURMA")));
-		}
-		return turmas;
-	}
+	public static int getTurmaAlu(int i) throws Exception{
+		stmt = con.prepareStatement ("insert into tb_turma (id_turma) values(?)",PreparedStatement.RETURN_GENERATED_KEYS);
+		stmt.setInt(1, i);
+		stmt.executeUpdate();
+		rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				int id_turma = 0;
+				id_turma = rs.getInt(1);
+				return id_turma;
+			} else {
+				int id_turma = 0;
+				return id_turma;
+			}
 	
-	public int getTurmaAlu(String n) throws Exception{
-		stmt = con.prepareStatement
-				("select ID_TURMA from TB_TURMA where NOME_TURMA LIKE ?");
-		stmt.setString(1, "%" + n + "%");
-		rs = stmt.executeQuery();
-		if(rs.next()) {
-			return(
-					rs.getInt("ID_TURMA")
-					);
-		}else {
-			return rs.getInt("ID_TURMA");
 		}
-	}
-	
+		
 
 	public void fechar() throws Exception{
 		con.close();

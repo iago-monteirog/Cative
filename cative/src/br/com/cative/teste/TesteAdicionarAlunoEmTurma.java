@@ -13,8 +13,7 @@ public class TesteAdicionarAlunoEmTurma {
 		try {
 			Turma t = new Turma();
 			TurmaDAO dao = new TurmaDAO();
-			t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
-			t.setIdTurma(dao.getTurmaAlu(t.getNomeTurma()));
+			t.setIdTurma(dao.getTurmaAlu(t.getIdTurma()));
 			Usuario u = new Usuario();
 			UsuarioDAO udao = new UsuarioDAO();
 			u.setNome(JOptionPane.showInputDialog("Digite o nome do aluno"));
