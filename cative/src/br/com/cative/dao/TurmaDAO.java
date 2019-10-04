@@ -72,7 +72,7 @@ public class TurmaDAO {
 	public static int getTurmaAlu(int i) throws Exception{
 		stmt = con.prepareStatement ("insert into tb_turma (id_turma) values(?)",PreparedStatement.RETURN_GENERATED_KEYS);
 		stmt.setInt(1, i);
-		stmt.executeUpdate();
+		stmt.execute();
 		rs = stmt.getGeneratedKeys();
 			if(rs.next()) {
 				int id_turma = 0;
@@ -82,7 +82,6 @@ public class TurmaDAO {
 				int id_turma = 0;
 				return id_turma;
 			}
-	
 		}
 		
 
