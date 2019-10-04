@@ -19,23 +19,32 @@ public class TurmaDAO {
 		con = Conexao.getConexao();
 		}
 	
-	public int addAluno(int u, int t, String nu, String nt) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma, nome_usuario, nome_turma) VALUES(?, ?, ?, ?)");
-		stmt.setInt(1, u);
-		stmt.setInt(2, t);
-		stmt.setString(3, nu);
-		stmt.setString(4, nt);
+	public int adicionaAlunoEmTurma(int idUsuario, int idTurma) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma) VALUES(?, ?)");
+		stmt.setInt(1, idUsuario);
+		stmt.setInt(2, idTurma);
 		return stmt.executeUpdate();
 	}
 	
-	public int addTurma(Turma t) throws Exception {
+	public Turma addTurma(String nomeTurma) throws Exception {
+				
+		stmt = con.prepareStatement("INSERT INTO TB_TURMA(NOME_TURMA) VALUES(?)",PreparedStatement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, nomeTurma);
+		stmt.executeUpdate();
 		
-		System.out.println("Turma: "+t.getNomeTurma());
+		rs = stmt.getGeneratedKeys();
+
+		Turma turma = new Turma();
+		if(rs.next()) {
+			int id_turma = rs.getInt(1);
+			turma.setIdTurma(id_turma);
+			turma.setNomeTurma(nomeTurma);
+
+			return turma;
+		} else {
+			return turma;
+		}
 		
-		stmt = con.prepareStatement("INSERT INTO TB_TURMA(NOME_TURMA) VALUES(?)");
-		stmt.setString(1, t.getNomeTurma());
-		
-		return stmt.executeUpdate();
 	}
 	
 	public Turma getTurma(int idTurma) throws Exception{

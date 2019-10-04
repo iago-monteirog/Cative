@@ -12,18 +12,20 @@ public class TesteCriaTurmaAddAluno {
 
 	public static void main(String[] args) {
 		try {
-			Turma t = new Turma();
-			TurmaDAO dao = new TurmaDAO();
-			t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
-			t.setIdTurma(dao.getTurmaAlu(t.getIdTurma()));
-			dao.addTurma(t);
+			TurmaDAO turmaDAO = new TurmaDAO();
+			String nomeTurma = JOptionPane.showInputDialog("Digite o nome da turma");
+			Turma turma = turmaDAO.addTurma(nomeTurma);
 			
-			Usuario u = new Usuario();
-			UsuarioDAO udao = new UsuarioDAO();
-			u.setNome(JOptionPane.showInputDialog("Digite o nome do aluno"));
-			u.setIdUsuario((udao.getAluTurma(u.getNome())));
 			
-			dao.addAluno(u.getIdUsuario(), t.getIdTurma(), u.getNome(), t.getNomeTurma());
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			String nomeAluno = JOptionPane.showInputDialog("Digite o nome do aluno");
+			String emailAluno = JOptionPane.showInputDialog("Digite o email do aluno");
+			int tipoAluno = 1; 
+			
+			Usuario usuario = usuarioDAO.adicionaUsuarioComDadosBasicos(nomeAluno, emailAluno, tipoAluno);
+			
+			turmaDAO.adicionaAlunoEmTurma(usuario.getIdUsuario(), turma.getIdTurma());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

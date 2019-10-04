@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
@@ -29,6 +30,27 @@ public class UsuarioDAO {
 			stmt.setString(7, user.getFoto());
 			stmt.setString(8, user.getTema());
 			return stmt.executeUpdate();
+		}
+		
+		public Usuario adicionaUsuarioComDadosBasicos(String nomeUsuario, String email, int tipoUsuario) throws Exception {
+			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, TIPO_USUARIO) VALUES(?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, nomeUsuario);
+			stmt.setString(2, email);
+			stmt.setInt(3, tipoUsuario);
+			stmt.executeUpdate();
+			
+			rs = stmt.getGeneratedKeys();
+			Usuario usuario = new Usuario();
+
+			if(rs.next()) {
+				int id_usuario = rs.getInt(1);
+				usuario.setIdUsuario(id_usuario);
+				usuario.setNome(nomeUsuario);
+
+				return usuario;
+			} else {
+				return usuario;
+			}
 		}
 		
 		public Usuario getUsuario(int cod) throws Exception{
