@@ -9,11 +9,10 @@ import br.com.cative.dao.TurmaDAO;
 public class TesteCadastroTurma {
 		public static void main(String[] args) throws Exception {
 			try {
-				Turma t = new Turma();
-				t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
-				
+				Turma turma = new Turma();
+				turma.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma: "));
 				TurmaBO bo = new TurmaBO();
-				bo.verificaTurma(t);
+				bo.verificaTurma(turma);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -9,15 +9,15 @@ public class TesteCadastroUsuario {
 
 	public static void main(String[] args) {
 		try {
-			Usuario u = new Usuario();
+			Usuario usuario = new Usuario();
 			String[] choices = {"Aluno", "Professor", "Responsavel"};
-			u.setTipoUsuario(JOptionPane.showOptionDialog(null, "Selecione seu tipo de usuario", "Tipo de usuario", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, choices, "Aluno"));
-			u.setIdUsuario(0);
-			u.setNome(JOptionPane.showInputDialog("Digite seu nome"));
-			u.setSenha(JOptionPane.showInputDialog("Digite sua senha"));
-			u.setEmail(JOptionPane.showInputDialog("Digite seu email"));
+			usuario.setTipoUsuario(JOptionPane.showOptionDialog(null, "Selecione seu tipo de usuario", "Tipo de usuario", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, choices, "Aluno"));
+			usuario.setIdUsuario(0);
+			usuario.setNome(JOptionPane.showInputDialog("Digite seu nome"));
+			usuario.setSenha(JOptionPane.showInputDialog("Digite sua senha"));
+			usuario.setEmail(JOptionPane.showInputDialog("Digite seu email"));
 			UsuarioBO bo = new UsuarioBO();
-			System.out.println(bo.verificaUsuario(u));
+			System.out.println(bo.verificaUsuario(usuario));
 		}catch(Exception e) {
 			e.printStackTrace();
 	}

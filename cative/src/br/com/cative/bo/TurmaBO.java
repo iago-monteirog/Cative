@@ -11,7 +11,7 @@ public class TurmaBO {
 			System.out.println("Nome da turma inválido!");
 			return false;
 		}
-		dao.addTurma(t);
+		dao.addTurma(t.getNomeTurma());
 		System.out.println("Turma cadastrada!");
 		return true;
 		}

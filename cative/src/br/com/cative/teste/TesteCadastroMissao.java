@@ -9,13 +9,13 @@ public class TesteCadastroMissao {
 
 	public static void main(String[] args) throws Exception {
 		try {
-			Missao m = new Missao();
-			m.setIdMissao(1);
-			m.setObjetivo(JOptionPane.showInputDialog("Digite o objetivo da missao"));
-			m.setDescricao(JOptionPane.showInputDialog("Digite os detalhes da missão"));
-			m.setPontos(Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de pontos")));
+			Missao missao = new Missao();
+			missao.setIdMissao(1);
+			missao.setObjetivo(JOptionPane.showInputDialog("Digite o objetivo da missao"));
+			missao.setDescricao(JOptionPane.showInputDialog("Digite os detalhes da missão"));
+			missao.setPontos(Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de pontos")));
 			MissaoBO bo = new MissaoBO();
-			bo.novaMissao(m);
+			bo.novaMissao(missao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
