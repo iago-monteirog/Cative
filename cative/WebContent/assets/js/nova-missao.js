@@ -81,6 +81,43 @@ const inputsDeTexto = {
   }
 }
 
+const capaMissao = {
+  fileInput: null,
+  capa: null,
+  init() {
+    let input = document.querySelector('.jsInputUploadImagem');
+    capaMissao.fileInput = input;
+    input.addEventListener('change', capaMissao.handleInputTypeFileChange );
+    
+    let capa = document.querySelector('.jsCapaMissao');
+    capaMissao.capa = capa;
+    capa.addEventListener('click', capaMissao.handleCapaClique );
+  },
+  handleInputTypeFileChange() {
+    var input = this;
+    var reader = new FileReader();
+    reader.onload = function(){
+      let dataURL = reader.result;
+      let output = document.querySelector('.jsImagemUpada');
+      output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+    capaMissao.ativa();
+  },
+  handleCapaClique() {
+    capaMissao.fileInput.click();
+  },
+  ativa() {
+    capaMissao.capa.classList.add('ativo');
+  },
+  inativa() {
+    if(capaMissao.capa.classList.contains('ativo'));
+    capaMissao.capa.classList.add('ativo');
+  }
+}
+
+
+capaMissao.init();
 estrelas.init();
 cores.init();
 inputsDeTexto.init();
