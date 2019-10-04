@@ -692,7 +692,7 @@ th {
         color: #B2BEC3;
         margin-top: 4px; }
     .form-control .radio-pontuacoes .pontuacao.ativo {
-      border: 1px solid #FDCB6E; }
+      border: 2px solid #FDCB6E; }
       .form-control .radio-pontuacoes .pontuacao.ativo .pontuacao__estrela {
         background-image: url(../img/icon-star.svg); }
       .form-control .radio-pontuacoes .pontuacao.ativo .pontuacao__numero {
@@ -1050,6 +1050,8 @@ th {
       -ms-flex-direction: column;
           flex-direction: column;
   cursor: pointer; }
+  .nova-missao .nova-missao__cover .nova-missao__cover-file-input {
+    display: none; }
   .nova-missao .nova-missao__cover .nova-missao__cover-image {
     width: 140px;
     height: 100px;
@@ -1068,10 +1070,21 @@ th {
        -moz-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
+    .nova-missao .nova-missao__cover .nova-missao__cover-image img {
+      max-height: 100%; }
   .nova-missao .nova-missao__cover .nova-missao__cover-bottom {
     padding-top: 10px;
     font-family: "Varela Round", Montserrat, sans-serif;
     font-size: 16px; }
+
+.nova-missao .nova-missao__cover.ativo {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .nova-missao .nova-missao__cover.ativo .nova-missao__cover-bottom {
+    display: none; }
 
 .nova-missao .nova-missao__form {
   padding: 20px 20px 40px 20px;
