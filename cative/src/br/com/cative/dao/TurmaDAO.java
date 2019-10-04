@@ -19,14 +19,13 @@ public class TurmaDAO {
 		con = Conexao.getConexao();
 		}
 	
-	public void addAluno(int u, int t, String nu, String nt) throws Exception {
+	public int addAluno(int u, int t, String nu, String nt) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma, nome_usuario, nome_turma) VALUES(?, ?, ?, ?)");
 		stmt.setInt(1, u);
 		stmt.setInt(2, t);
 		stmt.setString(3, nu);
 		stmt.setString(4, nt);
-		stmt.execute();
-		stmt.close();
+		return stmt.executeUpdate();
 	}
 	
 	public int addTurma(Turma t) throws Exception {

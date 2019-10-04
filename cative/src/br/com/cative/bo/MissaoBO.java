@@ -18,7 +18,6 @@ public class MissaoBO {
 		
 		MissaoDAO dao = new MissaoDAO();
 		dao.AddMissaoBasic(m);
-
 		System.out.println("Missão cadastrada!");
 		return true;
 	}

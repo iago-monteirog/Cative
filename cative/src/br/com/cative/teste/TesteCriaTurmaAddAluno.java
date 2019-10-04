@@ -16,12 +16,14 @@ public class TesteCriaTurmaAddAluno {
 			TurmaDAO dao = new TurmaDAO();
 			t.setNomeTurma(JOptionPane.showInputDialog("Digite o nome da turma"));
 			t.setIdTurma(dao.getTurmaAlu(t.getIdTurma()));
+			dao.addTurma(t);
+			
 			Usuario u = new Usuario();
 			UsuarioDAO udao = new UsuarioDAO();
 			u.setNome(JOptionPane.showInputDialog("Digite o nome do aluno"));
 			u.setIdUsuario((udao.getAluTurma(u.getNome())));
+			
 			dao.addAluno(u.getIdUsuario(), t.getIdTurma(), u.getNome(), t.getNomeTurma());
-			TurmaBO bo = new TurmaBO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

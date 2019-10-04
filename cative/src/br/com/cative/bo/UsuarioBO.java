@@ -6,14 +6,15 @@ import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
 public class UsuarioBO {
-	
-	
 		public String verificaUsuario(Usuario user) throws Exception{
 		if(user.getNome().length()>20) {
 			return "Nome inválido";
 		}
 		if(user.getSenha().length()<5 || user.getSenha().length()>21){
 			return "Senha inválida";
+		}
+		if (user.getNome()==null) {
+			return "Nome já cadastrado";
 		}
 		
 		Pattern pattern = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");  
