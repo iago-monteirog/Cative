@@ -25,24 +25,24 @@
       <span class="tarja bg-primary"></span>
     </span>
     <section class="cadastro-usuario header-fluido__bottom bg-white">
-      <form action="" class="form" method="POST">
+      <form action="${pageContext.request.contextPath}/CadastraUsuario" class="form" method="POST">
         <div class="form-control">
           <label for="" class="form-label">Cadastrar como</label>
           <div class="grupo-opcoes">
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario ativo" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="professor" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario" value="1" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Professor
               </div>
             </div>
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="aluno" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario"  value="0" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Aluno
               </div>
             </div>
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="responsavel" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario" value="2" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Responsável
               </div>
@@ -51,11 +51,11 @@
         </div>
         <div class="form-control">
           <label for="" class="form-label">E-mail</label>
-          <input type="text" placeholder="seu@email.com" class="text-input">
+          <input type="text" name="email_usuario" placeholder="seu@email.com" class="text-input">
         </div>
         <div class="form-control">
           <label for="" class="form-label">Senha</label>
-          <input type="password" placeholder="Ex.: *********" class="text-input">
+          <input type="password" name="senha_usuario" placeholder="Ex.: *********" class="text-input">
         </div>
         <div class="form-submit">
           <button type="submit" class="button button--small button--primary">

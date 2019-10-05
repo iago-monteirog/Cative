@@ -108,10 +108,10 @@ public class UsuarioDAO {
 			}
 		}
 		
-		public int getAluTurma(String u) throws Exception{
+		public int getAluTurma(String e) throws Exception{
 			stmt = con.prepareStatement
-					("select ID_USUARIO from TB_USUARIO where NOME_USUARIO LIKE ?");
-			stmt.setString(1, "%" + u + "%");
+					("select ID_USUARIO, nome_usuario from TB_USUARIO where email_usuario LIKE ?");
+			stmt.setString(1, "%" + e + "%");
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				return (
@@ -120,6 +120,14 @@ public class UsuarioDAO {
 			}else {
 				return rs.getInt("ID_USUARIO");
 			}
+		}
+		
+		public int cadastraUsuario(String email, int tipoUsuario, String senha) throws Exception {
+			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(EMAIL_USUARIO, TIPO_USUARIO, SENHA_USUARIO) VALUES(?,?,?)");
+			stmt.setString(1, email);
+			stmt.setInt(2, tipoUsuario);
+			stmt.setString(3, senha);
+			return stmt.executeUpdate();
 		}
 		
 		public void fechar() throws Exception{
