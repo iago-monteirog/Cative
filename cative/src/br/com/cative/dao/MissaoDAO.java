@@ -22,16 +22,13 @@ public class MissaoDAO {
 		}
 	
 	public int AddMissao(Missao m) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, DT_INICIO, DT_FINAL, CICLO_MISSAO, IMAGEM_MISSAO, TEMPO_DURACAO, PONTOS_MISSAO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(ID_MISSAO, OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMAGEM_MISSAO,  PONTOS_MISSAO, COR_MISSAO) VALUES(?, ?, ?, ?, ?, ?)");
 		stmt.setInt(1, m.getIdMissao());
 		stmt.setString(2, m.getObjetivo());
 		stmt.setString(3, m.getDescricao());
-		stmt.setString(4, m.getDtInicio());
-		stmt.setString(5, m.getDtFinal());
-		stmt.setString(6, m.getCiclo());
-		stmt.setString(7, m.getImgMissao());
-		stmt.setString(8, m.getTempoDuracao());
-		stmt.setInt(9, m.getPontos());
+		stmt.setString(4, m.getImgMissao());
+		stmt.setInt(5, m.getPontos());
+		stmt.setString(6, m.getCorMissao());
 		return stmt.executeUpdate();
 	}
 	
@@ -76,9 +73,9 @@ public class MissaoDAO {
 						rs.getInt("ID_MISSAO"),
 						rs.getString("OBJETIVO_MISSAO"),
 						rs.getString("DESCRICAO_MISSAO"),
-						rs.getString("DESCRICAO_MISSAO"), //TODO: mudar pra IMG_MISSAO
+						rs.getString("IMG_MISSAO"), //TODO: mudar pra IMG_MISSAO
 						rs.getInt("PONTOS_MISSAO"), //TODO: mudar pra PONTOS_MISSAO
-						rs.getString("OBJETIVO_MISSAO") // TODO: mudar pra COR_MISSAO
+						rs.getString("COR_MISSAO") // TODO: mudar pra COR_MISSAO
 					));
 		}
 		
