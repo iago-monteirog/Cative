@@ -21,7 +21,7 @@
       <div class="cadastro-inicial__box-titulo">
         <h1>Cadastre uma turma</h1>
       </div>
-      <form action="" method="GET" class="form">
+      <form action="${pageContext.request.contextPath}/AdicionaTurma" method="GET" class="form">
         <div class="cadastro-inicial__inputs">
           <div class="form-control">
             <label for="" class="form-label">Nome da turma</label>
