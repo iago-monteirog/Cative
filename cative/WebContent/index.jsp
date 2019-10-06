@@ -11,5 +11,8 @@
    	missao.setObjetivo("Nome Qualquer");
    	response.getWriter().print(request.getParameter("objetivo_missao"));
 	response.getWriter().print(request.getParameter("descricao_missao"));
+	response.getWriter().print(request.getParameter("img_missao"));
+	response.getWriter().print(request.getParameter("pontos_missao"));
+	response.getWriter().print(request.getParameter("cor_missao"));
    	out.println(missao.getObjetivo());
 %>

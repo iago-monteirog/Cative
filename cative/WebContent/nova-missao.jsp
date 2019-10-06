@@ -17,7 +17,7 @@
   </nav>
   
 <section class="nova-missao">
-  <form action="${pageContext.request.contextPath}/CadastraMissao" class="form" method="post" enctype="multipart/form-data">
+  <form action="${pageContext.request.contextPath}/CadastraMissao" class="form" method="post">
     <div class="nova-missao__header">
       <h1>Nova missão</h1>
     </div>

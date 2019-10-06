@@ -41,23 +41,31 @@ public class CadastraMissao extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-			Missao missao = new Missao();
-			String objetivoMissao = request.getParameter("objetivo_missao");  
-			String descricaoMissao = request.getParameter("descricao_missao");
+		String objetivoMissao = request.getParameter("objetivo_missao");  
+		String descricaoMissao = request.getParameter("descricao_missao");
+		String imgMissao = request.getParameter("imagem_capa");
+		int pontosMissao = Integer.parseInt(request.getParameter("pontos"));
+		String corMissao = request.getParameter("cor");
 		
-			missao.setIdMissao(1);
-			missao.setDescricao(descricaoMissao);
-			missao.setObjetivo(objetivoMissao);
-			
-			
-			try {
-			MissaoDAO missaodao = new MissaoDAO();
-			missaodao.cadastraMissaoSimples(objetivoMissao, descricaoMissao);
+		Missao missao = new Missao();
+		System.out.println(imgMissao);
+		System.out.println(pontosMissao);
+		System.out.println(corMissao);
+		
+		missao.setDescricao(descricaoMissao);
+		missao.setObjetivo(objetivoMissao);
+		missao.setImgMissao(imgMissao);
+		missao.setPontos(pontosMissao);
+		missao.setCorMissao(corMissao);
+		
+		try {
+		MissaoDAO missaodao = new MissaoDAO();
+		missaodao.cadastraMissao(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);	
+		e.printStackTrace();
+	}
+    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+	dispatcher.forward(request, response);	
 	}
 
 }

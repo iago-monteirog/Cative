@@ -22,7 +22,7 @@ public class MissaoDAO {
 		}
 	
 	public int cadastraMissao(String objetivo, String descricao, String img, int pontos, String cor) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_TURMA(OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMAGEM_MISSAO, PONTOS_MISSAO, COR_MISSAO) VALUES(?,?,?,?,?)");
+		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMAGEM_MISSAO, PONTOS_MISSAO, COR_MISSAO) VALUES(?,?,?,?,?)");
 		stmt.setString(1, objetivo);
 		stmt.setString(2, descricao);
 		stmt.setString(3, img);
