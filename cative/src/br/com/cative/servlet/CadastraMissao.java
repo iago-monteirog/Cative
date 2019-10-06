@@ -15,14 +15,14 @@ import br.com.cative.dao.MissaoDAO;
 /**
  * Servlet implementation class AdicionaMissao
  */
-@WebServlet("/AdicionaMissao")
-public class AdicionaMissao extends HttpServlet {
+@WebServlet("/CadastraMissao")
+public class CadastraMissao extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdicionaMissao() {
+    public CadastraMissao() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,19 +42,20 @@ public class AdicionaMissao extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		try {
-			String objetivo = request.getParameter("objetivo_missao");  
-			String descricao = request.getParameter("descricao_missao");
-			   
+			String objetivoMissao = request.getParameter("objetivo_missao");  
+			String descricaoMissao = request.getParameter("descricao_missao");
+			
 		
 			Missao missao = new Missao();
 			
 			missao.setIdMissao(1);
-			missao.setDescricao(descricao);
-			missao.setObjetivo(objetivo);
-	
+			missao.setDescricao(descricaoMissao);
+			missao.setObjetivo(objetivoMissao);
+			
+			
+			try {
 			MissaoDAO missaodao = new MissaoDAO();
-			missaodao.AddMissaoBasic(missao);
+			missaodao.cadastraMissaoSimples(objetivoMissao, descricaoMissao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

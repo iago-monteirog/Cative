@@ -17,7 +17,7 @@
   </nav>
   
 <section class="nova-missao">
-  <form action="${pageContext.request.contextPath}/AdicionaMissao" class="form" method="POST" enctype="multipart/form-data">
+  <form action="${pageContext.request.contextPath}/CadastraMissao" class="form" method="POST" enctype="multipart/form-data">
     <div class="nova-missao__header">
       <h1>Nova missão</h1>
     </div>
@@ -38,7 +38,7 @@
       
       <div class="form-control">
         <label for="" class="form-label">Descrição</label>
-        <textarea name="" name="descricao_missao" rows="5" class="textarea jsCompletoQuandoSemFoco">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        <textarea name="descricao_missao" rows="5" class="textarea jsCompletoQuandoSemFoco">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         </textarea>
       </div>
       
