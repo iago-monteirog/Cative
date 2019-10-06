@@ -31,7 +31,6 @@ public class CadastraMissao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
@@ -42,12 +41,10 @@ public class CadastraMissao extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+			Missao missao = new Missao();
 			String objetivoMissao = request.getParameter("objetivo_missao");  
 			String descricaoMissao = request.getParameter("descricao_missao");
-			
 		
-			Missao missao = new Missao();
-			
 			missao.setIdMissao(1);
 			missao.setDescricao(descricaoMissao);
 			missao.setObjetivo(objetivoMissao);
@@ -59,7 +56,7 @@ public class CadastraMissao extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);	
 	}
 

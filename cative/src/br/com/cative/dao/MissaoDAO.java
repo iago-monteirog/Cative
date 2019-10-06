@@ -40,12 +40,11 @@ public class MissaoDAO {
 		stmt.close();
 	}
 	
-	public void AddMissaoB(Missao m) throws Exception {
+	public int AddMissaoB(Missao m) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO) VALUES(?, ?)");
 		stmt.setString(1, m.getObjetivo());
 		stmt.setString(2, m.getDescricao());
-		stmt.execute();
-		stmt.close();
+		return stmt.executeUpdate();
 	}
 	
 	public int cadastraMissaoSimples(String objetivo, String descricao) throws Exception {
