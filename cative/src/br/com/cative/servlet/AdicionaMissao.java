@@ -42,29 +42,23 @@ public class AdicionaMissao extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		int idMissao = Integer.parseInt(request.getParameter("id_missao"));
-		String objetivoMissao = request.getParameter("objetivo_missao");
-		String descricaoMissao = request.getParameter("descricao_missao");
-		int pontosMissao = Integer.parseInt(request.getParameter("pontos_missao"));
-		String imgMissao = request.getParameter("img_missao");
-		String corMissao = request.getParameter("cor_missao");
-		
-		Missao missao = new Missao();
-		
-		missao.setIdMissao(1);
-		missao.setDescricao(descricaoMissao);
-		missao.setObjetivo(objetivoMissao);
-		missao.setPontos(pontosMissao);
-		missao.setCorMissao(corMissao);
-		missao.setImgMissao(imgMissao);
-		
 		try {
+			String objetivo = request.getParameter("objetivo_missao");  
+			String descricao = request.getParameter("descricao_missao");
+			   
+		
+			Missao missao = new Missao();
+			
+			missao.setIdMissao(1);
+			missao.setDescricao(descricao);
+			missao.setObjetivo(objetivo);
+	
 			MissaoDAO missaodao = new MissaoDAO();
-			missaodao.AddMissao(missao);
+			missaodao.AddMissaoBasic(missao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        RequestDispatcher dispatcher = request.getRequestDispatcher("nova-missao.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
 		dispatcher.forward(request, response);	
 	}
 
