@@ -35,14 +35,6 @@ public class AdicionaAlunoNaTurma extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 		String emailAluno = request.getParameter("email_aluno");
 		Usuario usuario = new Usuario();
 		usuario.setEmail(emailAluno);
@@ -52,12 +44,20 @@ public class AdicionaAlunoNaTurma extends HttpServlet {
 			TurmaDAO turmadao = new TurmaDAO();
 			Turma turma = new Turma();
 			Integer idTurma = (Integer)request.getAttribute("idTurma");
-			turmadao.adicionaAlunoEmTurma(usuario.getIdUsuario(), idTurma);
+			turmadao.adicionaAlunoEmTurma(usuario.getIdUsuario(), turma.getIdTurma());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

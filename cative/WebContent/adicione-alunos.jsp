@@ -22,7 +22,7 @@
         <h1>Adicione os alunos</h1>
       </div>
       
-      <form action="" class="form" method="GET">
+      <form action="${pageContext.request.contextPath}/AdicionaAlunoNaTurma" class="form" method="GET">
         <div class="cadastro-inicial__inputs">
           <div class="form-control">
             <label for="" class="form-label">Digite o e-mail</label>

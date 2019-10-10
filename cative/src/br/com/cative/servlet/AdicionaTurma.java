@@ -39,7 +39,6 @@ public class AdicionaTurma extends HttpServlet {
 		try {
 			TurmaDAO turmadao = new TurmaDAO();
 			turmadao.addTurma(nomeTurma);
-			request.setAttribute("idTurma", turma.getIdTurma());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
