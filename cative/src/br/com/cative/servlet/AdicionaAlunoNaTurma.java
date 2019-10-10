@@ -40,11 +40,10 @@ public class AdicionaAlunoNaTurma extends HttpServlet {
 		usuario.setEmail(emailAluno);
 		try {
 			UsuarioDAO usuariodao = new UsuarioDAO();
-			usuariodao.getAluTurma(emailAluno);
+			int idUsuario = usuariodao.getAluTurma(emailAluno);
 			TurmaDAO turmadao = new TurmaDAO();
-			Turma turma = new Turma();
 			Integer idTurma = (Integer)request.getAttribute("idTurma");
-			turmadao.adicionaAlunoEmTurma(usuario.getIdUsuario(), turma.getIdTurma());
+			turmadao.adicionaAlunoEmTurma(idUsuario, idTurma);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
