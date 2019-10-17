@@ -116,9 +116,9 @@
         </div>
 
         <div class="form-submit">
-          <a href="turma.html" type="submit" class="button button--primary button--xs-small jsSalvaMissao">
+          <button type="submit" class="button button--primary button--xs-small jsSalvaMissao">
             Salvar
-          </a>
+          </button>
         </div>
       </div>
     </form>
