@@ -12,9 +12,7 @@
 </head>
 
 <body>
-  <nav style="height: 58px; background: tomato">
-    
-  </nav>
+<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
   
 <section class="nova-missao">
   <form action="${pageContext.request.contextPath}/CadastraMissao" class="form" method="post">
@@ -126,4 +124,5 @@
 </body>
 
 <script src="./assets/js/nova-missao.js"></script>
+<script src="./assets/js/barra-navegacao.js"></script>
 </html>
