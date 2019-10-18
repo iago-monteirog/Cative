@@ -12,6 +12,9 @@
 </head>
 
 <body>
+  <jsp:include page="components/navegacao-aluno.jsp">
+   	<jsp:param name="titulo" value="Título da pagina"/>
+  </jsp:include>
   <div class="perfil jsPerfil">
     <div class="perfil__capa">
       <div class="perfil__cor-capa bg-danger jsCorPerfil"></div>

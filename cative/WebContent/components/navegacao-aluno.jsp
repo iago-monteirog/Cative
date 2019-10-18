@@ -1,3 +1,5 @@
+ 
+    
     <nav class="navegacao jsCorPerfil">
         <div class="navegacao__top">
             <div class="navegacao__back jsBack">
@@ -17,7 +19,7 @@
                 </svg>
             </div>
             <div class="navegacao__title">
-                <h1>Suas missões</h1>
+                <h1>${param.titulo}</h1>
             </div>
             <div class="navegacao__hamburguer">
                 <div class="hamburguer jsHamburguer">
@@ -117,3 +119,4 @@
             </div>
         </div>
     </nav>
+
