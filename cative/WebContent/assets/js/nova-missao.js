@@ -58,40 +58,17 @@ const capa = {
   }
 }
 
-const inputsDeTexto = {
-  init() {
-    let inputs = document.querySelectorAll('.jsCompletoQuandoSemFoco');
-    inputs.forEach(input => {
-      input.addEventListener('click', inputsDeTexto.foco );
-    });
-    inputs.forEach(input => {
-      input.addEventListener('blur', inputsDeTexto.perdeFoco );
-    });
-  },
-  foco() {
-    this.classList.remove('completo');
-  },
-  perdeFoco() {
-    if(inputsDeTexto.inputEstaVazio(this)) {
-      this.classList.add('completo');
-    }
-  },
-  inputEstaVazio(input) {
-    return !!input.value;
-  }
-}
-
 const capaMissao = {
   fileInput: null,
   capa: null,
   init() {
     let input = document.querySelector('.jsInputUploadImagem');
     capaMissao.fileInput = input;
-    input.addEventListener('change', capaMissao.handleInputTypeFileChange );
+    !!input ? input.addEventListener('change', capaMissao.handleInputTypeFileChange ) : null;
     
     let capa = document.querySelector('.jsCapaMissao');
     capaMissao.capa = capa;
-    capa.addEventListener('click', capaMissao.handleCapaClique );
+    !!capa ? capa.addEventListener('click', capaMissao.handleCapaClique ) : null;
   },
   handleInputTypeFileChange() {
     var input = this;
@@ -99,6 +76,7 @@ const capaMissao = {
     reader.onload = function(){
       let dataURL = reader.result;
       let output = document.querySelector('.jsImagemUpada');
+      capaMissao.preparaImagemParaSubmit(dataURL)
       output.src = dataURL;
     };
     reader.readAsDataURL(input.files[0]);
@@ -113,6 +91,10 @@ const capaMissao = {
   inativa() {
     if(capaMissao.capa.classList.contains('ativo'));
     capaMissao.capa.classList.add('ativo');
+  },
+  preparaImagemParaSubmit(dataImagem) {
+    let textArea = document.querySelector('.jsImagemURLPraSubmit');
+    textArea.textContent = dataImagem;
   }
 }
 
@@ -120,4 +102,3 @@ const capaMissao = {
 capaMissao.init();
 estrelas.init();
 cores.init();
-inputsDeTexto.init();

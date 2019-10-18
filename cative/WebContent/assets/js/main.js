@@ -8,20 +8,56 @@ let cardMissao = {
     modalMissao.descricao(this.dataset.descricao);
     modalMissao.estrelas(this.dataset.estrelas);
     modalMissao.codigo(this.dataset.cod);
+    modalMissao.cor(this.dataset.cor);
+    modalMissao.imagem(this.querySelector('.card-missao__imagem>img').src);
     modalMissao.toggle();
   }
 }
 
 let modalMissao = {
   overlay: null,
+  btnConcluiMissao: null,
   init() {
     let modal = document.querySelector('.jsOverlayMissao');
     modalMissao.overlay = modal;
-
+    
     let closeModal = document.querySelector('.jsModalClose');
-    closeModal.addEventListener('click', modalMissao.toggle);
+    closeModal ? closeModal.addEventListener('click', modalMissao.toggle) : null;
+    
+    modalMissao.btnConcluiMissao = document.querySelector('.jsConcluiMissao');
+    // modalMissao.btnConcluiMissao ? 
+    // modalMissao.btnConcluiMissao.addEventListener('click', modalMissao.toggle ) : null;
+    
+    modalMissao.btnConcluiMissao ?
+    modalMissao.btnConcluiMissao.addEventListener('click', modalMissao.concluiMissao ) : null;
+    
+    modal ? modal.addEventListener('click', modalMissao.handleOverlayClick) : null;
+  },
+  concluiMissao() {
+    modalMissao.btnConcluiMissao.textContent = "Parabéns!";
+    modalMissao.btnConcluiMissao.style.background = '#00b894'; 
+    document.querySelector('.jsModalCorMissao').style.background = '#00b894';
 
-    modal.addEventListener('click', modalMissao.handleOverlayClick);
+    setTimeout(function() {
+      modalMissao.toggle();
+    }, 2000);
+
+    setTimeout(function() {
+      modalMissao.btnConcluiMissao.textContent = "Concluída";
+    },3000);
+
+    let idMissao = modalMissao.overlay.dataset.cod;
+    let cardMissao = document.querySelector(`.jsCardMissao[data-cod=${idMissao}]`);
+    cardMissao.remove();
+
+
+    let wrapMissoes = document.querySelector('.missoes');
+    let estaVazio = wrapMissoes.querySelectorAll('.card-missao').length == 0;
+
+    if(estaVazio) {
+      wrapMissoes.innerHTML += '<img src="assets/img/sem-missoes.png"/>';
+    }
+
   },
   handleOverlayClick(event) {
     event.target === modalMissao.overlay ? modalMissao.toggle() : null;
@@ -40,6 +76,16 @@ let modalMissao = {
   estrelas(estrelas) {
     let estrelasMissao = document.querySelector('.jsModalEstrelas');
     estrelasMissao.textContent = estrelas;
+  },
+  cor(cor) {
+    let lugaresComCor = document.querySelectorAll('.jsModalCorMissao');
+    lugaresComCor.forEach(lugar => {
+      lugar.style.background = cor;
+    });
+  },
+  imagem(imagem) {
+    let imagemCapa = document.querySelector('.jsModalImagem');
+    imagemCapa.src = imagem;
   },
   codigo(codigo) {
     modalMissao.overlay.dataset.cod = codigo;
