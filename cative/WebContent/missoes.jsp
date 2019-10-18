@@ -12,9 +12,7 @@
 </head>
 
 <body>
-    <nav style="height: 58px;">
-
-    </nav>
+   <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
 
     <section class="section">
         <div class="container">
