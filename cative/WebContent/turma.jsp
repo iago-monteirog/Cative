@@ -1,0 +1,244 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./assets/css/main.min.css">
+</head>
+
+<body>
+	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
+  <section class="section">
+    <div class="section__title">
+      <h1>Turma A</h1>
+    </div>
+    <div class="abas">
+      <div class="aba jsAba ativo" data-aba="alunos">
+        <span class="aba__nome">
+          Alunos
+        </span>
+      </div>
+      <div class="aba jsAba" data-aba="missoes">
+        <span class="aba__nome">
+          Missões
+        </span>
+      </div>
+    </div>
+    <div class="data-aba jsConteudo ativo" data-conteudo="alunos">
+      <div class="alunos">
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Marcos
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/women/92.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Juliana
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/men/59.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Carlos
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/men/27.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Juliano
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Bruno
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/women/94.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Carla
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/women/9.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Jheniffer
+          </div>
+        </div>
+        <div class="aluno jsAluno">
+          <div class="aluno__pic">
+            <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Foto do aluno">
+          </div>
+          <div title="Abraão Azevedo" class="aluno__nome">
+            Paloma
+          </div>
+        </div>
+      </div>
+      <div class="section__bottom">
+        <button class="button--primary button--xs-small jsModalToggler">
+          Novo aluno
+        </button>
+      </div>
+    </div>
+    <div class="data-aba jsConteudo " data-conteudo="missoes">
+      <div class="missoes link-aba ">
+        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
+          data-titulo="Escove seus dentes" data-estrelas="30">
+
+          <div class="card-missao__imagem primary">
+            <img src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
+          </div>
+          <div class="card-missao__body">
+            <div class="card-missao__titulo">
+              <h3>Escove seus dentes</h3>
+            </div>
+            <div class="card-missao__pontos">
+              <i class="icon icon-star"></i>
+              <span>30 estrelas</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-missao jsCardMissao" data-cor="#ff7675" data-cod="a2" data-descricao=""
+          data-titulo="Arrume sua mochila" data-estrelas="50">
+
+          <div class="card-missao__imagem">
+            <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
+          </div>
+          <div class="card-missao__body">
+            <div class="card-missao__titulo">
+              <h3>Arrume sua mochila</h3>
+            </div>
+            <div class="card-missao__pontos">
+              <i class="icon icon-star"></i>
+              <span>50 estrelas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section__bottom">
+        <a href="nova-missao.html" class="button--primary button--xs-small">
+          Nova missao
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="modal-overlay jsModalOverlay jsModalToggler">
+    <div class="modal">
+      <header class="modal__header">
+        <h3 class="modal__title">
+          Novo aluno
+        </h3>
+      </header>
+      <div class="modal__body">
+        <form action="" class="form">
+          <div class="form-control">
+            <label for="nome_aluno" class="form-label">Nome</label>
+            <input tabindex="0" type="text" name="nome_aluno" id="nome_aluno" class="text-input jsFirstInput"
+              placeholder="Ex.: Juliana">
+          </div>
+          <div class="form-control">
+            <label for="email" class="form-label">E-mail</label>
+            <input tabindex="0" type="text" name="email" id="email" class="text-input jsFirstInput"
+              placeholder="Ex.: juju@email.com">
+          </div>
+          <div class="form-control">
+            <label for="senha" class="form-label">Crie uma senha para</label>
+            <input tabindex="0" type="password" name="senha" id="senha" class="text-input jsFirstInput"
+              placeholder="Ex.: ********">
+          </div>
+        </form>
+      </div>
+      <div class="modal__footer">
+        <button class="button--small button--primary jsModalSubmit">
+          Pronto
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="missao-overlay jsOverlayMissao" data-cod="a">
+    <div class="modal-missao jsModalMissao">
+      <button class="modal-missao__close jsModalClose">
+        <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M13.5 1.5C6.873 1.5 1.5 6.873 1.5 13.5C1.5 20.127 6.873 25.5 13.5 25.5C20.127 25.5 25.5 20.127 25.5 13.5C25.5 6.873 20.127 1.5 13.5 1.5ZM13.5 22.5C8.5365 22.5 4.5 18.4635 4.5 13.5C4.5 8.5365 8.5365 4.5 13.5 4.5C18.4635 4.5 22.5 8.5365 22.5 13.5C22.5 18.4635 18.4635 22.5 13.5 22.5Z"
+            fill="#2D3436" />
+          <path
+            d="M17.5829 9.43801L17.5619 9.41701C17.0054 8.86051 16.1024 8.86051 15.5459 9.41701L13.4999 11.463L11.4539 9.41701C10.8974 8.86051 9.99439 8.86051 9.43789 9.41701L9.41689 9.43801C8.86039 9.99451 8.86039 10.8975 9.41689 11.454L11.4629 13.5L9.41689 15.546C8.86039 16.1025 8.86039 17.0055 9.41689 17.562L9.43789 17.583C9.99439 18.1395 10.8974 18.1395 11.4539 17.583L13.4999 15.537L15.5459 17.583C16.1024 18.1395 17.0054 18.1395 17.5619 17.583L17.5829 17.562C18.1394 17.0055 18.1394 16.1025 17.5829 15.546L15.5369 13.5L17.5829 11.454C18.1394 10.8975 18.1394 9.99451 17.5829 9.43801Z"
+            fill="#2D3436" />
+        </svg>
+      </button>
+      <div class="modal-missao__header jsModalCorMissao">
+        <div class="modal-missao__header-image">
+          <img class="jsModalImagem" src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
+        </div>
+      </div>
+      <div class="modal-missao__body">
+        <div class="modal-missao__body-container">
+          <div class="missao__body-title">
+            <h2 class="jsModalTitulo">
+              Escove os dentes
+            </h2>
+          </div>
+          <div class="missao__body-points">
+            <span class="missao__body-points-icone"></span>
+            <span class="missao__body-points-text">
+              <span class="jsModalEstrelas">
+                200
+              </span>
+              <span>
+                estrelas
+              </span>
+            </span>
+          </div>
+          <div class="missao__body-descricao">
+            <article class="jsModalDescricao">
+              <p>
+                Escove os dentes durante o dia e ganhe pontos
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="modal-missao__footer">
+        <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
+          Concluída
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/barra-navegacao.js"></script>
+  <script src="./assets/js/abas.js"></script>
+  <script src="./assets/js/modal.js"></script>
+
+
+</body>
+
+</html>
