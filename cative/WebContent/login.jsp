@@ -25,14 +25,14 @@
       <span class="tarja bg-primary"></span>
     </span>
     <section class="cadastro-usuario header-fluido__bottom bg-white">
-      <form action="" class="form" method="POST">
+      <form action="${pageContext.request.contextPath}/Login" class="form" method="POST">
         <div class="form-control">
           <label for="" class="form-label">E-mail</label>
-          <input type="text" placeholder="seu@email.com" class="text-input">
+          <input type="text" name="email_usuario" placeholder="seu@email.com" class="text-input">
         </div>
         <div class="form-control">
           <label for="" class="form-label">Senha</label>
-          <input type="password" placeholder="Ex.: *********" class="text-input">
+          <input type="password" name="senha_usuario" placeholder="Ex.: *********" class="text-input">
         </div>
         <div class="form-submit">
           <button type="submit" class="button button--small button--primary">
