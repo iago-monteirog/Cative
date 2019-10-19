@@ -21,15 +21,14 @@ public class UsuarioDAO {
 		
 		
 		public int addUsuario(Usuario user) throws Exception {
-			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(ID_USUARIO, NOME_USUARIO, SOBRENOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
-			stmt.setInt(1, user.getIdUsuario());
-			stmt.setString(2, user.getNome());
-			stmt.setString(3, user.getSobrenome());
-			stmt.setString(4, user.getSenha());
-			stmt.setString(5, user.getEmail());
-			stmt.setInt(6, user.getTipoUsuario());
-			stmt.setString(7, user.getFoto());
-			stmt.setString(8, user.getTema());
+			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, SOBRENOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?, ?,?)");
+			stmt.setString(1, user.getNome());
+			stmt.setString(2, user.getSobrenome());
+			stmt.setString(3, user.getSenha());
+			stmt.setString(4, user.getEmail());
+			stmt.setInt(5, user.getTipoUsuario());
+			stmt.setString(6, user.getFoto());
+			stmt.setString(7, user.getTema());
 			return stmt.executeUpdate();
 		}
 		

@@ -48,7 +48,7 @@
           </div>
         </div>
         <% } %>
-        
+      </div>
       <div class="section__bottom">
         <button class="button--primary button--xs-small jsModalToggler">
           Novo aluno
@@ -99,41 +99,41 @@
     </div>
 
   </section>
-
-  <div class="modal-overlay jsModalOverlay jsModalToggler">
-    <div class="modal">
-      <header class="modal__header">
-        <h3 class="modal__title">
-          Novo aluno
-        </h3>
-      </header>
-      <div class="modal__body">
-        <form action="" class="form">
-          <div class="form-control">
-            <label for="nome_aluno" class="form-label">Nome</label>
-            <input tabindex="0" type="text" name="nome_aluno" id="nome_aluno" class="text-input jsFirstInput"
-              placeholder="Ex.: Juliana">
-          </div>
-          <div class="form-control">
-            <label for="email" class="form-label">E-mail</label>
-            <input tabindex="0" type="text" name="email" id="email" class="text-input jsFirstInput"
-              placeholder="Ex.: juju@email.com">
-          </div>
-          <div class="form-control">
-            <label for="senha" class="form-label">Crie uma senha para</label>
-            <input tabindex="0" type="password" name="senha" id="senha" class="text-input jsFirstInput"
-              placeholder="Ex.: ********">
-          </div>
-        </form>
-      </div>
-      <div class="modal__footer">
-        <button class="button--small button--primary jsModalSubmit">
-          Pronto
-        </button>
-      </div>
-    </div>
-  </div>
-
+  <form action="${pageContext.request.contextPath}/NovoAluno" method="POST" class="form">
+	  <div class="modal-overlay jsModalOverlay jsModalToggler">
+	    <div class="modal">
+	      <header class="modal__header">
+	        <h3 class="modal__title">
+	          Novo aluno
+	        </h3>
+	      </header>
+	      <div class="modal__body">
+	
+	          <div class="form-control">
+	            <label for="nome_aluno" class="form-label">Nome</label>
+	            <input tabindex="0" type="text" name="nome_aluno" id="nome_aluno" class="text-input jsFirstInput"
+	              placeholder="Ex.: Juliana">
+	          </div>
+	          <div class="form-control">
+	            <label for="email" class="form-label">E-mail</label>
+	            <input tabindex="0" type="text" name="email_aluno" id="email" class="text-input jsFirstInput"
+	              placeholder="Ex.: juju@email.com">
+	          </div>
+	          <div class="form-control">
+	            <label for="senha" class="form-label">Crie uma senha para</label>
+	            <input tabindex="0" type="password" name="senha_aluno" id="senha" class="text-input jsFirstInput"
+	              placeholder="Ex.: ********">
+	          </div>
+	
+	      </div>
+	      <div class="modal__footer">
+	        <button class="button--small button--primary jsModalSubmit">
+	          Pronto
+	        </button>
+	      </div>
+	    </div>
+	  </div>
+  </form>
 
   <div class="missao-overlay jsOverlayMissao" data-cod="a">
     <div class="modal-missao jsModalMissao">
