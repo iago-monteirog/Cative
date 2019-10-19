@@ -30,72 +30,24 @@
       </div>
     </div>
     <div class="data-aba jsConteudo ativo" data-conteudo="alunos">
+    	<%@ page import="br.com.cative.dao.*" %>
+	    <%@ page import="br.com.cative.beans.*" %>
+	    <%@ page import="java.util.List" %>
+    <% 
+		UsuarioDAO usuariodao = new UsuarioDAO();   
+    	List<Usuario> alunos = usuariodao.getAlunosTurma();
+    	for(Usuario usuario : alunos) {
+    %>
       <div class="alunos">
         <div class="aluno jsAluno">
           <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Foto do aluno">
+          	<% out.print(usuario.getFoto()); %>
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
-            Marcos
+            <% out.print(usuario.getNome()); %>
           </div>
         </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/women/92.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Juliana
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/men/59.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Carlos
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/men/27.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Juliano
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Bruno
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/women/94.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Carla
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/women/9.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Jheniffer
-          </div>
-        </div>
-        <div class="aluno jsAluno">
-          <div class="aluno__pic">
-            <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Foto do aluno">
-          </div>
-          <div title="Abraão Azevedo" class="aluno__nome">
-            Paloma
-          </div>
-        </div>
-      </div>
+        <% } %>
       <div class="section__bottom">
         <button class="button--primary button--xs-small jsModalToggler">
           Novo aluno

@@ -3,8 +3,9 @@ package br.com.cative.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
@@ -128,6 +129,25 @@ public class UsuarioDAO {
 			stmt.setInt(2, tipoUsuario);
 			stmt.setString(3, senha);
 			return stmt.executeUpdate();
+		}
+		
+		public List getAlunosTurma() throws Exception {
+			stmt = con.prepareStatement("select * from tb_usuario");
+			rs = stmt.executeQuery();
+			List<Usuario> aluno = new ArrayList<Usuario>();
+			while(rs.next()) {
+				aluno.add(new Usuario(
+						rs.getInt("ID_USUARIO"),
+						rs.getString("NOME_USUARIO"),
+						rs.getString("SOBRENOME_USUARIO"),
+						rs.getString("senha_USUARIO"),
+						rs.getString("EMAIL_USUARIO"),
+						rs.getInt("TIPO_USUARIO"),
+						rs.getString("FOTO_USUARIO"),
+						rs.getString("TEMA_USUARIO"),
+						rs.getString("PONTOS_USUARIO")
+						));
+			} return aluno;
 		}
 		
 		public void fechar() throws Exception{

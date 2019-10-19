@@ -51,7 +51,10 @@ public class TurmaDAO {
 		rs = stmt.executeQuery();
 		List<Turma> turmas = new ArrayList<Turma>();
 		while(rs.next()) {
-			turmas.add(new Turma(rs.getInt("ID_TURMA"), rs.getString("NOME_TURMA"), rs.getString("COR_TURMA")));
+			turmas.add(new Turma(
+					rs.getInt("ID_TURMA"),
+					rs.getString("NOME_TURMA"), 
+					rs.getString("COR_TURMA")));
 		}
 			return turmas;
 		}
