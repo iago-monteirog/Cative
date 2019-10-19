@@ -46,29 +46,29 @@
     </div>
   </section>
 
-  <div class="modal-overlay jsModalOverlay jsModalToggler">
-    <div class="modal">
-      <header class="modal__header">
-        <h3 class="modal__title">
-          Nova turma
-        </h3>
-      </header>
-      <div class="modal__body">
-        <form action="" class="form">
-          <div class="form-control">
-            <label for="nome_turma" class="form-label">Nova turma</label>
-            <input tabindex="0" type="text" name="nome_turma" id="nome_turma" class="text-input jsFirstInput"
-              placeholder="Ex.: Classe A">
-          </div>
-        </form>
-      </div>
-      <div class="modal__footer">
-        <button class="button--small button--primary jsModalSubmit">
-          Criar turma
-        </button>
-      </div>
-    </div>
-  </div>
+  <form action="${pageContext.request.contextPath}/NovaTurma" method="GET" class="form">
+	<div class="modal-overlay jsModalOverlay jsModalToggler">
+	  <div class="modal">
+	    <header class="modal__header">
+	      <h3 class="modal__title">
+	        Nova turma
+	      </h3>
+	    </header>
+	    <div class="modal__body">
+	        <div class="form-control">
+	          <label for="nome_turma" class="form-label">Nova turma</label>
+	          <input tabindex="0" type="text" name="nome_turma" id="nome_turma" class="text-input jsFirstInput"
+	            placeholder="Ex.: Classe A">
+	        </div>
+	    </div>
+	    <div class="modal__footer">
+	      <button type="submit" class="button--small button--primary jsModalSubmit">
+	        Criar turma
+	      </button>
+	    </div>
+	  </div>
+	</div>
+  </form>
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/barra-navegacao.js"></script>
   <script src="./assets/js/modal.js"></script>
