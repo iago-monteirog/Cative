@@ -22,30 +22,21 @@
     </div>
     <div class="turmas">
       <div class="turmas__container">
+      <%@ page import="br.com.cative.dao.*" %>
+      <%@ page import="br.com.cative.beans.*" %>
+      <%@ page import="java.util.List" %>
+      <%
+      	TurmaDAO turmadao = new TurmaDAO();
+		List<Turma> turmas = turmadao.getListTurmas();
+      	for(Turma turma : turmas) {
+      %>
         <div class="turma jsTurma primary" tabindex="0">
           <span class="turma__tira"></span>
           <div class="turma__nome">
-            Classe A
+            <% out.print(turma.getNomeTurma()); %>
           </div>
         </div>
-        <div class="turma jsTurma danger" tabindex="0">
-          <span class="turma__tira"></span>
-          <div class="turma__nome">
-            Classe B
-          </div>
-        </div>
-        <div class="turma jsTurma success" tabindex="0">
-          <span class="turma__tira"></span>
-          <div class="turma__nome">
-            Classe C
-          </div>
-        </div>
-        <div class="turma jsTurma purple" tabindex="0">
-          <span class="turma__tira"></span>
-          <div class="turma__nome">
-            Classe D
-          </div>
-        </div>
+         <% } %>
       </div>
     </div>
     <div class="section__bottom">
