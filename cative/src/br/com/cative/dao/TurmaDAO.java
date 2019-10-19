@@ -44,8 +44,17 @@ public class TurmaDAO {
 		} else {
 			return turma;
 		}
-		
 	}
+	
+	public List getListTurmas() throws Exception {
+		stmt = con.prepareStatement("select * from tb_turma");
+		rs = stmt.executeQuery();
+		List<Turma> turmas = new ArrayList<Turma>();
+		while(rs.next()) {
+			turmas.add(new Turma(rs.getInt("ID_TURMA"), rs.getString("NOME_TURMA"), rs.getString("COR_TURMA")));
+		}
+			return turmas;
+		}
 	
 	public Turma getTurma(int idTurma) throws Exception{
 		stmt = con.prepareStatement
