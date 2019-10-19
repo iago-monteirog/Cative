@@ -48,9 +48,8 @@ public class CadastraMissao extends HttpServlet {
 		String corMissao = request.getParameter("cor");
 		
 		Missao missao = new Missao();
-		System.out.println(imgMissao);
-		System.out.println(pontosMissao);
-		System.out.println(corMissao);
+		System.out.println(objetivoMissao);
+		System.out.println(descricaoMissao);
 		
 		missao.setDescricao(descricaoMissao);
 		missao.setObjetivo(objetivoMissao);
@@ -59,13 +58,15 @@ public class CadastraMissao extends HttpServlet {
 		missao.setCorMissao(corMissao);
 		
 		try {
-		MissaoDAO missaodao = new MissaoDAO();
-		missaodao.cadastraMissao(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao);
+			System.out.println("try");
+			MissaoDAO missaodao = new MissaoDAO();
+			missaodao.cadastraMissao(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao);
 		} catch (Exception e) {
-		e.printStackTrace();
-	}
-    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-	dispatcher.forward(request, response);	
+			e.printStackTrace();
+		}
+		
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("turmas.jsp");
+		dispatcher.forward(request, response);	
 	}
 
 }

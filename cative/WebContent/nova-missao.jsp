@@ -33,13 +33,13 @@
       <div class="nova-missao__form">
         <div class="form-control">
           <label for="" class="form-label">Objetivo</label>
-          <input type="text" class="text-input jsCompletoQuandoSemFoco jsObjetivoMissao"
+          <input type="text" name="objetivo_missao" class="text-input jsCompletoQuandoSemFoco jsObjetivoMissao"
             placeholder="Ex.: Escovar os dentes">
         </div>
 
         <div class="form-control">
           <label for="" class="form-label">Descrição</label>
-          <textarea name="" id="" rows="5" class="textarea jsCompletoQuandoSemFoco jsDetalhesMissao"
+          <textarea name="descricao_missao" id="" rows="5" class="textarea jsCompletoQuandoSemFoco jsDetalhesMissao"
             placeholder="Descrição mais detalhada"></textarea>
         </div>
 
