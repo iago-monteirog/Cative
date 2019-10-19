@@ -30,15 +30,15 @@
       </div>
     </div>
     <div class="data-aba jsConteudo ativo" data-conteudo="alunos">
-    	<%@ page import="br.com.cative.dao.*" %>
+      <div class="alunos">
+      <%@ page import="br.com.cative.dao.*" %>
 	    <%@ page import="br.com.cative.beans.*" %>
 	    <%@ page import="java.util.List" %>
-    <% 
-		UsuarioDAO usuariodao = new UsuarioDAO();   
-    	List<Usuario> alunos = usuariodao.getAlunosTurma();
-    	for(Usuario usuario : alunos) {
-    %>
-      <div class="alunos">
+	    <% 
+			UsuarioDAO usuariodao = new UsuarioDAO();   
+	    	List<Usuario> alunos = usuariodao.getAlunosTurma();
+	    	for(Usuario usuario : alunos) {
+	    %>
         <div class="aluno jsAluno">
           <div class="aluno__pic">
           	<% out.print(usuario.getFoto()); %>
@@ -48,12 +48,14 @@
           </div>
         </div>
         <% } %>
+        
       <div class="section__bottom">
         <button class="button--primary button--xs-small jsModalToggler">
           Novo aluno
         </button>
       </div>
     </div>
+    
     <div class="data-aba jsConteudo " data-conteudo="missoes">
       <div class="missoes link-aba ">
         <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
