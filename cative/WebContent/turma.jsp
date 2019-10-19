@@ -44,7 +44,11 @@
           	<% out.print(usuario.getFoto()); %>
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
-            <% out.print(usuario.getNome()); %>
+            <%  
+	            String nome = usuario.getNome();
+	    		String arr[] = nome.split(" ");
+	    		out.print(arr[0]);
+            %>
           </div>
         </div>
         <% } %>
