@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"
+	
+	import="br.com.cative.dao.UsuarioDAO"
+	import="br.com.cative.beans.Usuario"     
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,26 @@
   <title>Document</title>
   <link rel="stylesheet" href="./assets/css/main.min.css">
 </head>
-
+<%
+	String email = request.getParameter("email");
+ 	String nome = "";
+ 	String tema = "tomato";
+ 	int pontos = 0;
+ 	int id = 0;
+ 	String foto = "";
+ 	int qtdMissoes = 0;
+ 	
+	if(email != null) {
+		UsuarioDAO dao = new UsuarioDAO();
+		Usuario usuario = dao.getUsuarioByEmail(email);
+		qtdMissoes = dao.getQuantidadeMissoesConcluidas();	
+		nome = usuario.getNome();
+		tema = usuario.getTema();
+		pontos = usuario.getPontuacao();
+		id = usuario.getIdUsuario();
+		foto = usuario.getFoto();
+	}
+%>
 <body>
   <nav class="navegacao bg-danger jsCorPerfil">
     <div class="navegacao__top">
@@ -137,7 +161,7 @@
     <div class="perfil__capa">
       <div class="perfil__cor-capa jsCorPerfil"></div>
       <div class="perfil__regiao-foto">
-        <div class="perfil__foto-wrap jsCorPerfil">
+        <div class="perfil__foto-wrap jsCorPerfil" style=" background-color: <% out.println(tema); %>">
           <img src="assets/img/foto-aluno.png" class="jsFotoPerfilArmazenado" alt="foto de perfil">
           <span class="trocar-foto jsTrocarFotoPerfil">
             <input type="file" class="perfil__input-file jsInputFotoPerfil" accept='image/*'>
@@ -146,13 +170,13 @@
           </span>
         </div>
         <div class="perfil__nome jsNomePerfil">
-          Geovanne Amorimes
+          <% out.print(nome); %>
         </div>
       </div>
     </div>
     <div class="estrelas">
       <span class="estrelas__numero">
-        5000
+        <% out.println(pontos); %> 
       </span>
       <span class="estrelas__estrela"></span>
     </div>
@@ -161,7 +185,7 @@
         Missões concluídas:
       </span>
       <span class="missoes-concluidas__numero">
-        39
+        <% out.print(qtdMissoes); %>
       </span>
       <span class="missoes-concluidas__medalha"></span>
     </div>
@@ -173,38 +197,34 @@
         </h3>
       </div>
       <div class="missoes">
-        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
-          data-titulo="Escove seus dentes" data-estrelas="30">
 
-          <div class="card-missao__imagem primary">
-            <img src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
-          </div>
-          <div class="card-missao__body">
-            <div class="card-missao__titulo">
-              <h3>Escove seus dentes</h3>
-            </div>
-            <div class="card-missao__pontos">
-              <i class="icon icon-star"></i>
-              <span>30 estrelas</span>
-            </div>
-          </div>
-        </div>
-        <div class="card-missao jsCardMissao" data-cor="#ff7675" data-cod="a2" data-descricao=""
-          data-titulo="Arrume sua mochila" data-estrelas="50">
+                <%@ page import="br.com.cative.dao.*" %>
+                <%@ page import="br.com.cative.beans.*" %>
+                <%@ page import="java.util.List" %>
 
-          <div class="card-missao__imagem">
-            <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-          </div>
-          <div class="card-missao__body">
-            <div class="card-missao__titulo">
-              <h3>Arrume sua mochila</h3>
-            </div>
-            <div class="card-missao__pontos">
-              <i class="icon icon-star"></i>
-              <span>50 estrelas</span>
-            </div>
-          </div>
-        </div>
+                <%
+	         		MissaoDAO missaoDAO = new MissaoDAO();
+	                List<Missao> missoes = missaoDAO.getMissoes();
+	        		
+	        		for(Missao m: missoes) {	        	
+	        			out.println("<div class='card-missao jsCardMissao'");
+	        				out.println("data-cod='"+m.getIdMissao()+"' data-descricao='"+m.getDescricao()+"' data-titulo='"+m.getObjetivo()+"' data-estrelas='"+m.getPontos()+"'>");
+		        			out.println("<div class='card-missao__imagem'>");
+		        				out.println("<img src='./assets/img/missao-mochila.png' alt='Imagem da missão'>");
+		        			out.println("</div>");
+		        			out.println("<div class='card-missao__body'>");
+			        			out.println("<div class='card-missao__titulo'>");
+			        				out.println("<h3>"+m.getObjetivo()+"</h3>");
+		        				out.println("</div>");
+		        				out.println("<div class='card-missao__pontos'>");
+		        					out.println("<i class='icon icon-star'></i>");
+		        					out.println("<span>"+m.getPontos()+" estrelas</span>");
+		        				out.println("</div>");
+		        			out.println("</div>");
+	        			out.println("</div>");    			
+	        		}
+	        		
+                %>
       </div>
     </div>
 

@@ -52,7 +52,7 @@ public class UsuarioDAO {
 				return usuario;
 			}
 		}
-		
+
 		public Usuario getUsuario(int cod) throws Exception{
 			stmt = con.prepareStatement
 					("select * from USUARIO where NOME_USUARIO=?");
@@ -63,6 +63,27 @@ public class UsuarioDAO {
 				return new Usuario(
 						);
 			}else {
+				return new Usuario();
+			}
+		}
+		
+		public Usuario getUsuarioByEmail(String email) throws Exception{
+			stmt = con.prepareStatement("select * from TB_USUARIO where EMAIL_USUARIO = ?");
+			stmt.setString(1, email);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				return new Usuario(rs.getInt("ID_USUARIO"), 
+								   rs.getString("NOME_USUARIO"), 
+								   rs.getString("SOBRENOME_USUARIO"), 
+								   rs.getString("SENHA_USUARIO"), 
+								   rs.getString("EMAIL_USUARIO"), 
+								   rs.getInt("TIPO_USUARIO"),
+								   rs.getString("FOTO_USUARIO"), 
+								   rs.getString("TEMA_USUARIO"), 
+								   rs.getInt("PONTOS_USUARIO")
+								   );
+			} else {
 				return new Usuario();
 			}
 		}
@@ -130,6 +151,14 @@ public class UsuarioDAO {
 			return stmt.executeUpdate();
 		}
 		
+		public int getQuantidadeMissoesConcluidas() throws Exception {
+			stmt = con.prepareStatement("SELECT COUNT(*) FROM TB_MISSAO");
+			rs = stmt.executeQuery();
+			
+			return rs.getInt("COUNT(*)");
+
+		}
+		
 		public List getAlunosTurma() throws Exception {
 			stmt = con.prepareStatement("select * from tb_usuario");
 			rs = stmt.executeQuery();
@@ -144,7 +173,7 @@ public class UsuarioDAO {
 						rs.getInt("TIPO_USUARIO"),
 						rs.getString("FOTO_USUARIO"),
 						rs.getString("TEMA_USUARIO"),
-						rs.getString("PONTOS_USUARIO")
+						rs.getInt("PONTOS_USUARIO")
 						));
 			} return aluno;
 		}

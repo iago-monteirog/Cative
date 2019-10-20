@@ -10,9 +10,9 @@ public class Usuario {
 	private int tipoUsuario;
 	private String foto;
 	private String tema;
-	private String pontuacao;
+	private int pontuacao;
 	
-	public Usuario(int idUsuario, String nome, String senha, String email, int tipoUsuario, String pontuacao) {
+	public Usuario(int idUsuario, String nome, String senha, String email, int tipoUsuario, int pontuacao) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
@@ -25,7 +25,7 @@ public class Usuario {
 		super();
 	}
 	public Usuario(int idUsuario, String nome, String sobrenome, String senha, String email, int tipoUsuario,
-			String foto, String tema, String pontuacao) {
+			String foto, String tema, int pontuacao) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
@@ -88,11 +88,11 @@ public class Usuario {
 		this.tema = tema;
 	}
 	
-	public String getPontuacao() {
+	public int getPontuacao() {
 		return pontuacao;
 	}
 	
-	public void setPontuacao(String pontuacao) {
+	public void setPontuacao(int pontuacao) {
 		this.pontuacao = pontuacao;
 	}
 	
