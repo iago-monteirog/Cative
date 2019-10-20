@@ -41,7 +41,7 @@
 	    %>
         <div class="aluno jsAluno">
           <div class="aluno__pic">
-          	<% out.print(usuario.getFoto()); %>
+          <img src="	<% out.print(usuario.getFoto()); %>" alt="Foto do aluno">
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
             <%  
@@ -62,38 +62,28 @@
     
     <div class="data-aba jsConteudo " data-conteudo="missoes">
       <div class="missoes link-aba ">
+      	<%
+	    MissaoDAO missaodao = new MissaoDAO();
+	    List<Missao> missoes = missaodao.getMissoes();
+	    for(Missao missao : missoes) {
+	    %>
         <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
-          data-titulo="Escove seus dentes" data-estrelas="30">
+          data-titulo="<% out.print(missao.getObjetivo()); %>" data-estrelas="<% out.print(missao.getPontos()); %>">
 
           <div class="card-missao__imagem primary">
-            <img src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
+            <img src="<% out.print(missao.getImgMissao()); %>" alt="Imagem da missão">
           </div>
           <div class="card-missao__body">
             <div class="card-missao__titulo">
-              <h3>Escove seus dentes</h3>
+              <h3><% out.print(missao.getObjetivo()); %></h3>
             </div>
             <div class="card-missao__pontos">
               <i class="icon icon-star"></i>
-              <span>30 estrelas</span>
+              <span><% out.print(missao.getPontos()); %> estrelas</span>
             </div>
           </div>
         </div>
-        <div class="card-missao jsCardMissao" data-cor="#ff7675" data-cod="a2" data-descricao=""
-          data-titulo="Arrume sua mochila" data-estrelas="50">
-
-          <div class="card-missao__imagem">
-            <img src="./assets/img/missao-mochila.png" alt="Imagem da missão">
-          </div>
-          <div class="card-missao__body">
-            <div class="card-missao__titulo">
-              <h3>Arrume sua mochila</h3>
-            </div>
-            <div class="card-missao__pontos">
-              <i class="icon icon-star"></i>
-              <span>50 estrelas</span>
-            </div>
-          </div>
-        </div>
+        <% } %>
       </div>
       <div class="section__bottom">
         <a href="nova-missao.html" class="button--primary button--xs-small">
