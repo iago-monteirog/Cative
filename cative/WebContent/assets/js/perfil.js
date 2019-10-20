@@ -54,7 +54,9 @@ const fotoPerfil = {
     reader.onload = function(){
       let dataURL = reader.result;
       let output = document.querySelector('.jsFotoPerfil');
+      let textarea = document.querySelector('.jsTextAreaDataFoto');
       output.src = dataURL;
+      textarea.textContent = dataURL;
     };
     reader.readAsDataURL(input.files[0]);
   },

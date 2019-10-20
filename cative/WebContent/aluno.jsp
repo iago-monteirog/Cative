@@ -38,153 +38,155 @@
 <body>
   <jsp:include page="components/navegacao-professor.jsp"></jsp:include>
 
-  <div class="perfil jsPerfil">
-    <div class="perfil__capa">
-      <div class="perfil__cor-capa jsCorPerfil"></div>
-      <div class="perfil__regiao-foto">
-        <div class="perfil__foto-wrap jsCorPerfil" style=" background-color: <% out.println(tema); %>">
-          <img src="assets/img/foto-aluno.png" class="jsFotoPerfilArmazenado" alt="foto de perfil">
-          <span class="trocar-foto jsTrocarFotoPerfil">
-            <input type="file" class="perfil__input-file jsInputFotoPerfil" accept='image/*'>
-            <span class="trocar-foto__icone">
-            </span>
-          </span>
-        </div>
-        <div class="perfil__nome jsNomePerfil">
-          <% out.print(nome); %>
-        </div>
-      </div>
-    </div>
-    <div class="estrelas">
-      <span class="estrelas__numero">
-        <% out.println(pontos); %> 
-      </span>
-      <span class="estrelas__estrela"></span>
-    </div>
-    <div class="missoes-concluidas">
-      <span class="missoes-concluidas__texto">
-        Missões concluídas:
-      </span>
-      <span class="missoes-concluidas__numero">
-        <% out.print(qtdMissoes); %>
-      </span>
-      <span class="missoes-concluidas__medalha"></span>
-    </div>
-
-    <div class="perfil__missoes">
-      <div class="perfil-section-title">
-        <h3>
-          Missões do aluno
-        </h3>
-      </div>
-      <div class="missoes">
-
-                <%@ page import="br.com.cative.dao.*" %>
-                <%@ page import="br.com.cative.beans.*" %>
-                <%@ page import="java.util.List" %>
-
-                <%
-	         		MissaoDAO missaoDAO = new MissaoDAO();
-	                List<Missao> missoes = missaoDAO.getMissoes();
-	        		
-	        		for(Missao m: missoes) {	        	
-	        			out.println("<div class='card-missao jsCardMissao'");
-	        				out.println("data-cod='"+m.getIdMissao()+"' data-descricao='"+m.getDescricao()+"' data-titulo='"+m.getObjetivo()+"' data-estrelas='"+m.getPontos()+"'>");
-		        			out.println("<div class='card-missao__imagem'>");
-		        				out.println("<img src='./assets/img/missao-mochila.png' alt='Imagem da missão'>");
-		        			out.println("</div>");
-		        			out.println("<div class='card-missao__body'>");
-			        			out.println("<div class='card-missao__titulo'>");
-			        				out.println("<h3>"+m.getObjetivo()+"</h3>");
-		        				out.println("</div>");
-		        				out.println("<div class='card-missao__pontos'>");
-		        					out.println("<i class='icon icon-star'></i>");
-		        					out.println("<span>"+m.getPontos()+" estrelas</span>");
-		        				out.println("</div>");
-		        			out.println("</div>");
-	        			out.println("</div>");    			
-	        		}
-	        		
-                %>
-      </div>
-    </div>
-
-    <div class="perfil__cores">
-      <div class="form-control">
-        <label for="" class="form-label">Cor do perfil</label>
-        <div class="radio-cores">
-          <div class="radio-cores__row">
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-dark">
-              <input type="radio" value="#00b894" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-light ">
-              <input type="radio" value="#00cec9" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success">
-              <input type="radio" value="#55efc4" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary-light">
-              <input type="radio" value="#74b9ff" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary">
-              <input type="radio" value="#0984e3" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-          </div>
-          <div class="radio-cores__row">
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-danger">
-              <input type="radio" value="#ff7675" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink  
-        jsRadioInput ">
-              <input type="radio" value="#fd79a8" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink-dark">
-              <input type="radio" value="#e84393" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple">
-              <input type="radio" value="#a29bfe" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple-dark">
-              <input type="radio" value="#6c5ce7" class="radio-cores__input jsRadioInput" name="cor" id="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="perfil__acessos">
-      <div class="form">
-        <div class="perfil-section-title">
-          <h3>Acessos</h3>
-        </div>
-        <div class="form-control">
-          <label for="" class="form-label">E-mail</label>
-          <input type="email" placeholder="Ex.: geo@mail.com" class="text-input completo jsCompletoQuandoSemFoco"
-            value="geovane@gmail.com">
-        </div>
-        <div class="form-control">
-          <label for="" class="form-label">Senha</label>
-          <input type="password" placeholder="Ex.: ********" class="text-input completo jsCompletoQuandoSemFoco"
-            value="************">
-        </div>
-      </div>
-    </div>
-
-    <div class="perfil__footer">
-      <div class="perfil__salvar">
-        <button class="button--primary button--xs-small jsToggleModoEdicao">
-          Salvar
-        </button>
-      </div>
-      <div class="editar-perfil">
-        <div class="editar-perfil__icone"></div>
-        <div class="editar-perfil__texto jsToggleModoEdicao">
-          editar perfil
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <form action="${pageContext.request.contextPath}/AtualizaAluno" method="POST">
+	  <div class="perfil jsPerfil">
+	    <div class="perfil__capa">
+	      <div class="perfil__cor-capa jsCorPerfil"></div>
+	      <div class="perfil__regiao-foto">
+	        <div class="perfil__foto-wrap jsCorPerfil" style=" background-color: <% out.println(tema); %>">
+	          <textarea class="perfil__capa-foto-textarea jsTextAreaDataFoto" name="foto_perfil"></textarea>
+	          <img src="assets/img/foto-aluno.png" class="jsFotoPerfil" alt="foto de perfil">
+	          <span class="trocar-foto jsTrocarFotoPerfil">
+	            <input type="file" class="perfil__input-file jsInputFotoPerfil" accept='image/*'>
+	            <span class="trocar-foto__icone">
+	            </span>
+	          </span>
+	        </div>
+	        <div class="perfil__nome jsNomePerfil">
+	          <% out.print(nome); %>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="estrelas">
+	      <span class="estrelas__numero">
+	        <% out.println(pontos); %> 
+	      </span>
+	      <span class="estrelas__estrela"></span>
+	    </div>
+	    <div class="missoes-concluidas">
+	      <span class="missoes-concluidas__texto">
+	        Missões concluídas:
+	      </span>
+	      <span class="missoes-concluidas__numero">
+	        <% out.print(qtdMissoes); %>
+	      </span>
+	      <span class="missoes-concluidas__medalha"></span>
+	    </div>
+	
+	    <div class="perfil__missoes">
+	      <div class="perfil-section-title">
+	        <h3>
+	          Missões do aluno
+	        </h3>
+	      </div>
+	      <div class="missoes">
+	
+	                <%@ page import="br.com.cative.dao.*" %>
+	                <%@ page import="br.com.cative.beans.*" %>
+	                <%@ page import="java.util.List" %>
+	
+	                <%
+		         		MissaoDAO missaoDAO = new MissaoDAO();
+		                List<Missao> missoes = missaoDAO.getMissoes();
+		        		
+		        		for(Missao m: missoes) {	        	
+		        			out.println("<div class='card-missao jsCardMissao'");
+		        				out.println("data-cod='"+m.getIdMissao()+"' data-descricao='"+m.getDescricao()+"' data-titulo='"+m.getObjetivo()+"' data-estrelas='"+m.getPontos()+"'>");
+			        			out.println("<div class='card-missao__imagem'>");
+			        				out.println("<img src='./assets/img/missao-mochila.png' alt='Imagem da missão'>");
+			        			out.println("</div>");
+			        			out.println("<div class='card-missao__body'>");
+				        			out.println("<div class='card-missao__titulo'>");
+				        				out.println("<h3>"+m.getObjetivo()+"</h3>");
+			        				out.println("</div>");
+			        				out.println("<div class='card-missao__pontos'>");
+			        					out.println("<i class='icon icon-star'></i>");
+			        					out.println("<span>"+m.getPontos()+" estrelas</span>");
+			        				out.println("</div>");
+			        			out.println("</div>");
+		        			out.println("</div>");    			
+		        		}
+		        		
+	                %>
+	      </div>
+	    </div>
+	
+	    <div class="perfil__cores">
+	      <div class="form-control">
+	        <label for="" class="form-label">Cor do perfil</label>
+	        <div class="radio-cores">
+	          <div class="radio-cores__row">
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-dark">
+	              <input type="radio" value="#00b894" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-light ">
+	              <input type="radio" value="#00cec9" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success">
+	              <input type="radio" value="#55efc4" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary-light">
+	              <input type="radio" value="#74b9ff" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary">
+	              <input type="radio" value="#0984e3" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	          </div>
+	          <div class="radio-cores__row">
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-danger">
+	              <input type="radio" value="#ff7675" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink  
+	        jsRadioInput ">
+	              <input type="radio" value="#fd79a8" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink-dark">
+	              <input type="radio" value="#e84393" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple">
+	              <input type="radio" value="#a29bfe" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple-dark">
+	              <input type="radio" value="#6c5ce7" class="radio-cores__input jsRadioInput" name="cor" id="">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	
+	    <div class="perfil__acessos">
+	      <div class="form">
+	        <div class="perfil-section-title">
+	          <h3>Acessos</h3>
+	        </div>
+	        <div class="form-control">
+	          <label for="" class="form-label">E-mail</label>
+	          <input type="email" placeholder="Ex.: geo@mail.com" class="text-input completo jsCompletoQuandoSemFoco"
+	            value="geovane@gmail.com">
+	        </div>
+	        <div class="form-control">
+	          <label for="" class="form-label">Senha</label>
+	          <input type="password" placeholder="Ex.: ********" class="text-input completo jsCompletoQuandoSemFoco"
+	            value="************">
+	        </div>
+	      </div>
+	    </div>
+	
+	    <div class="perfil__footer">
+	      <div class="perfil__salvar">
+	        <button class="button--primary button--xs-small jsToggleModoEdicao">
+	          Salvar
+	        </button>
+	      </div>
+	      <div class="editar-perfil">
+	        <div class="editar-perfil__icone"></div>
+	        <div class="editar-perfil__texto jsToggleModoEdicao">
+	          editar perfil
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+  </form>
 
   <div class="missao-overlay jsOverlayMissao" data-cod="a">
     <div class="modal-missao jsModalMissao">

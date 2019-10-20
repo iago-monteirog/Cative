@@ -20,7 +20,8 @@
       <div class="perfil__cor-capa bg-danger jsCorPerfil"></div>
       <div class="perfil__regiao-foto">
         <div class="perfil__foto-wrap bg-danger jsCorPerfil">
-          <img src="assets/img/foto-aluno.png" class="jsFotoPerfilArmazenado" alt="foto de perfil">
+          <textarea class="perfil__capa-foto-textarea jsTextAreaDataFoto" name="foto_perfil"></textarea>
+          <img src="assets/img/foto-aluno.png" class="jsFotoPerfil" alt="foto de perfil">
           <span class="trocar-foto jsTrocarFotoPerfil">
             <input type="file" class="perfil__input-file jsInputFotoPerfil" accept='image/*'>
             <span class="trocar-foto__icone">
