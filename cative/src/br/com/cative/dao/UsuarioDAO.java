@@ -155,8 +155,25 @@ public class UsuarioDAO {
 			stmt = con.prepareStatement("SELECT COUNT(*) FROM TB_MISSAO");
 			rs = stmt.executeQuery();
 			
-			return rs.getInt("COUNT(*)");
-
+			if(rs.next()) {
+				return rs.getInt("COUNT(*)");				
+			} else {
+				return 0;
+			}
+		}
+		
+		public void atualizaPerfil(Usuario usuario) throws Exception {
+			stmt = con.prepareStatement
+			("UPDATE TB_USUARIO SET NOME_USUARIO = ?, SOBRENOME_USUARIO = ?, EMAIL_USUARIO = ?, SENHA_USUARIO = ?, TEMA_USUARIO = ?, FOTO_USUARIO = ? WHERE ID_USUARIO = 1");
+			
+			stmt.setString(1, usuario.getNome());
+			stmt.setString(2, usuario.getSobrenome());
+			stmt.setString(3, usuario.getEmail());
+			stmt.setString(4, usuario.getSenha());
+			stmt.setString(5, usuario.getTema());
+			stmt.setString(6, usuario.getFoto());
+			
+			stmt.executeUpdate();
 		}
 		
 		public List getAlunosTurma() throws Exception {

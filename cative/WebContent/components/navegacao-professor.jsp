@@ -1,4 +1,4 @@
-  <nav class="navegacao">
+  <nav class="navegacao" style="background-color: ${param.cor}">
     <div class="navegacao__top">
       <div class="navegacao__back jsBack">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
         </svg>
       </div>
       <div class="navegacao__title titulo-pagina--mobile">
-        <h1></h1>
+        <h1>${param.titulo}</h1>
       </div>
       <div class="navegacao__hamburguer">
         <div class="hamburguer jsHamburguer">
@@ -77,7 +77,7 @@
       </div>
     </div>
   </nav>
-  <nav class="navegacao--desktop">
+  <nav class="navegacao--desktop" style="background-color: ${param.cor}">
     <div class="navegacao--desktop__container">
       <a href="turmas.html" tabindex="0">
         <span class="navegacao--desktop__logo"></span>

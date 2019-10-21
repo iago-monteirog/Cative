@@ -18,11 +18,12 @@
 <%
 	String email = request.getParameter("email");
  	String nome = "";
- 	String tema = "tomato";
+ 	String tema = "";
  	int pontos = 0;
  	int id = 0;
  	String foto = "";
  	int qtdMissoes = 0;
+ 	String senha = "";
  	
 	if(email != null) {
 		UsuarioDAO dao = new UsuarioDAO();
@@ -33,19 +34,31 @@
 		pontos = usuario.getPontuacao();
 		id = usuario.getIdUsuario();
 		foto = usuario.getFoto();
+		senha = usuario.getSenha();
 	}
+	
 %>
 <body>
-  <jsp:include page="components/navegacao-professor.jsp"></jsp:include>
 
-  <form action="${pageContext.request.contextPath}/AtualizaAluno" method="POST">
+  <jsp:include page="components/navegacao-professor.jsp">
+  	<jsp:param name="cor" value="<%= tema %>"/>
+  	<jsp:param name="titulo" value=""/>
+  </jsp:include>
+
+  <form action="${pageContext.request.contextPath}/AtualizaPerfil" method="POST">
+  	  
 	  <div class="perfil jsPerfil">
 	    <div class="perfil__capa">
-	      <div class="perfil__cor-capa jsCorPerfil"></div>
+	      <div class="perfil__cor-capa jsCorPerfil" style=" background-color: <% out.println(tema); %>"></div>
 	      <div class="perfil__regiao-foto">
 	        <div class="perfil__foto-wrap jsCorPerfil" style=" background-color: <% out.println(tema); %>">
-	          <textarea class="perfil__capa-foto-textarea jsTextAreaDataFoto" name="foto_perfil"></textarea>
-	          <img src="assets/img/foto-aluno.png" class="jsFotoPerfil" alt="foto de perfil">
+	          <textarea class="perfil__capa-foto-textarea jsTextAreaDataFoto" name="foto_perfil">
+	          <% 
+		          foto = (foto == "" || foto == null) ? "assets/img/foto-aluno.png" : foto;
+		          out.println(foto);
+		       	%>
+	          </textarea>
+	          <img src="<% out.println(foto); %>" class="jsFotoPerfil" alt="foto de perfil">
 	          <span class="trocar-foto jsTrocarFotoPerfil">
 	            <input type="file" class="perfil__input-file jsInputFotoPerfil" accept='image/*'>
 	            <span class="trocar-foto__icone">
@@ -53,6 +66,7 @@
 	          </span>
 	        </div>
 	        <div class="perfil__nome jsNomePerfil">
+	          <input type="hidden" name="nome" value="<% out.print(nome); %>"/>
 	          <% out.print(nome); %>
 	        </div>
 	      </div>
@@ -116,38 +130,39 @@
 	        <label for="" class="form-label">Cor do perfil</label>
 	        <div class="radio-cores">
 	          <div class="radio-cores__row">
+	          	<input type="radio" checked="checked" hidden value="<% out.print(tema); %>" name="cor" />
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-dark">
-	              <input type="radio" value="#00b894" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#00b894" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success-light ">
-	              <input type="radio" value="#00cec9" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#00cec9" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-success">
-	              <input type="radio" value="#55efc4" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#55efc4" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary-light">
-	              <input type="radio" value="#74b9ff" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#74b9ff" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-primary">
-	              <input type="radio" value="#0984e3" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#0984e3" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	          </div>
 	          <div class="radio-cores__row">
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-danger">
-	              <input type="radio" value="#ff7675" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#ff7675" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink  
 	        jsRadioInput ">
-	              <input type="radio" value="#fd79a8" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#fd79a8" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-pink-dark">
-	              <input type="radio" value="#e84393" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#e84393" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple">
-	              <input type="radio" value="#a29bfe" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#a29bfe" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	            <div tabindex="0" class="radio__cor jsOpcaoCor bg-purple-dark">
-	              <input type="radio" value="#6c5ce7" class="radio-cores__input jsRadioInput" name="cor" id="">
+	              <input type="radio" value="#6c5ce7" class="radio-cores__input jsRadioInput" name="cor">
 	            </div>
 	          </div>
 	        </div>
@@ -161,20 +176,20 @@
 	        </div>
 	        <div class="form-control">
 	          <label for="" class="form-label">E-mail</label>
-	          <input type="email" placeholder="Ex.: geo@mail.com" class="text-input completo jsCompletoQuandoSemFoco"
-	            value="geovane@gmail.com">
+	          <input type="email" placeholder="Ex.: geo@mail.com" name="email" class="text-input completo jsCompletoQuandoSemFoco"
+	            value="<% out.println(email); %>">
 	        </div>
 	        <div class="form-control">
 	          <label for="" class="form-label">Senha</label>
-	          <input type="password" placeholder="Ex.: ********" class="text-input completo jsCompletoQuandoSemFoco"
-	            value="************">
+	          <input type="password" placeholder="Ex.: ********" name="senha" class="text-input completo jsCompletoQuandoSemFoco"
+	            value="<% out.print(senha); %>">
 	        </div>
 	      </div>
 	    </div>
 	
 	    <div class="perfil__footer">
 	      <div class="perfil__salvar">
-	        <button class="button--primary button--xs-small jsToggleModoEdicao">
+	        <button type="submit" class="button--primary button--xs-small jsToggleModoEdicao">
 	          Salvar
 	        </button>
 	      </div>
