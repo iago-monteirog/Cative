@@ -53,16 +53,19 @@ public class UsuarioDAO {
 			}
 		}
 
-		public Usuario getUsuario(int cod) throws Exception{
+		public Usuario getUsuario(int idUsuario) throws Exception{
 			stmt = con.prepareStatement
 					("select * from USUARIO where NOME_USUARIO=?");
-			stmt.setInt(1, cod);
+			stmt.setInt(1, idUsuario);
 			rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				return new Usuario(
-						);
-			}else {
+				return new Usuario( rs.getInt("ID_USUARIO"), rs.getString("NOME_USUARIO"), 
+									rs.getString("SOBRENOME_USUARIO"), rs.getString("SENHA_USUARIO"), 
+									rs.getString("EMAIL_USUARIO"), rs.getInt("TIPO_USUARIO"),
+									rs.getString("FOTO_USUARIO"), rs.getString("TEMA_USUARIO"),
+									rs.getInt("PONTOS_USUARIO"));
+			} else {
 				return new Usuario();
 			}
 		}
