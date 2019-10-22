@@ -1,6 +1,6 @@
 package br.com.cative.beans;
 
-public class Missao {
+public class Missao implements Comparable<Missao> {
 	private int idMissao;
 	private String objetivo;
 	private String descricao;
@@ -11,6 +11,24 @@ public class Missao {
 	private String tempoDuracao;
 	private int pontos;
 	private String corMissao;
+
+	/*
+	public int compareTo(Missao outro) {
+		if(objetivo.length() < outro.objetivo.length()) {
+			return -1;
+		} else if(objetivo.length() > objetivo.length()) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	*/
+
+	public int compareTo(Missao outro) {
+		return -objetivo.compareTo(outro.objetivo);
+	}
+ 
+
 	
 	public Missao() {
 		super();
