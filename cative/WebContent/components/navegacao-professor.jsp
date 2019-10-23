@@ -13,7 +13,7 @@
 	int estrelas = usuario.getPontuacao();
 %> 
 
-  <nav class="navegacao" style="background-color: ${param.cor}">
+  <nav class="navegacao jsCorPerfil" style="background-color: ${param.cor}">
     <div class="navegacao__top">
       <div class="navegacao__back jsBack">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
       </div>
     </div>
   </nav>
-  <nav class="navegacao--desktop" style="background-color: ${param.cor}">
+  <nav class="navegacao--desktop jsCorPerfil" style="background-color: ${param.cor}">
     <div class="navegacao--desktop__container">
       <a href="turmas.html" tabindex="0">
         <span class="navegacao--desktop__logo"></span>
