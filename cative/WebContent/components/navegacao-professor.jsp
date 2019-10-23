@@ -1,3 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+
+	import="br.com.cative.beans.Usuario"
+	import="br.com.cative.dao.UsuarioDAO"
+%>
+<%
+	UsuarioDAO dao = new UsuarioDAO();
+	Usuario usuario = dao.getUsuario(1);
+	
+	String nome = usuario.getNome();
+	nome = nome.split(" ")[0];
+	int estrelas = usuario.getPontuacao();
+%> 
+
   <nav class="navegacao" style="background-color: ${param.cor}">
     <div class="navegacao__top">
       <div class="navegacao__back jsBack">
@@ -49,11 +64,7 @@
             </div>
             <div class="navegacao__column-2">
               <div class="navegacao__nome">
-                Geovanne Amorimes
-              </div>
-              <div class="navegacao__estrelas">
-                <div class="navegacao__icon-estrela icon-star"></div>
-                <div class="navegacao__quantidade-estrelas">600</div>
+                <% out.print(nome); %>
               </div>
             </div>
           </div>

@@ -9,24 +9,23 @@ import br.com.cative.dao.MissaoDAO;
 public class TesteConsultarMissao {
 
 	public static void main(String[] args) {
-		Connection minhaConexao = null;
+		MissaoDAO missaoDAO = null;
+		
 		try {
-//		minhaConexao = Conexao.getConexao();
-		MissaoDAO missaoDAO = new MissaoDAO();
-		
-		List<Missao> missoes = missaoDAO.getMissoes();
-		
-		for(Missao m: missoes) {
-			System.out.println(m.getObjetivo());
-		}
+			missaoDAO = new MissaoDAO();
 			
-		// System.out.println("Conectou");
+			List<Missao> missoes = missaoDAO.getMissoes();
+			
+			for(Missao m: missoes) {
+				System.out.println(m.getObjetivo());
+			}
+				
+			// System.out.println("Conectou");
 		}catch(Exception e) {
-			
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-			minhaConexao.close();
+				missaoDAO.fechar();
 			}catch (Exception e){
 				e.printStackTrace();
 			}

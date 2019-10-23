@@ -55,7 +55,7 @@ public class UsuarioDAO {
 
 		public Usuario getUsuario(int idUsuario) throws Exception{
 			stmt = con.prepareStatement
-					("select * from USUARIO where NOME_USUARIO=?");
+					("select * from TB_USUARIO where ID_USUARIO=?");
 			stmt.setInt(1, idUsuario);
 			rs = stmt.executeQuery();
 			
