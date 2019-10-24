@@ -6,7 +6,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -35,26 +35,26 @@
                 <%
 	         		MissaoDAO missaoDAO = new MissaoDAO();
 	                List<Missao> missoes = missaoDAO.getMissoes();
-	        		
+
 	        		for(Missao m: missoes) {	        	
-	        			out.println("<div class='card-missao jsCardMissao'");
-	        				out.println("data-cod='"+m.getIdMissao()+"' data-descricao='"+m.getDescricao()+"' data-titulo='"+m.getObjetivo()+"' data-estrelas='"+m.getPontos()+"'>");
-		        			out.println("<div class='card-missao__imagem'>");
-		        				out.println("<img src='./assets/img/missao-mochila.png' alt='Imagem da missão'>");
-		        			out.println("</div>");
-		        			out.println("<div class='card-missao__body'>");
-			        			out.println("<div class='card-missao__titulo'>");
-			        				out.println("<h3>"+m.getObjetivo()+"</h3>");
-		        				out.println("</div>");
-		        				out.println("<div class='card-missao__pontos'>");
-		        					out.println("<i class='icon icon-star'></i>");
-		        					out.println("<span>"+m.getPontos()+" estrelas</span>");
-		        				out.println("</div>");
-		        			out.println("</div>");
-	        			out.println("</div>");    			
-	        		}
-	        		
-                %>
+	        		%>
+                <div class="card-missao jsCardMissao" data-cor="<% out.print(m.getCorMissao()); %>" data-cod="a1" data-descricao=""
+                    data-titulo="<% out.print(m.getObjetivo()); %>" data-estrelas="<% out.print(m.getPontos()); %>">
+                    
+                    <div class="card-missao__imagem primary">
+                        <img src="<% out.print(m.getImgMissao()); %>" alt="Imagem da missão">
+                    </div>
+                    <div class="card-missao__body">
+                        <div class="card-missao__titulo">
+                            <h3><% out.print(m.getObjetivo()); %></h3>
+                        </div>
+                        <div class="card-missao__pontos">
+                            <i class="icon icon-star"></i>
+                            <span><% out.print(m.getPontos()); %> Estrelas</span>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
     </section>
@@ -91,14 +91,14 @@
                 </div>
             </div>
             <div class="modal-missao__footer">
-                <button class="button button--primary button--xs-small text-uppercase">
+                <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
                     Concluída
                 </button>
             </div>
         </div>
     </div>    
 
-	<script src="./assets/js/main.js"></script>    
+	<script charset="UTF-8" src="./assets/js/main.js"></script>    
 </body>
 
 </html>
