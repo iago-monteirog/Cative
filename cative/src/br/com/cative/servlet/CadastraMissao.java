@@ -65,8 +65,7 @@ public class CadastraMissao extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("turmas.jsp");
-		dispatcher.forward(request, response);	
+		response.sendRedirect("turma.jsp");
 	}
 
 }

@@ -41,7 +41,12 @@
 	    %>
         <div class="aluno jsAluno">
           <div class="aluno__pic">
-          <img src="	<% out.print(usuario.getFoto()); %>" alt="Foto do aluno">
+          <img src="	
+          <% 
+          	  String foto = usuario.getFoto();
+	          foto = (foto == "" || foto == null) ? "assets/img/foto-aluno.png" : foto;
+	          out.println(foto);
+		   %>" alt="Foto do aluno">
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
             <%  
