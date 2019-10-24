@@ -42,7 +42,11 @@
                     data-titulo="<% out.print(m.getObjetivo()); %>" data-estrelas="<% out.print(m.getPontos()); %>">
                     
                     <div class="card-missao__imagem primary">
-                        <img src="<% out.print(m.getImgMissao()); %>" alt="Imagem da missão">
+                        <img src="<% 
+			                String foto = m.getImgMissao();
+			      	        foto = (foto == "" || foto == null) ? "assets/img/icone-montanha.svg" : foto;
+			      	        out.println(foto);
+                         %>" alt="Imagem da missão">
                     </div>
                     <div class="card-missao__body">
                         <div class="card-missao__titulo">
