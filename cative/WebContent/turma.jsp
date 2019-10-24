@@ -96,7 +96,7 @@
         <% } %>
       </div>
       <div class="section__bottom">
-        <a href="nova-missao.html" class="button--primary button--xs-small">
+        <a href="nova-missao.jsp" class="button--primary button--xs-small">
           Nova missao
         </a>
       </div>
