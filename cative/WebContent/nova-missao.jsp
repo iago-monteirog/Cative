@@ -52,7 +52,7 @@
           <label for="" class="form-label">Quantidade de estrelas</label>
           <div class="radio-pontuacoes">
             <div class="pontuacao jsPontuacaoEstrela ativo" tabindex="0">
-              <input type="radio" class="radio-pontuacoes__input jsRadioInput" value="10" name="pontos" id="">
+              <input type="radio" class="radio-pontuacoes__input jsRadioInput " value="10" name="pontos" id="">
               <span class="pontuacao__estrela"></span>
               <span class="pontuacao__numero">10</span>
             </div>
@@ -133,4 +133,5 @@
 
 <script src="./assets/js/nova-missao.js"></script>
 <script src="./assets/js/barra-navegacao.js"></script>
+<script src="./assets/js/inputs-de-texto.js"></script>
 </html>
