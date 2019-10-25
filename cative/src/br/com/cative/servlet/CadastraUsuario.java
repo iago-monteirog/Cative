@@ -49,6 +49,7 @@ public class CadastraUsuario extends HttpServlet {
 		
 		usuario.setIdUsuario(1);
 		usuario.setTipoUsuario(tipoUsuario);
+		usuario.setNome("null");
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		try {

@@ -73,10 +73,10 @@
                         </div>
                     </div>
                     <div class="navegacao__link navegacao__item">
-                        <a href="missoes.html">Missões</a>
+                        <a href="missoes.jsp">Missões</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
-                        <a href="perfil.html">Perfil</a>
+                        <a href="aluno.jsp">Perfil</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
                         <!-- <a href="">Evolução</a> -->
@@ -92,14 +92,14 @@
     </nav>
     <nav class="navegacao--desktop jsCorPerfil" style="background-color: ${param.cor}">
         <div class="navegacao--desktop__container">
-            <a href="missoes.html" tabindex="0">
+            <a href="missoes.jsp" tabindex="0">
                 <span class="navegacao--desktop__logo"></span>
             </a>
             <div class="navegacao--desktop__items">
                 <div class="navegacao--desktop__botao navegacao--desktop__item">
                 </div>
                 <div class="navegacao--desktop__link navegacao--desktop__item">
-                    <a href="missoes.html">Missões</a>
+                    <a href="missoes.jsp">Missões</a>
                 </div>
                 <div class="navegacao--desktop__estrelas navegacao--desktop__item">
                     <div class="navegacao--desktop__icon-estrela"></div>

@@ -74,7 +74,7 @@
             </a>
           </div>
           <div class="navegacao__link navegacao__item">
-            <a href="turmas.html">Turmas</a>
+            <a href="turmas.jsp">Turmas</a>
           </div>
           <div class="navegacao__link navegacao__item">
             <!-- <a href="">Evolução</a> -->
@@ -82,7 +82,7 @@
         </div>
         <div class="navegacao__bottom-items navegacao__item">
           <div class="navegacao__get-out">
-            <a href="login.html">Sair</a>
+            <a href="login.jsp">Sair</a>
           </div>
         </div>
       </div>
@@ -95,10 +95,10 @@
       </a>
       <div class="navegacao--desktop__items">
         <div class="navegacao--desktop__link navegacao--desktop__item">
-          <a href="turmas.html" tabindex="0">Turmas</a>
+          <a href="turmas.jsp" tabindex="0">Turmas</a>
         </div>
         <div class="navegacao--desktop__botao navegacao--desktop__item">
-          <a href="nova-missao.html" tabindex="0" class="cta-nova-missao">
+          <a href="nova-missao.jsp" tabindex="0" class="cta-nova-missao">
             Nova missão
           </a>
         </div>
@@ -121,7 +121,7 @@
                 <a href="aluno.html">Perfil</a>
               </div>
               <div class="dropdown__link">
-                <a href="login.html">Sair</a>
+                <a href="login.jsp">Sair</a>
               </div>
             </div>
           </div>

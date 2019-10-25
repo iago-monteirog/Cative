@@ -42,7 +42,7 @@
       </form>
 
       <div class="cadastro-usuario__bottom">
-        <a href="cadastre-se.html" class="cadastro-usuario__bottom-link">Cadastrar-se em vez disso</a>
+        <a href="cadastre-se.jsp" class="cadastro-usuario__bottom-link">Cadastrar-se em vez disso</a>
       </div>
     </section>
   </div>

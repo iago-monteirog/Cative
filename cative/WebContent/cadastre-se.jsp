@@ -65,7 +65,7 @@
       </form>
       
       <div class="cadastro-usuario__bottom">
-        <a href="login.html" class="cadastro-usuario__bottom-link">Fazer login em vez disso</a>
+        <a href="login.jsp" class="cadastro-usuario__bottom-link">Fazer login em vez disso</a>
       </div>
     </section>
   </div>
