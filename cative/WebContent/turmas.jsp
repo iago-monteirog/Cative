@@ -12,6 +12,15 @@
 </head>
 
 <body>
+	<%
+		String email = (String) session.getAttribute("email");
+		String senha = (String) session.getAttribute("senha");
+		if(email == null && senha == null && email.isEmpty() && senha.isEmpty()) {
+			response.sendRedirect("login.jsp");
+		} else {
+			
+		}
+	%>
  	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
   
   <section class="section">

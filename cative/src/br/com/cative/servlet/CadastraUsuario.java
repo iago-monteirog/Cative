@@ -41,25 +41,35 @@ public class CadastraUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		int tipoUsuario = Integer.parseInt(request.getParameter("tipo_usuario"));
+		String tipoUsuario = request.getParameter("tipo_usuario");
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
 		
 		Usuario usuario = new Usuario();
-		
-		usuario.setIdUsuario(1);
-		usuario.setTipoUsuario(tipoUsuario);
+	
+		usuario.setTipoUsuario(Integer.parseInt(tipoUsuario));
 		usuario.setNome("null");
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
-		try {
-			UsuarioDAO usuariodao = new UsuarioDAO();
-			usuariodao.cadastraUsuario(email, tipoUsuario, senha);
-		} catch(Exception e) {
-			e.printStackTrace();
+		if(usuario.getTipoUsuario() == 0) {
+			try {
+				UsuarioDAO usuariodao = new UsuarioDAO();
+				usuariodao.cadastraUsuario(email, tipoUsuario, senha);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			try {
+				UsuarioDAO usuariodao = new UsuarioDAO();
+				usuariodao.cadastraUsuario(email, tipoUsuario, senha);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("turmas.jsp");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

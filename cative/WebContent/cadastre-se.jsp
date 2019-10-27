@@ -36,13 +36,13 @@
               </div>
             </div>
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
-              <input type="radio" name="tipo_usuario"  value="0" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario"  value="2" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Aluno
               </div>
             </div>
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="2" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario" value="3" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Responsável
               </div>

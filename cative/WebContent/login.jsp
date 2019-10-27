@@ -12,6 +12,9 @@
 </head>
 
 <body>
+				<%@ page import="br.com.cative.dao.*" %>
+                <%@ page import="br.com.cative.beans.*" %>
+                <%@ page import="java.util.List" %>
   <div class="header-fluido">
     <header class="header bg-primary header-fluido__top">
       <div class="header__logo">
@@ -46,7 +49,23 @@
       </div>
     </section>
   </div>
-
+	<%
+		Usuario usu = new Usuario();
+		String email = request.getParameter("email");
+		String senha = request.getParameter("senha");
+		if(email != null && senha != null && email.isEmpty() && senha.isEmpty()) {
+			if(usu.getTipoUsuario() == 0) {
+				session.setAttribute("email", email);
+				session.setAttribute("senha", senha);
+				response.sendRedirect("missoes.jsp");
+			}else {
+				session.setAttribute("email", email);
+				session.setAttribute("senha", senha);
+				response.sendRedirect("turmas.jsp");
+			}
+		}
+	
+	%>
 
 
 

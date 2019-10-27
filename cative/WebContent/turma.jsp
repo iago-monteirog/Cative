@@ -31,7 +31,7 @@
     </div>
     <div class="data-aba jsConteudo ativo" data-conteudo="alunos">
       <div class="alunos">
-      <%@ page import="br.com.cative.dao.*" %>
+      	<%@ page import="br.com.cative.dao.*" %>
 	    <%@ page import="br.com.cative.beans.*" %>
 	    <%@ page import="java.util.List" %>
 	    <% 
