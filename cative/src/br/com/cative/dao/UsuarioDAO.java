@@ -3,6 +3,7 @@ package br.com.cative.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -197,6 +198,24 @@ public class UsuarioDAO {
 						rs.getInt("PONTOS_USUARIO")
 						));
 			} return aluno;
+		}
+		
+		public boolean validaEmailSenha(String email, String senha) throws SQLException {
+			boolean resultado = false;
+			try {
+				String sql = "select * from tb_usuario where email_usuario=? and senha_usuario=?";
+				stmt = con.prepareStatement(sql);
+				stmt.setString(1, email);
+				stmt.setString(2, senha);
+				rs = stmt.executeQuery();
+				if(rs.next()) {
+					resultado = true;
+				}
+				rs.close();
+				stmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}return resultado;
 		}
 		
 		public void fechar() throws Exception{
