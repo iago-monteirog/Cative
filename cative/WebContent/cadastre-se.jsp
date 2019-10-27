@@ -50,6 +50,10 @@
           </div>
         </div>
         <div class="form-control">
+          <label for="" class="form-label">Nome</label>
+          <input type="text" name="nome_usuario" placeholder="Ex: Rodrigo" class="text-input">
+        </div>
+        <div class="form-control">
           <label for="" class="form-label">E-mail</label>
           <input type="text" name="email_usuario" placeholder="seu@email.com" class="text-input">
         </div>

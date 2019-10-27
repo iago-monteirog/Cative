@@ -39,6 +39,12 @@ public class Login extends HttpServlet {
 		doGet(request, response);
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
+		
+		if(email.equals("rodrigo@gmail.com") && senha.equals("123456")) {
+			response.sendRedirect("missoes.jsp");
+		} else {
+			response.sendRedirect("login.jsp");
+		}
 	}
 
 }

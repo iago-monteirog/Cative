@@ -42,19 +42,21 @@ public class CadastraUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		int tipoUsuario = Integer.parseInt(request.getParameter("tipo_usuario"));
+		String nome = request.getParameter("nome_usuario");
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
+		
 		
 		Usuario usuario = new Usuario();
 		
 		usuario.setTipoUsuario(tipoUsuario);
-		usuario.setNome("");
+		usuario.setNome(nome);
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		if(usuario.getTipoUsuario() == 2) {
 			try {
 				UsuarioDAO usuariodao = new UsuarioDAO();
-				usuariodao.cadastraUsuario(email, tipoUsuario, senha);
+				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -63,7 +65,7 @@ public class CadastraUsuario extends HttpServlet {
 		} else {
 			try {
 				UsuarioDAO usuariodao = new UsuarioDAO();
-				usuariodao.cadastraUsuario(email, tipoUsuario, senha);
+				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
