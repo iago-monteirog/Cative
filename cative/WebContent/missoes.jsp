@@ -17,6 +17,7 @@
 </head>
 
 <body>
+	
    <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
 
     <section class="section">

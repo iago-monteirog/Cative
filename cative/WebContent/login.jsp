@@ -49,26 +49,6 @@
       </div>
     </section>
   </div>
-	<%
-		Usuario usu = new Usuario();
-		String email = request.getParameter("email");
-		String senha = request.getParameter("senha");
-		if(email != null && senha != null && email.isEmpty() && senha.isEmpty()) {
-			if(usu.getTipoUsuario() == 0) {
-				session.setAttribute("email", email);
-				session.setAttribute("senha", senha);
-				response.sendRedirect("missoes.jsp");
-			}else {
-				session.setAttribute("email", email);
-				session.setAttribute("senha", senha);
-				response.sendRedirect("turmas.jsp");
-			}
-		}
-	
-	%>
-
-
-
 </body>
 
 <script src="./assets/js/cadastre-se.js"></script>

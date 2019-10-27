@@ -48,10 +48,10 @@ public class CadastraUsuario extends HttpServlet {
 		Usuario usuario = new Usuario();
 		
 		usuario.setTipoUsuario(tipoUsuario);
-		usuario.setNome("null");
+		usuario.setNome("");
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
-		if(usuario.getTipoUsuario() == 0) {
+		if(usuario.getTipoUsuario() == 2) {
 			try {
 				UsuarioDAO usuariodao = new UsuarioDAO();
 				usuariodao.cadastraUsuario(email, tipoUsuario, senha);
