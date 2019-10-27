@@ -41,13 +41,13 @@ public class CadastraUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String tipoUsuario = request.getParameter("tipo_usuario");
+		int tipoUsuario = Integer.parseInt(request.getParameter("tipo_usuario"));
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
 		
 		Usuario usuario = new Usuario();
-	
-		usuario.setTipoUsuario(Integer.parseInt(tipoUsuario));
+		
+		usuario.setTipoUsuario(tipoUsuario);
 		usuario.setNome("null");
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
