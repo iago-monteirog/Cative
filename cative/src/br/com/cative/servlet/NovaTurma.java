@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.TurmaDAO;
+import br.com.cative.dao.UsuarioDAO;
 
 /**
  * Servlet implementation class NovaTurma
@@ -39,9 +40,14 @@ public class NovaTurma extends HttpServlet {
 		Turma turma = new Turma();
 		turma.setNomeTurma(nomeTurma);
 		try {
+			UsuarioDAO usuariodao = new UsuarioDAO();
 			TurmaDAO turmadao = new TurmaDAO();
 			turmadao.addTurma(nomeTurma);
 			turmadao.validaTurma(turma);
+			HttpSession sessionUsuario = request.getSession(true);
+			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+			System.out.println("User name: " + idUsuario);
+			turmadao.adicionaAlunoEmTurma(idUsuario, turmadao.validaTurma(turma).getIdTurma());
 			HttpSession sessionTurma = request.getSession();
 			sessionTurma.setAttribute("id_turma", turmadao.validaTurma(turma).getIdTurma());
 		} catch(Exception e) {
