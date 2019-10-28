@@ -44,6 +44,7 @@ public class NovaTurma extends HttpServlet {
 			TurmaDAO turmadao = new TurmaDAO();
 			turmadao.addTurma(nomeTurma);
 			turmadao.validaTurma(turma);
+			
 			HttpSession sessionUsuario = request.getSession(true);
 			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 			System.out.println("User name: " + idUsuario);
