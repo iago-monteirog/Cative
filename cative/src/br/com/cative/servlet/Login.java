@@ -1,7 +1,6 @@
 package br.com.cative.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,20 +43,22 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
 		
+		Usuario usu = new Usuario();
 		
+		usu.setEmail(email);
+		usu.setSenha(senha);
 		try {
-			UsuarioDAO usuariodao = new UsuarioDAO();
-			if(email == null && senha == null && email.isEmpty() && senha.isEmpty()) {
-				response.sendRedirect("login.jsp");
-			}
-			if(usuariodao.validaEmailSenha(email, senha)){
-				response.sendRedirect("missoes.jsp");
-			}else {
-				response.sendRedirect("login.jsp");
-			}
-		}catch(Exception e) {
+		UsuarioDAO usuariodao = new UsuarioDAO();
+		Usuario usuAutenticado = usuariodao.validaUsuario(usu);
+		if(usuAutenticado != null) {
+			response.sendRedirect("missoes.jsp");
+		} else {
+			response.sendRedirect("login.jsp");
+		}	
+		}catch (Exception e) {
 			e.printStackTrace();
+			}
 		}
 	}
-}
+
 

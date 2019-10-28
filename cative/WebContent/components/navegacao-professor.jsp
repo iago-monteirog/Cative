@@ -9,7 +9,7 @@
 	Usuario usuario = dao.getUsuario(1);
 	
 	String nome = usuario.getNome();
-	nome = nome.split(" ")[0];
+	//nome = nome.split(" ")[0];
 	int estrelas = usuario.getPontuacao();
 %> 
 
