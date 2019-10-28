@@ -223,6 +223,29 @@ public class UsuarioDAO {
 				return usuRetorno;
 		}
 		
+		public Usuario validaAluno(Usuario usuario) throws Exception {
+			Usuario usuRetorno = null;
+			String sql = "select * from tb_usuario where email_usuario=?";
+			try {
+				stmt = con.prepareStatement(sql);
+				stmt.setString(1, usuario.getEmail());
+				stmt.setString(2, usuario.getSenha());
+				rs = stmt.executeQuery();
+				if(rs.next()) {
+					usuRetorno = new Usuario();
+					usuRetorno.setIdUsuario(rs.getInt("id_usuario"));
+					usuRetorno.setNome(rs.getString("nome_usuario"));
+					usuRetorno.setEmail(rs.getString("email_usuario"));
+					usuRetorno.setSenha(rs.getString("senha_usuario"));
+					usuRetorno.setTipoUsuario(rs.getInt("tipo_usuario"));
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				e.getMessage();
+			}
+			return usuRetorno;
+	}
+		
 		public void fechar() throws Exception{
 			con.close();
 		}

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
+import br.com.cative.dao.TurmaDAO;
 import br.com.cative.dao.UsuarioDAO;
 
 /**
@@ -54,6 +56,11 @@ public class NovoAluno extends HttpServlet {
 		try {
 			UsuarioDAO dao = new UsuarioDAO();
 			dao.addUsuario(usuario);
+			dao.validaAluno(usuario);
+			Turma turma = (Turma) request.getAttribute("id_turma");
+			int idTurma = turma.getIdTurma();
+			TurmaDAO turmadao = new TurmaDAO();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

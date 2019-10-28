@@ -3,10 +3,12 @@ package br.com.cative.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cative.beans.Turma;
+import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
 public class TurmaDAO {
@@ -89,21 +91,25 @@ public class TurmaDAO {
 		return rs;
 	}
 	
-	public int getTurmaAlu(int i) throws Exception{
-		stmt = con.prepareStatement ("insert into tb_turma (id_turma) values(?)",PreparedStatement.RETURN_GENERATED_KEYS);
-		stmt.setInt(1, i);
-		stmt.executeUpdate();
-		rs = stmt.getGeneratedKeys();
+	public Turma validaTurma(Turma turma) throws Exception {
+		Turma turmaRetorno = null;
+		String sql = "select * from tb_turma where nome_turma=?";
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, turma.getNomeTurma());
+			rs = stmt.executeQuery();
 			if(rs.next()) {
-				int id_turma = 0;
-				id_turma = rs.getInt(1);
-				return id_turma;
-			} else {
-				int id_turma = 0;
-				return id_turma;
+				turmaRetorno = new Turma();
+				turmaRetorno.setIdTurma(rs.getInt("id_turma"));
+				turmaRetorno.setNomeTurma(rs.getString("nome_turma"));
+				turmaRetorno.setCorTurma(rs.getString("cor_turma"));
 			}
-	
+		} catch(SQLException e) {
+			e.printStackTrace();
+			e.getMessage();
 		}
+		return turmaRetorno;
+}
 		
 
 	public void fechar() throws Exception{

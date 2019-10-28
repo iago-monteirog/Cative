@@ -57,6 +57,8 @@ public class Login extends HttpServlet {
 			} else {
 				response.sendRedirect("turmas.jsp");
 			}
+			HttpSession sessaoUsuario = request.getSession();
+			sessaoUsuario.setAttribute("idUsuario", usuAutenticado.getIdUsuario());
 		} else {
 			response.sendRedirect("login.jsp");
 		}	

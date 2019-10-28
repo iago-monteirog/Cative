@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.cative.beans.Turma;
+import br.com.cative.beans.Usuario;
 import br.com.cative.dao.TurmaDAO;
 
 /**
@@ -34,10 +36,14 @@ public class NovaTurma extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String nomeTurma = request.getParameter("nome_turma");
-		
+		Turma turma = new Turma();
+		turma.setNomeTurma(nomeTurma);
 		try {
-			TurmaDAO turmadao = new TurmaDAO();		
+			TurmaDAO turmadao = new TurmaDAO();
 			turmadao.addTurma(nomeTurma);
+			turmadao.validaTurma(turma);
+			HttpSession sessionTurma = request.getSession();
+			sessionTurma.setAttribute("id_turma", turmadao.validaTurma(turma).getIdTurma());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
