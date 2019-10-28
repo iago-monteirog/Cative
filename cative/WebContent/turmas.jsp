@@ -33,7 +33,9 @@
         <div class="turma jsTurma primary" tabindex="0">
           <span class="turma__tira"></span>
           <div class="turma__nome">
+          <a href="turma.jsp">
             <% out.print(turma.getNomeTurma()); %>
+           </a>
           </div>
         </div>
          <% } %>

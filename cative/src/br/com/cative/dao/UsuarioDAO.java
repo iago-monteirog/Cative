@@ -214,6 +214,7 @@ public class UsuarioDAO {
 						usuRetorno.setNome(rs.getString("nome_usuario"));
 						usuRetorno.setEmail(rs.getString("email_usuario"));
 						usuRetorno.setSenha(rs.getString("senha_usuario"));
+						usuRetorno.setTipoUsuario(rs.getInt("tipo_usuario"));
 					}
 				} catch(SQLException e) {
 					e.printStackTrace();

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
@@ -51,7 +52,11 @@ public class Login extends HttpServlet {
 		UsuarioDAO usuariodao = new UsuarioDAO();
 		Usuario usuAutenticado = usuariodao.validaUsuario(usu);
 		if(usuAutenticado != null) {
+			if(usuAutenticado.getTipoUsuario() == 2) {
 			response.sendRedirect("missoes.jsp");
+			} else {
+				response.sendRedirect("turmas.jsp");
+			}
 		} else {
 			response.sendRedirect("login.jsp");
 		}	
