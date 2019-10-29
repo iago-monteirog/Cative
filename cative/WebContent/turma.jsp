@@ -80,7 +80,7 @@
 	    List<Missao> missoes = missaodao.getMissoes();
 	    for(Missao missao : missoes) {
 	    %>
-        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
+        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao="<% out.print(missao.getDescricao()); %>"
           data-titulo="<% out.print(missao.getObjetivo()); %>" data-estrelas="<% out.print(missao.getPontos()); %>">
 
           <div class="card-missao__imagem primary">
