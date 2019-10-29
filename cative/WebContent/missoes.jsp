@@ -102,7 +102,8 @@
             </div>
         </div>
     </div>    
-
+	
+	<script src="./assets/js/barra-navegacao.js"></script>
 	<script charset="UTF-8" src="./assets/js/main.js"></script>    
 </body>
 
