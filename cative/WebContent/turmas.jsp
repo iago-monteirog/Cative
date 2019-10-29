@@ -12,12 +12,15 @@
 </head>
 
 <body>
+	<%
+	HttpSession sessionUsuario = request.getSession(true);
+	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+	%>
  	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
-  
   <section class="section">
     <div class="section__title titulo-pagina--desktop">
       <h1>
-        Suas turmas
+        Suas turmas <% out.print(idUsuario); %>
       </h1>
     </div>
     <div class="turmas">
@@ -27,7 +30,9 @@
       <%@ page import="java.util.List" %>
       <%
       	TurmaDAO turmadao = new TurmaDAO();
-		List<Turma> turmas = turmadao.getListTurmas();
+      	Usuario usu = new Usuario();
+      	usu.setIdUsuario(idUsuario);
+		List<Turma> turmas = turmadao.getListTurmas(idUsuario);
       	for(Turma turma : turmas) {
       %>
         <div class="turma jsTurma primary" tabindex="0">

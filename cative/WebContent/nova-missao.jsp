@@ -16,7 +16,13 @@
 </head>
 
 <body>
-
+		<%
+		HttpSession sessionUsuario = request.getSession(true);
+		Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+		%>
+		<%@ page import="br.com.cative.dao.*" %>
+	    <%@ page import="br.com.cative.beans.*" %>
+	    <%@ page import="java.util.List" %>
 <jsp:include page="components/navegacao-professor.jsp"></jsp:include>
   
   <section class="nova-missao">
@@ -109,17 +115,23 @@
             </div>
           </div>
         </div>
-
+	
         <div class="form-control">
           <label for="" class="form-label">Turma</label>
           <select name="" class="select-input jsTurmaSelect" id="">
-            <option value="classe a">Classe A</option>
-            <option value="classe b">Classe B</option>
-            <option value="classe c">Classe C</option>
-            <option value="classe d">Classe D</option>
+          <%
+      	TurmaDAO turmadao = new TurmaDAO();
+      	Usuario usu = new Usuario();
+      	usu.setIdUsuario(idUsuario);
+		List<Turma> turmas = turmadao.getListTurmas(idUsuario);
+      	for(Turma turma : turmas) {
+     	 %>
+            <option value="<% out.print(turma.getIdTurma()); %>"> <% out.print(turma.getNomeTurma()); %></option>
+           <% } %>
           </select>
+          
         </div>
-
+        
         <div class="form-submit">
           <button type="submit" class="button button--primary button--xs-small jsSalvaMissao">
             Salvar

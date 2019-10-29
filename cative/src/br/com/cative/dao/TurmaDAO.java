@@ -48,8 +48,9 @@ public class TurmaDAO {
 		}
 	}
 	
-	public List getListTurmas() throws Exception {
-		stmt = con.prepareStatement("select * from tb_turma");
+	public List getListTurmas(int idUsuario) throws Exception {
+		stmt = con.prepareStatement("select * from tb_turma as t join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where u.id_usuario = ?;");
+		stmt.setInt(1, idUsuario);
 		rs = stmt.executeQuery();
 		List<Turma> turmas = new ArrayList<Turma>();
 		while(rs.next()) {
@@ -110,7 +111,20 @@ public class TurmaDAO {
 		}
 		return turmaRetorno;
 }
-		
+	public List getDirecMissao() throws Exception {
+		Usuario usu = new Usuario();
+		stmt = con.prepareStatement("select id_turma, nome_turma, cor_turma from tb_turma as t join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where u.id_usuario = ?;");
+		stmt.setInt(1, usu.getIdUsuario());
+		rs = stmt.executeQuery();
+		List<Turma> turmaM = new ArrayList<Turma>();
+		while(rs.next()) {
+			turmaM.add(new Turma(
+					rs.getInt("ID_TURMA"),
+					rs.getString("NOME_TURMA"), 
+					rs.getString("COR_TURMA")));
+		}
+			return turmaM;
+		}	
 
 	public void fechar() throws Exception{
 		con.close();
