@@ -51,9 +51,17 @@
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
             <%  
-	            String nome = usuario.getNome();
-	    		String arr[] = nome.split(" ");
-	    		out.print(arr[0]);
+            	Boolean semNome = (usuario.getNome() == null || usuario.getNome() == "");
+            	String nome = null;
+            	
+            	if(semNome) {
+            		nome = "Sem Nome";
+            	} else {
+    	            nome = usuario.getNome();
+    	    		String arr[] = nome.split(" ");
+    	    		nome = arr[0];
+            	}
+	    		out.print(nome);
             %>
           </div>
         </div>
@@ -73,7 +81,7 @@
 	    List<Missao> missoes = missaodao.getMissoes();
 	    for(Missao missao : missoes) {
 	    %>
-        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao=""
+        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao="<% out.print(missao.getDescricao()); %>"
           data-titulo="<% out.print(missao.getObjetivo()); %>" data-estrelas="<% out.print(missao.getPontos()); %>">
 
           <div class="card-missao__imagem primary">
