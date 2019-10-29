@@ -20,7 +20,7 @@
   <section class="section">
     <div class="section__title titulo-pagina--desktop">
       <h1>
-        Suas turmas <% out.print(idUsuario); %>
+        Suas turmas
       </h1>
     </div>
     <div class="turmas">

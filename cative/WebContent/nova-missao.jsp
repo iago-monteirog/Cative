@@ -118,7 +118,7 @@
 	
         <div class="form-control">
           <label for="" class="form-label">Turma</label>
-          <select name="" class="select-input jsTurmaSelect" id="">
+          <select name="idTurma" class="select-input jsTurmaSelect" id="">
           <%
       	TurmaDAO turmadao = new TurmaDAO();
       	Usuario usu = new Usuario();
@@ -126,8 +126,10 @@
 		List<Turma> turmas = turmadao.getListTurmas(idUsuario);
       	for(Turma turma : turmas) {
      	 %>
-            <option value="<% out.print(turma.getIdTurma()); %>"> <% out.print(turma.getNomeTurma()); %></option>
-           <% } %>
+            <option value="<% out.print(turma.getIdTurma()); %>"> <% out.print(turma.getIdTurma()); %></option>
+           <%
+           }
+      		%>
           </select>
           
         </div>

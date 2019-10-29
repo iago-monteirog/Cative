@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import br.com.cative.beans.Missao;
 import br.com.cative.conexao.Conexao;
 
@@ -108,26 +110,15 @@ public class MissaoDAO {
 		return rs;
 	}
 	
-	public Missao getMissaoAll(int idMissao) throws Exception{
-		stmt = con.prepareStatement
-				("select * from TB_MiSSAO where ID_MISSAO=1");
-		stmt.setInt(1, idMissao);
-		rs = stmt.executeQuery();
-		if(rs.next()) {
-			return new Missao(
-					rs.getInt("ID_MISSAO"),
-					rs.getString("OBJETIVO_MISSAO"),
-					rs.getString("DESCRICAO_MISSAO"),
-					rs.getString("DT_INICIO"),
-					rs.getString("DT_FINAL"),
-					rs.getString("CICLO_MISSAO"),
-					rs.getString("IMG_MISSAO"),
-					rs.getString("COR_MISSAO"),
-					rs.getInt("PONTOS_MISSAO")
-					);
-		}else {
-			return new Missao();
-		}
+	public int adicionaMissaoEmTurma(String objetivo, String descricao, String img, int pontos, String cor, int tb_turma_id_turma) throws Exception {
+		stmt = con.prepareStatement("START TRANSACTION; INSERT INTO tb_missao(objetivo_missao, descricao_missao, imagem_missao, pontos_missao, cor_missao) VALUES(?, ?, ?, ?, ?); INSERT INTO tb_turma_has_tb_missao(tb_turma_id_turma, tb_missao_id_missao) values(?, (LAST_INSERT_ID()))");
+		stmt.setString(1, objetivo);
+		stmt.setString(2, descricao);
+		stmt.setString(3, img);
+		stmt.setInt(4, pontos);
+		stmt.setString(5, cor);
+		stmt.setInt(6, tb_turma_id_turma);
+		return stmt.executeUpdate();
 	}
 	
 	public void fechar() throws Exception{

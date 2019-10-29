@@ -2,7 +2,6 @@ package br.com.cative.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.cative.beans.Missao;
+import br.com.cative.beans.Turma;
 import br.com.cative.dao.MissaoDAO;
 
 /**
@@ -46,25 +46,28 @@ public class CadastraMissao extends HttpServlet {
 		String imgMissao = request.getParameter("imagem_capa");
 		int pontosMissao = Integer.parseInt(request.getParameter("pontos"));
 		String corMissao = request.getParameter("cor");
+		int idTurma = Integer.parseInt(request.getParameter("idTurma"));
 		
 		Missao missao = new Missao();
-		System.out.println(objetivoMissao);
-		System.out.println(descricaoMissao);
-		
+	
 		missao.setDescricao(descricaoMissao);
 		missao.setObjetivo(objetivoMissao);
 		missao.setImgMissao(imgMissao);
 		missao.setPontos(pontosMissao);
 		missao.setCorMissao(corMissao);
 		
+		Turma turma = new Turma();
+		turma.setIdTurma(idTurma);
+		
 		try {
-			System.out.println("try");
 			MissaoDAO missaodao = new MissaoDAO();
-			missaodao.cadastraMissao(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao);
+			missaodao.adicionaMissaoEmTurma(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao, idTurma);
+			System.out.println(missao.getIdMissao());
+			System.out.println(idTurma);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		response.sendRedirect("turma.jsp");
 	}
 

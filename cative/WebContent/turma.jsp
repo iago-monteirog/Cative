@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
   <section class="section">
     <div class="section__title">
