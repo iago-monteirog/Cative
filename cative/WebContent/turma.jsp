@@ -123,7 +123,7 @@
 	
 	          <div class="form-control">
 	            <label for="nome_aluno" class="form-label">Nome</label>
-	            <input tabindex="0" type="text" name="nome_aluno" id="nome_aluno" class="text-input jsFirstInput"
+	            <input tabindex="0" type="text" name="nome_aluno" id="nome_aluno" class="text-input jsFirstInput jsInputNome"
 	              placeholder="Ex.: Juliana">
 	          </div>
 	          <div class="form-control">
@@ -132,7 +132,7 @@
 	              placeholder="Ex.: juju@email.com">
 	          </div>
 	          <div class="form-control">
-	            <label for="senha" class="form-label">Crie uma senha para</label>
+	            <label for="senha" class="form-label">Crie uma senha para <span class="jsFirstNameReceiver"></span></label>
 	            <input tabindex="0" type="password" name="senha_aluno" id="senha" class="text-input jsFirstInput"
 	              placeholder="Ex.: ********">
 	          </div>
@@ -203,6 +203,7 @@
   <script src="./assets/js/barra-navegacao.js"></script>
   <script src="./assets/js/abas.js"></script>
   <script src="./assets/js/modal.js"></script>
+  <script src="./assets/js/modal-novo-aluno.js"></script>
 
 
 </body>
