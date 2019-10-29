@@ -47,8 +47,6 @@ public class NovaTurma extends HttpServlet {
 			HttpSession sessionUsuario = request.getSession(true);
 			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 			turmadao.adicionaAlunoEmTurma(idUsuario, turmadao.validaTurma(turma).getIdTurma());
-			HttpSession sessionTurma = request.getSession();
-			sessionTurma.setAttribute("id_turma", turmadao.validaTurma(turma).getIdTurma());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
