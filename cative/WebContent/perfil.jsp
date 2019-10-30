@@ -13,8 +13,6 @@
  	String foto = "";
  	int qtdMissoes = 0;
  	String senha = "";
-	HttpSession sessionUsuario = request.getSession(true);
-	Integer idt = (Integer) sessionUsuario.getAttribute("idUsuario");
 
  	
 	if(email != null) {
@@ -43,6 +41,10 @@
 </head>
 
 <body>
+			<% 
+			HttpSession sessionUsuario = request.getSession(true);
+			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+			%>
   <jsp:include page="components/navegacao-aluno.jsp">
   	<jsp:param name="cor" value="<%= tema %>"/>
   	<jsp:param name="titulo" value=""/>
@@ -105,7 +107,7 @@
 	
 	                <%
 		         		MissaoDAO missaoDAO = new MissaoDAO();
-		                List<Missao> missoes = missaoDAO.getMissoes();
+		                List<Missao> missoes = missaoDAO.getMissoes(idUsuario);
 		        		
 		        		for(Missao m: missoes) {	        	
 		        			out.println("<div class='card-missao jsCardMissao'");
