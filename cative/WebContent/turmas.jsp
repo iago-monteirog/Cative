@@ -16,7 +16,9 @@
 	HttpSession sessionUsuario = request.getSession(true);
 	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 	%>
- 	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
+ 	<jsp:include page="components/navegacao-professor.jsp">
+  		<jsp:param name="titulo" value="Suas turmas"/>
+  	</jsp:include>
   <section class="section">
     <div class="section__title titulo-pagina--desktop">
       <h1>

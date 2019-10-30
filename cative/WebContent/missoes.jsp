@@ -22,7 +22,7 @@
 	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 	%>
    <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
-
+	
     <section class="section">
         <div class="container">
             <div class="section__title">

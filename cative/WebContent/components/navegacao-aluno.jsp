@@ -11,6 +11,7 @@
 	String nome = usuario.getNome();
 	//nome = nome.split(" ")[0];
 	int estrelas = usuario.getPontuacao();
+	String foto = request.getParameter("foto") == "" || request.getParameter("foto") == null ? "assets/img/foto-aluno.png" : request.getParameter("foto") ;
 %> 
     
     <nav class="navegacao jsCorPerfil" style="background-color: ${param.cor}">
@@ -59,7 +60,7 @@
                     <div class="navegacao__perfil navegacao__item">
                         <div class="navegacao__column-1">
                             <div class="navegacao__perfil-pic">
-                                <img src="https://placehold.it/1600x600" alt="">
+                                <img src="<% out.println(foto); %>" alt="">
                             </div>
                         </div>
                         <div class="navegacao__column-2">
