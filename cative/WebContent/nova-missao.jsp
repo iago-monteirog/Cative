@@ -126,7 +126,7 @@
 		List<Turma> turmas = turmadao.getListTurmas(idUsuario);
       	for(Turma turma : turmas) {
      	 %>
-            <option value="<% out.print(turma.getIdTurma()); %>"> <% out.print(turma.getIdTurma()); %></option>
+            <option value="<% out.print(turma.getIdTurma()); %>"> <% out.print(turma.getNomeTurma()); %></option>
            <%
            }
       		%>

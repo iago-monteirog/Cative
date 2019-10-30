@@ -64,9 +64,9 @@ public class MissaoDAO {
 						rs.getInt("ID_MISSAO"),
 						rs.getString("OBJETIVO_MISSAO"),
 						rs.getString("DESCRICAO_MISSAO"),
-						rs.getString("IMAGEM_MISSAO"), //TODO: mudar pra IMG_MISSAO
-						rs.getInt("PONTOS_MISSAO"), //TODO: mudar pra PONTOS_MISSAO
-						rs.getString("COR_MISSAO") // TODO: mudar pra COR_MISSAO
+						rs.getString("IMAGEM_MISSAO"), 
+						rs.getInt("PONTOS_MISSAO"), 
+						rs.getString("COR_MISSAO") 
 					));
 		}
 		return missoes;
@@ -109,6 +109,26 @@ public class MissaoDAO {
 		stmt.setInt(1, idTurma);
 		stmt.setInt(2, idMissao);
 		return stmt.executeUpdate();
+	}
+	
+	public List filtraMissoes(int id) throws Exception{
+		stmt = con.prepareStatement
+				("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao join tb_turma as t on t.id_turma = tt.tb_turma_id_turma where id_turma = ?;");
+		stmt.setInt(1, id);
+		rs = stmt.executeQuery();
+		List<Missao> missoes = new ArrayList<Missao>();
+		while(rs.next()) {
+			missoes.add(
+				new Missao(
+						rs.getInt("ID_MISSAO"),
+						rs.getString("OBJETIVO_MISSAO"),
+						rs.getString("DESCRICAO_MISSAO"),
+						rs.getString("IMAGEM_MISSAO"), 
+						rs.getInt("PONTOS_MISSAO"), 
+						rs.getString("COR_MISSAO") 
+					));
+		}
+		return missoes;
 	}
 	
 	public void fechar() throws Exception{

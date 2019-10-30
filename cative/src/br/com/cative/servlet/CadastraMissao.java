@@ -66,7 +66,7 @@ public class CadastraMissao extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect("turma.jsp");
+		response.sendRedirect("turma.jsp?id=" + idTurma);
 	}
 
 }

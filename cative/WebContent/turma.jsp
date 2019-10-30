@@ -90,7 +90,7 @@
       <div class="missoes link-aba ">
       	<%
 	    MissaoDAO missaodao = new MissaoDAO();
-	    List<Missao> missoes = missaodao.getMissoes();
+	    List<Missao> missoes = missaodao.filtraMissoes(id);
 	    for(Missao missao : missoes) {
 	    %>
         <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao="<% out.print(missao.getDescricao()); %>"
