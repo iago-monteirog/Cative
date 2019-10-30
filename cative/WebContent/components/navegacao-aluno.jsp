@@ -76,7 +76,7 @@
                         <a href="missoes.jsp">Missões</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
-                        <a href="aluno.jsp">Perfil</a>
+                        <a href="perfil.jsp">Perfil</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
                         <!-- <a href="">Evolução</a> -->
@@ -84,7 +84,7 @@
                 </div>
                 <div class="navegacao__bottom-items navegacao__item">
                     <div class="navegacao__get-out">
-                        <a href="logout.jsp">Sair</a>
+                        <a href="./Logout">Sair</a>
                     </div>
                 </div>
             </div>
@@ -121,10 +121,10 @@
                     <div class="dropdown">
                         <div class="dropdown__links">
                             <div class="dropdown__link">
-                                <a href="aluno.jsp">Perfil</a>
+                                <a href="perfil.jsp">Perfil</a>
                             </div>
                             <div class="dropdown__link">
-                                <a href="logout.jsp">Sair</a>
+                                <a href="./Logout">Sair</a>
                             </div>
                         </div>
                     </div>

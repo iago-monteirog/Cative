@@ -20,6 +20,7 @@
 		HttpSession sessionUsuario = request.getSession(true);
 		Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 		%>
+		
 		<%@ page import="br.com.cative.dao.*" %>
 	    <%@ page import="br.com.cative.beans.*" %>
 	    <%@ page import="java.util.List" %>

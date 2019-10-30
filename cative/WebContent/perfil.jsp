@@ -13,6 +13,9 @@
  	String foto = "";
  	int qtdMissoes = 0;
  	String senha = "";
+	HttpSession sessionUsuario = request.getSession(true);
+	Integer idt = (Integer) sessionUsuario.getAttribute("idUsuario");
+
  	
 	if(email != null) {
 		UsuarioDAO dao = new UsuarioDAO();
@@ -27,6 +30,7 @@
 	}
 	
 %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,8 +43,7 @@
 </head>
 
 <body>
-
-  <jsp:include page="components/navegacao-professor.jsp">
+  <jsp:include page="components/navegacao-aluno.jsp">
   	<jsp:param name="cor" value="<%= tema %>"/>
   	<jsp:param name="titulo" value=""/>
   </jsp:include>

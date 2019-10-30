@@ -17,7 +17,10 @@
 </head>
 
 <body>
-	
+	<%
+	HttpSession sessionUsuario = request.getSession(true);
+	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+	%>
    <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
 
     <section class="section">
@@ -35,8 +38,7 @@
 
                 <%
 	         		MissaoDAO missaoDAO = new MissaoDAO();
-	                List<Missao> missoes = missaoDAO.getMissoes();
-
+	                List<Missao> missoes = missaoDAO.getMissoes(idUsuario);
 	        		for(Missao m: missoes) {	        	
 	        		%>
                 <div class="card-missao jsCardMissao" data-cor="<% out.print(m.getCorMissao()); %>" data-cod="a1" data-descricao=""

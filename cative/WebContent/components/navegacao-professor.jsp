@@ -82,7 +82,7 @@
         </div>
         <div class="navegacao__bottom-items navegacao__item">
           <div class="navegacao__get-out">
-            <a href="logout.jsp">Sair</a>
+            <a href="./Logout">Sair</a>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@
                 <a href="perfil.jsp">Perfil</a>
               </div>
               <div class="dropdown__link">
-                <a href="logout.jsp">Sair</a>
+                <a href="./Logout">Sair</a>
               </div>
             </div>
           </div>
