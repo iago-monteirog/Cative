@@ -61,10 +61,8 @@ public class CadastraMissao extends HttpServlet {
 		
 		try {
 			MissaoDAO missaodao = new MissaoDAO();
-			missaodao.adicionaMissaoEmTurma(objetivoMissao, descricaoMissao, imgMissao, pontosMissao, corMissao, idTurma);
-			System.out.println(missao.getIdMissao());
-			System.out.println(idTurma);
-			
+			missaodao.adicionaMissao(missao);
+			missaodao.adicionaMissaoEmTurma(idTurma, missao.getIdMissao());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

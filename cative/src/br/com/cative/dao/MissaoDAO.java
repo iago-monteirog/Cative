@@ -23,16 +23,6 @@ public class MissaoDAO {
 //		con1 = Conexao.getConexaoORCL();
 		}
 	
-	public int cadastraMissao(String objetivo, String descricao, String img, int pontos, String cor) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMAGEM_MISSAO, PONTOS_MISSAO, COR_MISSAO) VALUES(?,?,?,?,?)");
-		stmt.setString(1, objetivo);
-		stmt.setString(2, descricao);
-		stmt.setString(3, img);
-		stmt.setInt(4, pontos);
-		stmt.setString(5, cor);
-		return stmt.executeUpdate();
-	}
-	
 	public void AddMissaoBasic(Missao m) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO,PONTOS_MISSAO) VALUES(?, ?, ?)");
 		stmt.setString(1, m.getObjetivo());
@@ -40,20 +30,6 @@ public class MissaoDAO {
 		stmt.setInt(3, m.getPontos());
 		stmt.execute();
 		stmt.close();
-	}
-	
-	public int AddMissaoB(Missao m) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO) VALUES(?, ?)");
-		stmt.setString(1, m.getObjetivo());
-		stmt.setString(2, m.getDescricao());
-		return stmt.executeUpdate();
-	}
-	
-	public int cadastraMissaoSimples(String objetivo, String descricao) throws Exception {
-		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO) VALUES(?,?)");
-		stmt.setString(1, objetivo);
-		stmt.setString(2, descricao);
-		return stmt.executeUpdate();
 	}
 	
 	
@@ -110,14 +86,28 @@ public class MissaoDAO {
 		return rs;
 	}
 	
-	public int adicionaMissaoEmTurma(String objetivo, String descricao, String img, int pontos, String cor, int tb_turma_id_turma) throws Exception {
-		stmt = con.prepareStatement("START TRANSACTION; INSERT INTO tb_missao(objetivo_missao, descricao_missao, imagem_missao, pontos_missao, cor_missao) VALUES(?, ?, ?, ?, ?); INSERT INTO tb_turma_has_tb_missao(tb_turma_id_turma, tb_missao_id_missao) values(?, (LAST_INSERT_ID()))");
-		stmt.setString(1, objetivo);
-		stmt.setString(2, descricao);
-		stmt.setString(3, img);
-		stmt.setInt(4, pontos);
-		stmt.setString(5, cor);
-		stmt.setInt(6, tb_turma_id_turma);
+	public Missao adicionaMissao(Missao missao) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_MISSAO(OBJETIVO_MISSAO, DESCRICAO_MISSAO, IMAGEM_MISSAO, PONTOS_MISSAO, COR_MISSAO) VALUES(?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, missao.getObjetivo());
+		stmt.setString(2, missao.getDescricao());
+		stmt.setString(3, missao.getImgMissao());
+		stmt.setInt(4, missao.getPontos());
+		stmt.setString(5, missao.getCorMissao());
+		stmt.executeUpdate();
+		rs = stmt.getGeneratedKeys();
+		if(rs.next()) {
+			int id_missao = rs.getInt(1);
+			missao.setIdMissao(id_missao);
+			return missao;
+		} else {
+			return missao;
+		}
+	}
+	
+	public int adicionaMissaoEmTurma(int idTurma, int idMissao) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_turma_has_TB_Missao(TB_TURMA_id_turma, TB_missao_id_missao) VALUES(?, ?)");
+		stmt.setInt(1, idTurma);
+		stmt.setInt(2, idMissao);
 		return stmt.executeUpdate();
 	}
 	
