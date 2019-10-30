@@ -30,7 +30,7 @@
           <label for="" class="form-label">Cadastrar como</label>
           <div class="grupo-opcoes">
             <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario ativo" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="1" class="grupo-opcoes__input jsRadioInput">
+              <input type="radio" name="tipo_usuario" value="1" class="grupo-opcoes__input jsRadioInput" checked="checked">
               <div class="grupo-opcoes__texto">
                 Professor
               </div>
@@ -39,12 +39,6 @@
               <input type="radio" name="tipo_usuario"  value="2" class="grupo-opcoes__input jsRadioInput">
               <div class="grupo-opcoes__texto">
                 Aluno
-              </div>
-            </div>
-            <div class="grupo-opcoes__opcao jsOpcaoTipoUsusario" tabindex="0">
-              <input type="radio" name="tipo_usuario" value="3" class="grupo-opcoes__input jsRadioInput">
-              <div class="grupo-opcoes__texto">
-                Responsável
               </div>
             </div>
           </div>
