@@ -60,7 +60,7 @@ public class CadastraUsuario extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("missoes.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			try {
@@ -69,7 +69,7 @@ public class CadastraUsuario extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("turmas.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
