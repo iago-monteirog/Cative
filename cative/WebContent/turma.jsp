@@ -40,7 +40,7 @@
 	    	List<Usuario> alunos = usuariodao.getAlunosTurma();
 	    	for(Usuario usuario : alunos) {
 	    %>
-        <div class="aluno jsAluno">
+        <a href="perfil.jsp?email=<% out.print(usuario.getEmail()); %>" class="aluno jsAluno">
           <div class="aluno__pic">
           <img src="	
           <% 
@@ -64,7 +64,7 @@
 	    		out.print(nome);
             %>
           </div>
-        </div>
+        </a>
         <% } %>
       </div>
       <div class="section__bottom">
