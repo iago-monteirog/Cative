@@ -186,7 +186,7 @@ public class UsuarioDAO {
 		}
 		
 		public List getAlunosTurma(int id) throws Exception {
-			stmt = con.prepareStatement("select * from tb_usuario as u join tb_usuario_has_tb_turma as tu where tb_turma_id_turma = ?;");
+			stmt = con.prepareStatement("select * from tb_usuario as u join tb_usuario_has_tb_turma as tu on u.id_usuario = tu.tb_usuario_id_usuario where tb_turma_id_turma=? and (tipo_usuario = 2);");
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			List<Usuario> aluno = new ArrayList<Usuario>();

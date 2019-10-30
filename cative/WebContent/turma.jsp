@@ -125,6 +125,7 @@
 
   </section>
   <form action="${pageContext.request.contextPath}/NovoAluno" method="POST" class="form">
+  	<input type="hidden" value="<% out.print(id); %>" name="id_turma"/>
 	  <div class="modal-overlay jsModalOverlay jsModalToggler">
 	    <div class="modal">
 	      <header class="modal__header">

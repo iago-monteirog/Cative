@@ -61,7 +61,6 @@ public class NovoAluno extends HttpServlet {
 		try {
 			UsuarioDAO dao = new UsuarioDAO();
 			dao.addUsuTurma(usuario);
-			System.out.println(usuario.getIdUsuario());
 			TurmaDAO turmadao = new TurmaDAO();
 			turmadao.adicionaAlunoEmTurma(usuario.getIdUsuario(), idTurma);
 		} catch(Exception e) {
