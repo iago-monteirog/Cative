@@ -82,7 +82,7 @@
         </div>
         <div class="navegacao__bottom-items navegacao__item">
           <div class="navegacao__get-out">
-            <a href="login.jsp">Sair</a>
+            <a href="logout.jsp">Sair</a>
           </div>
         </div>
       </div>
@@ -118,10 +118,10 @@
           <div class="dropdown">
             <div class="dropdown__links">
               <div class="dropdown__link">
-                <a href="aluno.html">Perfil</a>
+                <a href="perfil.jsp">Perfil</a>
               </div>
               <div class="dropdown__link">
-                <a href="login.jsp">Sair</a>
+                <a href="logout.jsp">Sair</a>
               </div>
             </div>
           </div>
