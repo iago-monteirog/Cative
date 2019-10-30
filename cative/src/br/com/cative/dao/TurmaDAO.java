@@ -125,6 +125,20 @@ public class TurmaDAO {
 		}
 			return turmaM;
 		}	
+	
+	public Turma getTurmaById(int id) throws Exception{
+		stmt = con.prepareStatement("select * from TB_turma where id_turma = ?");
+		stmt.setInt(1, id);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			return new Turma(rs.getInt("id_turma"), 
+							   rs.getString("nome_turma"), 
+							   rs.getString("cor_turma")
+							   );
+		} else {
+			return new Turma();
+		}
+	}
 
 	public void fechar() throws Exception{
 		con.close();

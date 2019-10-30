@@ -184,8 +184,9 @@ public class UsuarioDAO {
 			stmt.executeUpdate();
 		}
 		
-		public List getAlunosTurma() throws Exception {
-			stmt = con.prepareStatement("select * from tb_usuario");
+		public List getAlunosTurma(int id) throws Exception {
+			stmt = con.prepareStatement("select * from tb_usuario as u join tb_usuario_has_tb_turma as tu where tb_turma_id_turma = ?;");
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			List<Usuario> aluno = new ArrayList<Usuario>();
 			while(rs.next()) {

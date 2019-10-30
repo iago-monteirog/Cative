@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%
+    int id = Integer.parseInt(request.getParameter("id"));
+    String nomet = "";
+    String cor = "";
+    if(id == 0) {
+    	TurmaDAO turmadao = new TurmaDAO();
+    	Turma turma = turmadao.getTurmaById(id);
+    	nomet = turma.getNomeTurma() == null ? "" : turma.getNomeTurma();
+    	cor = turma.getCorTurma();
+    }
+    %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +27,7 @@
 	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
   <section class="section">
     <div class="section__title">
-      <h1>Turma A</h1>
+      <h1><% out.print(nomet); %></h1>
     </div>
     <div class="abas">
       <div class="aba jsAba ativo" data-aba="alunos">
@@ -37,7 +48,7 @@
 	    <%@ page import="java.util.List" %>
 	    <% 
 			UsuarioDAO usuariodao = new UsuarioDAO();   
-	    	List<Usuario> alunos = usuariodao.getAlunosTurma();
+	    	List<Usuario> alunos = usuariodao.getAlunosTurma(id);
 	    	for(Usuario usuario : alunos) {
 	    %>
         <a href="perfil.jsp?email=<% out.print(usuario.getEmail()); %>" class="aluno jsAluno">
