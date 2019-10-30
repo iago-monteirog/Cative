@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
@@ -40,7 +41,9 @@ public class AtualizaPerfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+
+		String id = request.getParameter("id_usuario");
+		int idUsuario = Integer.parseInt(id);
 		String foto = request.getParameter("foto_perfil");
 		String tema = request.getParameter("cor");
 		String email = request.getParameter("email");
@@ -53,6 +56,7 @@ public class AtualizaPerfil extends HttpServlet {
 		usuario.setTema(tema);
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
+		usuario.setIdUsuario(idUsuario);
 		
 		UsuarioDAO dao;
 		try {
@@ -62,7 +66,7 @@ public class AtualizaPerfil extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getHeader("referer"));
+		response.sendRedirect("aluno.jsp?email="+email);
 	}
 
 }

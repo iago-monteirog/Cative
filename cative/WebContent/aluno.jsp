@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Aluno</title>
   <link rel="stylesheet" href="./assets/css/main.min.css">
 </head>
 <%
@@ -46,6 +46,7 @@
   </jsp:include>
 
   <form action="${pageContext.request.contextPath}/AtualizaPerfil" method="POST">
+  	  <input type="hidden" value="<% out.print(id); %>" name="id_usuario"/>
   	  
 	  <div class="perfil jsPerfil">
 	    <div class="perfil__capa">

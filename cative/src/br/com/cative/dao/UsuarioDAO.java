@@ -169,7 +169,9 @@ public class UsuarioDAO {
 		
 		public void atualizaPerfil(Usuario usuario) throws Exception {
 			stmt = con.prepareStatement
-			("UPDATE TB_USUARIO SET NOME_USUARIO = ?, SOBRENOME_USUARIO = ?, EMAIL_USUARIO = ?, SENHA_USUARIO = ?, TEMA_USUARIO = ?, FOTO_USUARIO = ? WHERE ID_USUARIO = 1");
+			("UPDATE TB_USUARIO SET "
+			+ "NOME_USUARIO = ?, SOBRENOME_USUARIO = ?, EMAIL_USUARIO = ?, SENHA_USUARIO = ?, TEMA_USUARIO = ?, FOTO_USUARIO = ? "
+			+ "WHERE ID_USUARIO = ?");
 			
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getSobrenome());
@@ -177,6 +179,7 @@ public class UsuarioDAO {
 			stmt.setString(4, usuario.getSenha());
 			stmt.setString(5, usuario.getTema());
 			stmt.setString(6, usuario.getFoto());
+			stmt.setInt(7, usuario.getIdUsuario());
 			
 			stmt.executeUpdate();
 		}
