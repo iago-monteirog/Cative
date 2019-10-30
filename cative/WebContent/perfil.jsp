@@ -263,6 +263,12 @@
         <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
           Concluída
         </button>
+        <a class="editar-missao">
+            <div class="editar-missao__icone"></div>
+            <div class="editar-missao__texto">
+                editar missão
+            </div>
+        </a>
       </div>
     </div>
   </div>
