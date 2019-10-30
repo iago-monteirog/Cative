@@ -29,13 +29,25 @@
     </span>
     <section class="cadastro-usuario header-fluido__bottom bg-white">
       <form action="${pageContext.request.contextPath}/Login" class="form" method="POST">
+        <%
+        	int erro = request.getParameter("erro") != null ? Integer.parseInt(request.getParameter("erro")) : 0;
+        	if(erro == 1) {
+        %>
+	        <div class="form__feedback erro jsBoxFeedback">
+	          Email ou senha inválidos
+	        </div>      
+        <%
+        	}
+        %>
         <div class="form-control">
           <label for="" class="form-label">E-mail</label>
-          <input type="text" name="email_usuario" placeholder="seu@email.com" class="text-input">
+          <span class="form-control__feedback"></span>
+          <input type="text" name="email_usuario" placeholder="seu@email.com" class="text-input jsInputValidavel">
         </div>
         <div class="form-control">
           <label for="" class="form-label">Senha</label>
-          <input type="password" name="senha_usuario" placeholder="Ex.: *********" class="text-input">
+          <span class="form-control__feedback">Não achamos seu e-mail :( </span>
+          <input type="password" name="senha_usuario" placeholder="Ex.: *********" class="text-input jsInputValidavel">
         </div>
         <div class="form-submit">
           <button type="submit" class="button button--small button--primary">
@@ -52,5 +64,8 @@
 </body>
 
 <script src="./assets/js/cadastre-se.js"></script>
+<script src="./assets/js/inputs-de-texto.js"></script>
+<script src="./assets/js/box-feedback.js"></script>
+
 
 </html>

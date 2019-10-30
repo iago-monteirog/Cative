@@ -61,7 +61,7 @@ public class Login extends HttpServlet {
 			Integer idUsuario = new Integer(usuAutenticado.getIdUsuario());
 			sessaoUsuario.setAttribute("idUsuario", idUsuario);
 		} else {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login.jsp?erro=1");
 		}	
 		}catch (Exception e) {
 			e.printStackTrace();
