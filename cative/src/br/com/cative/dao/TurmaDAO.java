@@ -131,9 +131,10 @@ public class TurmaDAO {
 		stmt.setInt(1, id);
 		rs = stmt.executeQuery();
 		if(rs.next()) {
-			return new Turma(rs.getInt("id_turma"), 
-							   rs.getString("nome_turma"), 
-							   rs.getString("cor_turma")
+			return new Turma(
+					rs.getInt("id_turma"), 
+					rs.getString("nome_turma"), 
+					rs.getString("cor_turma")
 							   );
 		} else {
 			return new Turma();

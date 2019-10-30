@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.TurmaDAO;
@@ -42,6 +44,7 @@ public class NovoAluno extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		int idTurma = Integer.parseInt(request.getParameter("id_turma"));
 		
 		String nome = request.getParameter("nome_aluno");
 		String email = request.getParameter("email_aluno");
@@ -53,16 +56,18 @@ public class NovoAluno extends HttpServlet {
 		usuario.setSenha(senha);
 		usuario.setTipoUsuario(2);
 		
+		Turma turma = new Turma();
+		turma.setIdTurma(idTurma);
 		try {
 			UsuarioDAO dao = new UsuarioDAO();
-			dao.addUsuario(usuario);
-			dao.validaAluno(usuario);
-			int idTurma = (int) request.getAttribute("id_turma");
+			dao.addUsuTurma(usuario);
+			System.out.println(usuario.getIdUsuario());
+			TurmaDAO turmadao = new TurmaDAO();
+			turmadao.adicionaAlunoEmTurma(usuario.getIdUsuario(), idTurma);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		response.sendRedirect(request.getHeader("referer"));
+		response.sendRedirect("turma.jsp?id=" + idTurma);
 	}
 
 }

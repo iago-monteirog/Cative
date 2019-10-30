@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -227,28 +228,22 @@ public class UsuarioDAO {
 				return usuRetorno;
 		}
 		
-		public Usuario validaAluno(Usuario usuario) throws Exception {
-			Usuario usuRetorno = null;
-			String sql = "select * from tb_usuario where email_usuario=?";
-			try {
-				stmt = con.prepareStatement(sql);
-				stmt.setString(1, usuario.getEmail());
-				stmt.setString(2, usuario.getSenha());
-				rs = stmt.executeQuery();
-				if(rs.next()) {
-					usuRetorno = new Usuario();
-					usuRetorno.setIdUsuario(rs.getInt("id_usuario"));
-					usuRetorno.setNome(rs.getString("nome_usuario"));
-					usuRetorno.setEmail(rs.getString("email_usuario"));
-					usuRetorno.setSenha(rs.getString("senha_usuario"));
-					usuRetorno.setTipoUsuario(rs.getInt("tipo_usuario"));
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-				e.getMessage();
+		public Usuario addUsuTurma(Usuario usuario) throws Exception  {
+			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, SENHA_USUARIO, TIPO_USUARIO) VALUES(?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, usuario.getNome());
+			stmt.setString(2, usuario.getEmail());
+			stmt.setString(3, usuario.getSenha());
+			stmt.setInt(4, usuario.getTipoUsuario());
+			stmt.executeUpdate();
+			rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				int id_usuario = rs.getInt(1);
+				usuario.setIdUsuario(id_usuario);
+				return usuario;
+			} else {
+				return usuario;
 			}
-			return usuRetorno;
-	}
+		}
 		
 		public void fechar() throws Exception{
 			con.close();

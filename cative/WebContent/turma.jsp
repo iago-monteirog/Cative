@@ -2,13 +2,13 @@
     pageEncoding="ISO-8859-1"%>
     <%
     int id = Integer.parseInt(request.getParameter("id"));
-    String nomet = "";
-    String cor = "";
+    String nometurma = "";
+    String corturma = "";
     if(id == 0) {
     	TurmaDAO turmadao = new TurmaDAO();
     	Turma turma = turmadao.getTurmaById(id);
-    	nomet = turma.getNomeTurma() == null ? "" : turma.getNomeTurma();
-    	cor = turma.getCorTurma();
+    	nometurma = turma.getNomeTurma();
+    	corturma = turma.getCorTurma();
     }
     %>
 <!DOCTYPE html>
@@ -25,9 +25,10 @@
 <body>
 
 	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
+	<input type="hidden" value="<% out.print(id); %>" name="id_turma"/>
   <section class="section">
     <div class="section__title">
-      <h1><% out.print(nomet); %></h1>
+      <h1><% out.print(nometurma); %></h1>
     </div>
     <div class="abas">
       <div class="aba jsAba ativo" data-aba="alunos">
