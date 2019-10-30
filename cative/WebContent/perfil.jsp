@@ -203,6 +203,14 @@
 	          editar perfil
 	        </div>
 	      </div>
+		  <div class="form centralizado zona-de-perigo">
+		    <div class="perfil-section-title form__section-title">
+		      <h3>Área de perigo</h3>
+		    </div>
+		    <a class="button--danger button--small jsToggleModoEdicao">
+		      Deletar perfil
+		    </a>
+		  </div>
 	    </div>
 	  </div>
   </form>
