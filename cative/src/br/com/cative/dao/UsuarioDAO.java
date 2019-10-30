@@ -148,12 +148,13 @@ public class UsuarioDAO {
 			}
 		}
 		
-		public int cadastraUsuario(String email, String nome, int tipoUsuario, String senha) throws Exception {
-			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(EMAIL_USUARIO,NOME_USUARIO, TIPO_USUARIO, SENHA_USUARIO) VALUES(?,?,?,?)");
+		public int cadastraUsuario(String email, String nome, int tipoUsuario, String senha, int pontos) throws Exception {
+			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(EMAIL_USUARIO,NOME_USUARIO, TIPO_USUARIO, SENHA_USUARIO, PONTOS_USUARIO) VALUES(?,?,?,?,?)");
 			stmt.setString(1, email);
 			stmt.setString(2, nome);
 			stmt.setInt(3, tipoUsuario);
 			stmt.setString(4, senha);
+			stmt.setInt(5, pontos);
 			return stmt.executeUpdate();
 		}
 		

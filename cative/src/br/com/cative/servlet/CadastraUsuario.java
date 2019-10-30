@@ -53,10 +53,12 @@ public class CadastraUsuario extends HttpServlet {
 		usuario.setNome(nome);
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
+		usuario.setPontuacao(0);
+		
 		if(usuario.getTipoUsuario() == 2) {
 			try {
 				UsuarioDAO usuariodao = new UsuarioDAO();
-				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha);
+				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha, usuario.getPontuacao());
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -65,7 +67,7 @@ public class CadastraUsuario extends HttpServlet {
 		} else {
 			try {
 				UsuarioDAO usuariodao = new UsuarioDAO();
-				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha);
+				usuariodao.cadastraUsuario(email, nome, tipoUsuario, senha, usuario.getPontuacao());
 			} catch(Exception e) {
 				e.printStackTrace();
 			}

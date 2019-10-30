@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import br.com.cative.beans.Missao;
+import br.com.cative.beans.Usuario;
 import br.com.cative.dao.MissaoDAO;
 
 public class TesteConsultarMissao {
@@ -12,9 +13,11 @@ public class TesteConsultarMissao {
 		MissaoDAO missaoDAO = null;
 		
 		try {
+			Usuario usu = new Usuario();
+			usu.setIdUsuario(62);
 			missaoDAO = new MissaoDAO();
 			
-			List<Missao> missoes = missaoDAO.getMissoes();
+			List<Missao> missoes = missaoDAO.getMissoes(usu.getIdUsuario());
 			
 			for(Missao m: missoes) {
 				System.out.println(m.getObjetivo());
