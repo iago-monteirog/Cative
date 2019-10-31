@@ -11,9 +11,11 @@
 	String nome = usuario.getNome();
 	//nome = nome.split(" ")[0];
 	int estrelas = usuario.getPontuacao();
+	
+	
+	String cor = (String)request.getAttribute("corAluno");
 %> 
-
-  <nav class="navegacao jsCorPerfil" style="background-color: ${param.cor}">
+  <nav class="navegacao jsCorPerfil" style="background-color: <% out.print(cor); %>">
     <div class="navegacao__top">
       <div class="navegacao__back jsBack">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +61,7 @@
           <div class="navegacao__perfil navegacao__item">
             <div class="navegacao__column-1">
               <div class="navegacao__perfil-pic">
-                <img src="https://placehold.it/1600x600" alt="">
+                <img src="assets/img/foto-aluno.png" alt="">
               </div>
             </div>
             <div class="navegacao__column-2">
@@ -88,7 +90,7 @@
       </div>
     </div>
   </nav>
-  <nav class="navegacao--desktop jsCorPerfil" style="background-color: ${param.cor}">
+  <nav class="navegacao--desktop jsCorPerfil" style="background-color: <% out.print(cor); %>">
     <div class="navegacao--desktop__container">
       <a href="turmas.jsp" tabindex="0">
         <span class="navegacao--desktop__logo"></span>
@@ -118,7 +120,7 @@
           <div class="dropdown">
             <div class="dropdown__links">
               <div class="dropdown__link">
-                <a href="perfil.jsp">Perfil</a>
+                <!-- <a href="perfil.jsp">Perfil</a> -->
               </div>
               <div class="dropdown__link">
                 <a href="./Logout">Sair</a>

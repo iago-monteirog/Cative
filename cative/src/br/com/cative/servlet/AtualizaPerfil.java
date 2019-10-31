@@ -64,11 +64,19 @@ public class AtualizaPerfil extends HttpServlet {
 		try {
 			dao = new UsuarioDAO();
 			dao.atualizaPerfil(usuario);
+			
+
+			HttpSession sessaoUsuario = request.getSession();
+			sessaoUsuario.setAttribute("emailUsuario", usuario.getEmail());
+			sessaoUsuario.setAttribute("nomeUsuario", usuario.getNome());
+			sessaoUsuario.setAttribute("tipoUsuario", usuario.getTipoUsuario());
+			sessaoUsuario.setAttribute("temaUsuario", usuario.getTema());
+			sessaoUsuario.setAttribute("fotoUsuario", usuario.getFoto());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("aluno.jsp?email="+email);
+		response.sendRedirect("perfil.jsp?email="+email);
 	}
 
 }

@@ -339,7 +339,10 @@ public class UsuarioDAO {
 						usuRetorno.setNome(rs.getString("nome_usuario"));
 						usuRetorno.setEmail(rs.getString("email_usuario"));
 						usuRetorno.setSenha(rs.getString("senha_usuario"));
+						usuRetorno.setTema(rs.getString("tema_usuario"));
+						usuRetorno.setFoto(rs.getString("foto_usuario"));
 						usuRetorno.setTipoUsuario(rs.getInt("tipo_usuario"));
+						usuRetorno.setPontuacao(rs.getInt("pontos_usuario"));
 					}
 				} catch(SQLException e) {
 					e.printStackTrace();

@@ -1,20 +1,22 @@
 <%@  page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-
-	import="br.com.cative.beans.Usuario"
-	import="br.com.cative.dao.UsuarioDAO"
 %>
 <%
-	UsuarioDAO dao = new UsuarioDAO();
-	Usuario usuario = dao.getUsuario(1);
+//	int estrelas = 1;
 	
-	String nome = usuario.getNome();
-	//nome = nome.split(" ")[0];
-	int estrelas = usuario.getPontuacao();
-	String foto = request.getParameter("foto") == "" || request.getParameter("foto") == null ? "assets/img/foto-aluno.png" : request.getParameter("foto") ;
+	HttpSession sessionUsuario = request.getSession(true);
+	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+	String email = (String) sessionUsuario.getAttribute("emailUsuario");
+	String nome = (String) sessionUsuario.getAttribute("nomeUsuario");
+	String tema = (String) sessionUsuario.getAttribute("temaUsuario");
+	String foto = (String) sessionUsuario.getAttribute("fotoUsuario");
+	int estrelas = sessionUsuario.getAttribute("estrelasUsuario") == null ? 0 : (int)sessionUsuario.getAttribute("estrelasUsuario");
+
+	foto = foto == "" || foto == null ? "assets/img/foto-aluno.png" : foto ;
+
 %> 
     
-    <nav class="navegacao jsCorPerfil" style="background-color: ${param.cor}">
+    <nav class="navegacao jsCorPerfil" style="background-color: <% out.print(tema); %>">
         <div class="navegacao__top">
             <div class="navegacao__back jsBack">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +67,7 @@
                         </div>
                         <div class="navegacao__column-2">
                             <div class="navegacao__nome">
-                                <% out.print(nome); %>
+	                            <% out.print(nome); %>
                             </div>
                             <div class="navegacao__estrelas">
                                 <div class="navegacao__icon-estrela icon-star"></div>
@@ -77,7 +79,7 @@
                         <a href="missoes.jsp">Missões</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
-                        <a href="perfil.jsp">Perfil</a>
+                        <a href="perfil.jsp?email=<% out.print(email);%>">Perfil</a>
                     </div>
                     <div class="navegacao__link navegacao__item">
                         <!-- <a href="">Evolução</a> -->
@@ -91,7 +93,7 @@
             </div>
         </div>
     </nav>
-    <nav class="navegacao--desktop jsCorPerfil" style="background-color: ${param.cor}">
+    <nav class="navegacao--desktop jsCorPerfil" style="background-color: <% out.print(tema); %>">
         <div class="navegacao--desktop__container">
             <a href="missoes.jsp" tabindex="0">
                 <span class="navegacao--desktop__logo"></span>
@@ -122,7 +124,7 @@
                     <div class="dropdown">
                         <div class="dropdown__links">
                             <div class="dropdown__link">
-                                <a href="perfil.jsp">Perfil</a>
+                                <a href="perfil.jsp?email=<% out.print(email);%>">Perfil</a>
                             </div>
                             <div class="dropdown__link">
                                 <a href="./Logout">Sair</a>

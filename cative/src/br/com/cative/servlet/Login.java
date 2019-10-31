@@ -62,6 +62,12 @@ public class Login extends HttpServlet {
 			HttpSession sessaoUsuario = request.getSession();
 			Integer idUsuario = new Integer(usuAutenticado.getIdUsuario());
 			sessaoUsuario.setAttribute("idUsuario", idUsuario);
+			sessaoUsuario.setAttribute("emailUsuario", usuAutenticado.getEmail());
+			sessaoUsuario.setAttribute("nomeUsuario", usuAutenticado.getNome());
+			sessaoUsuario.setAttribute("tipoUsuario", usuAutenticado.getTipoUsuario());
+			sessaoUsuario.setAttribute("temaUsuario", usuAutenticado.getTema());
+			sessaoUsuario.setAttribute("fotoUsuario", usuAutenticado.getFoto());
+			sessaoUsuario.setAttribute("estrelasUsuario", usuAutenticado.getPontuacao());
 		} else {
 			response.sendRedirect("login.jsp?erro=1");
 		}	

@@ -42,14 +42,24 @@
 
 <body>
 			<% 
-			HttpSession sessionUsuario = request.getSession(true);
-			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+				HttpSession sessionUsuario = request.getSession(true);
+				Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+				int tipoUsuario = (int)sessionUsuario.getAttribute("tipoUsuario");
+				sessionUsuario.setAttribute("corAluno", tema);
 			%>
-  <jsp:include page="components/navegacao-aluno.jsp">
-  	<jsp:param name="cor" value="<%= tema %>"/>
-  	<jsp:param name="titulo" value=""/>
-  </jsp:include>
-
+			<%
+				if(tipoUsuario == 2) {
+			%>
+			  <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
+			<%
+				} else {
+				request.setAttribute("corAluno", tema);
+			%>
+			  <jsp:include page="components/navegacao-professor.jsp"></jsp:include>
+		  	<%
+				}
+		  	%>
+			
   <form action="${pageContext.request.contextPath}/AtualizaPerfil" method="POST">
   	  <input type="hidden" value="<% out.print(id); %>" name="id_usuario"/>
   	  

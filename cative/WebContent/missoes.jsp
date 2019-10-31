@@ -18,10 +18,15 @@
 
 <body>
 	<%
-	HttpSession sessionUsuario = request.getSession(true);
-	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+		HttpSession sessionUsuario = request.getSession(true);
+		Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+		String email = (String) sessionUsuario.getAttribute("emailUsuario");
+		String nome = (String) sessionUsuario.getAttribute("nomeUsuario");
 	%>
-   <jsp:include page="components/navegacao-aluno.jsp"></jsp:include>
+	
+   <jsp:include page="components/navegacao-aluno.jsp">
+   	<jsp:param value="${nome}" name="nome"/>
+   </jsp:include>
 	
     <section class="section">
         <div class="container">
