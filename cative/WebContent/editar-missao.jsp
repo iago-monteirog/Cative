@@ -1,5 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"
+    import="br.com.cative.dao.MissaoDAO"
+	import="br.com.cative.beans.Missao" 
+    %>
+    <%
+	int id = Integer.parseInt(request.getParameter("id"));
+ 	String objetivo = "";
+ 	String descricao = "";
+ 	int pontos = 0;
+ 	String imagem = "";
+ 	String cor = "";
+ 	
+	if(id != 0) {
+		MissaoDAO missaodao = new MissaoDAO();
+		Missao missao = missaodao.getMissaoById(id);	
+		objetivo = missao.getObjetivo();
+		descricao = missao.getDescricao();
+		pontos = missao.getPontos();
+		imagem = missao.getImgMissao();
+		cor = missao.getCorMissao();
+	}
+	
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,11 +34,19 @@
 </head>
 
 <body>
+		<%
+		HttpSession sessionUsuario = request.getSession(true);
+		Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+		%>
+		
+		<%@ page import="br.com.cative.dao.*" %>
+	    <%@ page import="br.com.cative.beans.*" %>
+	    <%@ page import="java.util.List" %>
 	<jsp:include page="components/navegacao-professor.jsp">
 		<jsp:param name="titulo" value="Editar missão"/>
 	</jsp:include>
   <section class="nova-missao">
-    <form action="${pageContext.request.contextPath}/CadastraMissao" class="form" method="POST">
+    <form action="${pageContext.request.contextPath}/EditarMissao" class="form" method="POST">
       <div class="nova-missao__header">
         <h1>Editar missão</h1>
       </div>
@@ -25,7 +55,7 @@
         accept='image/*'>
         <textarea class="nova-missao__cover-data-url jsImagemURLPraSubmit" name="imagem_capa"></textarea>
         <picture class="nova-missao__cover-image">
-          <img src="./assets/img/icon-image.svg" class="jsImagemUpada" alt="Imagem da missão">
+          <img src="<% out.print(imagem); %>" class="jsImagemUpada" alt="Imagem da missão">
         </picture>
         <div class="nova-missao__cover-bottom">
           <p>Adicione uma imagem</p>
@@ -35,13 +65,13 @@
         <div class="form-control">
           <label for="" class="form-label">Objetivo</label>
           <input type="text" class="text-input jsCompletoQuandoSemFoco jsObjetivoMissao"
-          placeholder="Ex.: Escovar os dentes">
+          placeholder="<% out.print(objetivo); %>">
         </div>
         
         <div class="form-control">
           <label for="" class="form-label">Descrição</label>
           <textarea name="" id="" rows="5" class="textarea jsCompletoQuandoSemFoco jsDetalhesMissao"
-          placeholder="Descrição mais detalhada"></textarea>
+          placeholder="Descrição mais detalhada"><% out.print(descricao); %></textarea>
         </div>
         
         <div class="form-control">
@@ -106,18 +136,8 @@
         </div>
       </div>
       
-      <div class="form-control">
-        <label for="" class="form-label">Turma</label>
-        <select name="" class="select-input jsTurmaSelect" id="">
-          <option value="classe a">Classe A</option>
-          <option value="classe b">Classe B</option>
-          <option value="classe c">Classe C</option>
-          <option value="classe d">Classe D</option>
-        </select>
-      </div>
-      
       <div class="form-submit">
-        <a href="turma.html" type="submit" class="button button--primary button--xs-small jsSalvaMissao">
+        <a href="turmas.jsp" type="submit" class="button button--primary button--xs-small jsSalvaMissao">
           Salvar
         </a>
       </div>

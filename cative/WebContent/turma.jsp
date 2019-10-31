@@ -77,7 +77,7 @@
             %>
           </div>
         </a>
-        <% } %>
+       
       </div>
       <div class="section__bottom">
         <button class="button--primary button--xs-small jsModalToggler">
@@ -99,14 +99,14 @@
           <div class="card-missao__imagem primary">
             <img src="<% 
 
-                String foto = missao.getImgMissao();
-      	        foto = (foto == "" || foto == null) ? "assets/img/icone-montanha.svg" : foto;
-      	        out.println(foto);
+                String imagem = missao.getImgMissao();
+           		imagem = (imagem == "" || imagem == null) ? "assets/img/icone-montanha.svg" : imagem;
+      	        out.println(imagem);
              %>" alt="Imagem da missão">
           </div>
           <div class="card-missao__body">
             <div class="card-missao__titulo">
-              <h3><% out.print(missao.getObjetivo()); %></h3>
+              <h3><% out.print(missao.getObjetivo()); out.print(missao.getIdMissao()); %></h3>
             </div>
             <div class="card-missao__pontos">
               <i class="icon icon-star"></i>
@@ -173,6 +173,7 @@
             fill="#2D3436" />
         </svg>
       </button>
+
       <div class="modal-missao__header jsModalCorMissao">
         <div class="modal-missao__header-image">
           <img class="jsModalImagem" src="./assets/img/missao-escova-dental.png" alt="Imagem da missão">
@@ -212,13 +213,17 @@
         <a class="editar-missao">
             <div class="editar-missao__icone"></div>
             <div class="editar-missao__texto">
-                editar missão
+         <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
+         <a href="editar-missao.jsp?id=">
+         editar missão
+         </a>
+         </button>
             </div>
         </a>        
       </div>
     </div>
   </div>
-
+<% } %>
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/barra-navegacao.js"></script>
   <script src="./assets/js/abas.js"></script>
