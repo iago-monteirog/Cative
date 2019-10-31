@@ -69,7 +69,7 @@
             </div>
           </div>
           <div class="navegacao__button navegacao__item">
-            <a href="" class="cta-nova-missao">
+            <a href="nova-missao.jsp" class="cta-nova-missao">
               Nova missão
             </a>
           </div>
@@ -90,7 +90,7 @@
   </nav>
   <nav class="navegacao--desktop jsCorPerfil" style="background-color: ${param.cor}">
     <div class="navegacao--desktop__container">
-      <a href="turmas.html" tabindex="0">
+      <a href="turmas.jsp" tabindex="0">
         <span class="navegacao--desktop__logo"></span>
       </a>
       <div class="navegacao--desktop__items">

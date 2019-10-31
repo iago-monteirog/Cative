@@ -41,16 +41,22 @@ public class NovaTurma extends HttpServlet {
 		String nomeTurma = request.getParameter("nome_turma");
 		Turma turma = new Turma();
 		turma.setNomeTurma(nomeTurma);
+		if(nomeTurma != null) {
 		try {
 			UsuarioDAO usuariodao = new UsuarioDAO();
 			TurmaDAO turmadao = new TurmaDAO();
-			turmadao.addTurma(nomeTurma);
-			turmadao.validaTurma(turma);
-			HttpSession sessionUsuario = request.getSession(true);
-			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
-			turmadao.adicionaAlunoEmTurma(idUsuario, turmadao.validaTurma(turma).getIdTurma());
+			if(nomeTurma != null) {
+				turmadao.addTurma(nomeTurma);
+				turmadao.validaTurma(turma);
+				HttpSession sessionUsuario = request.getSession(true);
+				Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+				turmadao.adicionaAlunoEmTurma(idUsuario, turmadao.validaTurma(turma).getIdTurma());
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+		} else {
+			response.sendRedirect("turmas.jsp?erro=1");
 		}
 		
 		response.sendRedirect(request.getHeader("referer"));

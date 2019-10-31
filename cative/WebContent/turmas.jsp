@@ -16,7 +16,9 @@
 	HttpSession sessionUsuario = request.getSession(true);
 	Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
 	%>
- 	<jsp:include page="components/navegacao-professor.jsp"></jsp:include>
+ 	<jsp:include page="components/navegacao-professor.jsp">
+  		<jsp:param name="titulo" value="Suas turmas"/>
+  	</jsp:include>
   <section class="section">
     <div class="section__title titulo-pagina--desktop">
       <h1>
@@ -56,6 +58,7 @@
   <form action="${pageContext.request.contextPath}/NovaTurma" method="GET" class="form">
 	<div class="modal-overlay jsModalOverlay jsModalToggler">
 	  <div class="modal">
+	  
 	    <header class="modal__header">
 	      <h3 class="modal__title">
 	        Nova turma
@@ -63,8 +66,19 @@
 	    </header>
 	    <div class="modal__body">
 	        <div class="form-control">
+	        <%
+        	int erro = request.getParameter("erro") != null ? Integer.parseInt(request.getParameter("erro")) : 0;
+        	if(erro == 1) {
+        %>
+	        <div class="form__feedback erro jsBoxFeedback">
+	          Nome inválido
+	        </div>      
+        <%
+        	}
+        %>
 	          <label for="nome_turma" class="form-label">Nova turma</label>
-	          <input tabindex="0" type="text" name="nome_turma" id="nome_turma" class="text-input jsFirstInput"
+	          <span class="form-control__feedback"></span>
+	          <input tabindex="0" type="text" name="nome_turma" id="nome_turma" class="text-input jsInputValidavel"
 	            placeholder="Ex.: Classe A">
 	        </div>
 	    </div>
