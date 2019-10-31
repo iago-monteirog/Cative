@@ -93,7 +93,7 @@
 	    List<Missao> missoes = missaodao.filtraMissoes(id);
 	    for(Missao missao : missoes) {
 	    %>
-        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="a1" data-descricao="<% out.print(missao.getDescricao()); %>"
+        <div class="card-missao jsCardMissao" data-cor="#0984E3" data-cod="<% out.print(missao.getIdMissao()); %>" data-descricao="<% out.print(missao.getDescricao()); %>"
           data-titulo="<% out.print(missao.getObjetivo()); %>" data-estrelas="<% out.print(missao.getPontos()); %>">
 
           <div class="card-missao__imagem primary">
@@ -210,16 +210,12 @@
         <a href="./ConcluiMissao" class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
           Concluída
         </a>
-        <a class="editar-missao">
+        <a  href="editar-missao.jsp" class="editar-missao jsEditarMissao">
             <div class="editar-missao__icone"></div>
             <div class="editar-missao__texto">
-         <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
-         <a href="editar-missao.jsp?id=">
-         editar missão
-         </a>
-         </button>
+                editar missão
             </div>
-        </a>        
+        </a>       
       </div>
     </div>
   </div>

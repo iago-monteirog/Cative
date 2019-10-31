@@ -93,6 +93,9 @@ let modalMissao = {
   codigo(codigo) {
     modalMissao.overlay.dataset.cod = codigo;
     modalMissao.btnConcluiMissao.href = `./ConcluiMissao?id_missao=${codigo}`;
+    
+    let editarMissao = document.querySelector('.jsEditarMissao');
+    editarMissao.href = `editar-missao.jsp?id=${codigo}`;
   },
 }
 

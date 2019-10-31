@@ -275,7 +275,7 @@
         <a href="./ConcluiMissao" class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
           Concluída
         </a>
-        <a class="editar-missao">
+        <a  href="editar-missao.jsp" class="editar-missao jsEditarMissao">
             <div class="editar-missao__icone"></div>
             <div class="editar-missao__texto">
                 editar missão
