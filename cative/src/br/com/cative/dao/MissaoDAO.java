@@ -85,8 +85,11 @@ public class MissaoDAO {
 	 *   */
 	public List getMissoes(int idUsuario) throws Exception{
 		stmt = con.prepareStatement
-				("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao join tb_turma as t on t.id_turma = tt.tb_turma_id_turma join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where id_usuario = ?;\r\n" + 
-						"");
+		("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao "
+				+ "join tb_turma as t on t.id_turma = tt.tb_turma_id_turma "
+				+ "join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma "
+				+ "join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario "
+				+ "where id_usuario = ? and missao_concluida = 0");
 		stmt.setInt(1, idUsuario);
 		rs = stmt.executeQuery();
 		List<Missao> missoes = new ArrayList<Missao>();
