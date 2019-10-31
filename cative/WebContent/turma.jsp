@@ -106,7 +106,7 @@
           </div>
           <div class="card-missao__body">
             <div class="card-missao__titulo">
-              <h3><% out.print(missao.getObjetivo()); out.print(missao.getIdMissao()); %></h3>
+              <h3><% out.print(missao.getObjetivo());%></h3>
             </div>
             <div class="card-missao__pontos">
               <i class="icon icon-star"></i>

@@ -45,14 +45,18 @@ public class EditarMissao extends HttpServlet {
 		String imgMissao = request.getParameter("imagem_capa");
 		int pontosMissao = Integer.parseInt(request.getParameter("pontos"));
 		String corMissao = request.getParameter("cor");
+		int idMissao = Integer.parseInt(request.getParameter("id_missao"));
 		
 		Missao missao = new Missao();
 	
-		missao.setDescricao(descricaoMissao);
+		
 		missao.setObjetivo(objetivoMissao);
+		missao.setDescricao(descricaoMissao);
 		missao.setImgMissao(imgMissao);
 		missao.setPontos(pontosMissao);
 		missao.setCorMissao(corMissao);
+		missao.setIdMissao(idMissao);
+		System.out.println(missao);
 		
 		try {
 			MissaoDAO missaodao = new MissaoDAO();
@@ -60,9 +64,6 @@ public class EditarMissao extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	
-		
 	}
 
 }

@@ -47,6 +47,7 @@
 	</jsp:include>
   <section class="nova-missao">
     <form action="${pageContext.request.contextPath}/EditarMissao" class="form" method="POST">
+    <input type="hidden" value="<% out.print(id); %>" name="id_missao"/>
       <div class="nova-missao__header">
         <h1>Editar missão</h1>
       </div>
@@ -64,13 +65,13 @@
       <div class="nova-missao__form">
         <div class="form-control">
           <label for="" class="form-label">Objetivo</label>
-          <input type="text" class="text-input jsCompletoQuandoSemFoco jsObjetivoMissao"
+          <input type="text" name="objetivo_missao" class="text-input jsCompletoQuandoSemFoco jsObjetivoMissao"
           placeholder="<% out.print(objetivo); %>">
         </div>
         
         <div class="form-control">
           <label for="" class="form-label">Descrição</label>
-          <textarea name="" id="" rows="5" class="textarea jsCompletoQuandoSemFoco jsDetalhesMissao"
+          <textarea name="descricao_missao" id="" rows="5" class="textarea jsCompletoQuandoSemFoco jsDetalhesMissao"
           placeholder="Descrição mais detalhada"><% out.print(descricao); %></textarea>
         </div>
         
@@ -137,9 +138,9 @@
       </div>
       
       <div class="form-submit">
-        <a href="turmas.jsp" type="submit" class="button button--primary button--xs-small jsSalvaMissao">
+        <button type="submit" class="button button--primary button--xs-small jsSalvaMissao">
           Salvar
-        </a>
+        </button>
       </div>
       <div class="form centralizado zona-de-perigo">
         <div class="perfil-section-title form__section-title">
