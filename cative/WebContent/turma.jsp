@@ -59,7 +59,7 @@
           	  String foto = usuario.getFoto();
 	          foto = (foto == "" || foto == null) ? "assets/img/foto-aluno.png" : foto;
 	          out.println(foto);
-		   %>" alt="Foto do aluno">
+		   %>" alt="Foto do aluno"/>
           </div>
           <div title="Abraão Azevedo" class="aluno__nome">
             <%  
@@ -77,7 +77,9 @@
             %>
           </div>
         </a>
-       
+       <%
+	    	}
+       %>
       </div>
       <div class="section__bottom">
         <button class="button--primary button--xs-small jsModalToggler">
@@ -219,7 +221,7 @@
       </div>
     </div>
   </div>
-<% } %>
+
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/barra-navegacao.js"></script>
   <script src="./assets/js/abas.js"></script>
