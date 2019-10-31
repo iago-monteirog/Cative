@@ -193,6 +193,7 @@ public class MissaoDAO {
 		return missoes;
 	}
 	 
+<<<<<<< HEAD
 	public Missao getMissaoById(int id) throws Exception{
 		stmt = con.prepareStatement("select * from tb_missao where id_missao = ?");
 		stmt.setInt(1, id);
@@ -220,6 +221,13 @@ public class MissaoDAO {
 		stmt.setString(5, missao.getCorMissao());
 		stmt.executeQuery();
 		return missao;
+=======
+	public int concluiMissao(int idMissao) throws Exception {
+		stmt = con.prepareStatement("UPDATE TB_MISSAO SET MISSAO_CONCLUIDA = 1 WHERE ID_MISSAO = ?");
+		stmt.setInt(1, idMissao);
+		int rs = stmt.executeUpdate();
+		return rs;
+>>>>>>> branch 'master' of https://gitlab.com/azabraao/cative.git
 	}
 	
 	/** Método para fechar a conexão com o banco 

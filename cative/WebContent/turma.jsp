@@ -207,9 +207,9 @@
         </div>
       </div>
       <div class="modal-missao__footer">
-        <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
+        <a href="./ConcluiMissao" class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
           Concluída
-        </button>
+        </a>
         <a class="editar-missao">
             <div class="editar-missao__icone"></div>
             <div class="editar-missao__texto">
