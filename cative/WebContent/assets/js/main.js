@@ -20,31 +20,34 @@ let modalMissao = {
   init() {
     let modal = document.querySelector('.jsOverlayMissao');
     modalMissao.overlay = modal;
-    
+
     let closeModal = document.querySelector('.jsModalClose');
     closeModal ? closeModal.addEventListener('click', modalMissao.toggle) : null;
-    
+
     modalMissao.btnConcluiMissao = document.querySelector('.jsConcluiMissao');
     // modalMissao.btnConcluiMissao ? 
     // modalMissao.btnConcluiMissao.addEventListener('click', modalMissao.toggle ) : null;
-    
+
     modalMissao.btnConcluiMissao ?
-    modalMissao.btnConcluiMissao.addEventListener('click', modalMissao.concluiMissao ) : null;
-    
+      modalMissao.btnConcluiMissao.addEventListener('click', modalMissao.concluiMissao) : null;
+
     modal ? modal.addEventListener('click', modalMissao.handleOverlayClick) : null;
   },
   concluiMissao() {
+    let overlay = document.querySelector('.jsOverlayMissao');
+    overlay.classList.add('concluida');
     modalMissao.btnConcluiMissao.textContent = "Parabéns!";
-    modalMissao.btnConcluiMissao.style.background = '#00b894'; 
+    modalMissao.btnConcluiMissao.style.background = '#00b894';
     document.querySelector('.jsModalCorMissao').style.background = '#00b894';
 
-    setTimeout(function() {
+    setTimeout(function () {
       modalMissao.toggle();
     }, 2000);
 
-    setTimeout(function() {
+    setTimeout(function () {
       modalMissao.btnConcluiMissao.textContent = "Concluída";
-    },3000);
+      overlay.classList.remove('concluida');
+    }, 3000);
 
     let idMissao = modalMissao.overlay.dataset.cod;
     let cardMissao = document.querySelector(`.jsCardMissao[data-cod=${idMissao}]`);
@@ -54,7 +57,7 @@ let modalMissao = {
     let wrapMissoes = document.querySelector('.missoes');
     let estaVazio = wrapMissoes.querySelectorAll('.card-missao').length == 0;
 
-    if(estaVazio) {
+    if (estaVazio) {
       wrapMissoes.innerHTML += '<img src="assets/img/sem-missoes.png"/>';
     }
 
