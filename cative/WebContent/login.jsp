@@ -50,7 +50,7 @@
           <input type="password" name="senha_usuario" placeholder="Ex.: *********" class="text-input jsInputValidavel">
         </div>
         <div class="form-submit">
-          <button type="submit" class="button button--small button--primary">
+          <button type="submit" class="jsLoading button button--small button--primary">
             Entrar
           </button>
         </div>
@@ -66,6 +66,7 @@
 <script src="./assets/js/cadastre-se.js"></script>
 <script src="./assets/js/inputs-de-texto.js"></script>
 <script src="./assets/js/box-feedback.js"></script>
+<script src="./assets/js/loading-button.js"></script>
 
 
 </html>
