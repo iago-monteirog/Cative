@@ -15,7 +15,9 @@ import br.com.cative.dao.TurmaDAO;
 import br.com.cative.dao.UsuarioDAO;
 
 /**
+ * Classe para <b>adicionar</b> uma nova turma no sistema
  * Servlet implementation class NovaTurma
+ * @author Cative
  */
 @WebServlet("/NovaTurma")
 public class NovaTurma extends HttpServlet {

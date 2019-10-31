@@ -11,17 +11,34 @@ import java.util.List;
 import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
+/** Classe para os métodos referentes ao Usuario
+ * 
+ * @author Cative
+ *
+ */
 public class UsuarioDAO {
 	
 		private Connection con;
 		private PreparedStatement stmt;
 		private ResultSet rs;
 		
+		/**
+		 * Método para inciar uma conexão com o banco
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public UsuarioDAO() throws Exception{
 			con = Conexao.getConexao();
 		}
 		
-		
+		/**
+		 * Método para <adicionar) uma tupla na tabela
+		 * TB_USUARIO
+		 * @param user
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int addUsuario(Usuario user) throws Exception {
 			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, SOBRENOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?, ?,?)");
 			stmt.setString(1, user.getNome());
@@ -34,6 +51,15 @@ public class UsuarioDAO {
 			return stmt.executeUpdate();
 		}
 		
+		/**
+		 * Método para <b>adicionar</b> usuarios com seus dados básicos que são:
+		 * @param nomeUsuario - nome do usuário
+		 * @param email - o e-mail do usuário
+		 * @param tipoUsuario - o tipo (aluno, professor ou responsável)
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario adicionaUsuarioComDadosBasicos(String nomeUsuario, String email, int tipoUsuario) throws Exception {
 			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, TIPO_USUARIO) VALUES(?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, nomeUsuario);
@@ -54,7 +80,16 @@ public class UsuarioDAO {
 				return usuario;
 			}
 		}
-
+		
+		/**
+		 * Método para <b>selecionar</b> usuários da tabela
+		 * TB_USUARIO
+		 * através do
+		 * @param idUsuario - identificador do usuário
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario getUsuario(int idUsuario) throws Exception{
 			stmt = con.prepareStatement
 					("select * from TB_USUARIO where ID_USUARIO=?");
@@ -72,6 +107,15 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/**
+		 * Método para <b>selecionar<b> um usuário da tabela
+		 * TB_USUARIO
+		 * com base no seu
+		 * @param email - e-mail do usuário
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario getUsuarioByEmail(String email) throws Exception{
 			stmt = con.prepareStatement("select * from TB_USUARIO where EMAIL_USUARIO = ?");
 			stmt.setString(1, email);
@@ -93,6 +137,15 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/**
+		 * Método para <b>deletar</b> uma tupla da tabela
+		 * TB_USUARIO
+		 * buscando seu
+		 * @param cod
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int delete(int cod) throws Exception{
 			
 			stmt = con.prepareStatement
@@ -101,6 +154,15 @@ public class UsuarioDAO {
 			return stmt.executeUpdate();
 		}
 		
+		/**
+		 * Método para <b>atualizar</b> uma tupla da tabela
+		 * TB_USUARIO
+		 * buscando seu
+		 * @param idUsuario
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int attUsuario(int idUsuario) throws Exception {
 			stmt = con.prepareStatement("update * from tb_usuario where id_usuario=?");
 			stmt.setInt(1, idUsuario);
@@ -108,6 +170,12 @@ public class UsuarioDAO {
 			return rs;
 		}
 		
+		/** 
+		 * Método para <b>adicionar</b> um usuário com dados básicos
+		 * @param user
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public void addUsuarioBasic(Usuario user) throws Exception {
 			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(ID_USUARIO, NOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO) VALUE(?, ?, ?, ?, ?)");
 			stmt.setInt(1, user.getIdUsuario());
@@ -119,6 +187,13 @@ public class UsuarioDAO {
 			stmt.close();
 		}
 		
+		/**
+		 * Método para <b>selecionar</b> um usuário a partir de seu e-mail "e"
+		 * @param e - e-mail do usuário
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario retornaEmail(String e) throws Exception {
 			stmt = con.prepareStatement
 					("select email_usuario from tb_usuario where email_usuario=?");
@@ -134,6 +209,13 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/**
+		 * Método para <b>selecionar</b> um usuário pelo seu identificado atráves do seu
+		 * @param e - e-mail do usuário
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int getAluTurma(String e) throws Exception{
 			stmt = con.prepareStatement
 					("select ID_USUARIO, nome_usuario from TB_USUARIO where email_usuario LIKE ?");
@@ -148,6 +230,17 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/** 
+		 * Método para <b>cadastrar</b> um usuário com os seguintes valores preenchidos
+		 * @param email - e-mail do usuário
+		 * @param nome - o nome do usuário
+		 * @param tipoUsuario - o tipo do usuário (aluno, professor ou responsável)
+		 * @param senha - a senha do usuário
+		 * @param pontos 
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int cadastraUsuario(String email, String nome, int tipoUsuario, String senha, int pontos) throws Exception {
 			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(EMAIL_USUARIO,NOME_USUARIO, TIPO_USUARIO, SENHA_USUARIO, PONTOS_USUARIO) VALUES(?,?,?,?,?)");
 			stmt.setString(1, email);
@@ -158,6 +251,12 @@ public class UsuarioDAO {
 			return stmt.executeUpdate();
 		}
 		
+		/**
+		 * Método para <b>selecionar</b> a quantidade de missões que o usuário concluiu
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public int getQuantidadeMissoesConcluidas() throws Exception {
 			stmt = con.prepareStatement("SELECT COUNT(*) FROM TB_MISSAO");
 			rs = stmt.executeQuery();
@@ -169,6 +268,12 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/**
+		 * Método para <b>atualizar</b> os dados do perfil já criado do usuário
+		 * @param usuario
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public void atualizaPerfil(Usuario usuario) throws Exception {
 			stmt = con.prepareStatement
 			("UPDATE TB_USUARIO SET "
@@ -186,6 +291,13 @@ public class UsuarioDAO {
 			stmt.executeUpdate();
 		}
 		
+		/**
+		 * Método que <b>seleciona</b> os alunos de uma certa turma atráves do seu identificador
+		 * @param id 
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public List getAlunosTurma(int id) throws Exception {
 			stmt = con.prepareStatement("select * from tb_usuario as u join tb_usuario_has_tb_turma as tu on u.id_usuario = tu.tb_usuario_id_usuario where tb_turma_id_turma=? and (tipo_usuario = 2);");
 			stmt.setInt(1, id);
@@ -206,6 +318,13 @@ public class UsuarioDAO {
 			} return aluno;
 		}
 		
+		/**
+		 * Método para <b>validar</b> se o usuário já possue um cadastro no nosso sistema
+		 * @param usuario
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario validaUsuario(Usuario usuario) throws Exception {
 				Usuario usuRetorno = null;
 				String sql = "select * from tb_usuario where email_usuario=? and senha_usuario=?";
@@ -229,6 +348,13 @@ public class UsuarioDAO {
 				return usuRetorno;
 		}
 		
+		/**
+		 * Método para <b>adicionar</b> um aluno à turma especificada
+		 * @param usuario
+		 * @return
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public Usuario addUsuTurma(Usuario usuario) throws Exception  {
 			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, SENHA_USUARIO, TIPO_USUARIO) VALUES(?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, usuario.getNome());
@@ -246,6 +372,11 @@ public class UsuarioDAO {
 			}
 		}
 		
+		/**
+		 * Método para fechar a conexão com o banco 
+		 * @throws Exception
+		 * @author Cative
+		 */
 		public void fechar() throws Exception{
 			con.close();
 		}

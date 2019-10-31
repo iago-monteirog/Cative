@@ -13,7 +13,9 @@ import br.com.cative.beans.Turma;
 import br.com.cative.dao.TurmaDAO;
 
 /**
+ * Classe para <b>adicionar</b> uma turma no sistema
  * Servlet implementation class AdicionaTurma
+ * @author Cative
  */
 @WebServlet("/AdicionaTurma")
 public class AdicionaTurma extends HttpServlet {

@@ -13,7 +13,9 @@ import br.com.cative.beans.Turma;
 import br.com.cative.dao.MissaoDAO;
 
 /**
+ * Classe para <b>cadastrar</b> uma missão no sistema
  * Servlet implementation class AdicionaMissao
+ * @author Cative
  */
 @WebServlet("/CadastraMissao")
 public class CadastraMissao extends HttpServlet {

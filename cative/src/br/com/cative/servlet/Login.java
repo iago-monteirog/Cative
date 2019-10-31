@@ -13,7 +13,9 @@ import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
 /**
+ * Classe para <b>validar</b> o login do usuário
  * Servlet implementation class Login
+ * @author Cative
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Classe para <b>encerrar</b> a sessão do usuário no sistema 
  * Servlet implementation class Logout
+ * @author Cative
  */
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {

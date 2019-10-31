@@ -13,7 +13,9 @@ import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
 /**
+ * Classe para <b>atualizar</b> as informações do perfil
  * Servlet implementation class AtualizaPerfil
+ * @author Cative
  */
 @WebServlet("/AtualizaPerfil")
 public class AtualizaPerfil extends HttpServlet {

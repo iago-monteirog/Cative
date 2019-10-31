@@ -10,17 +10,29 @@ import java.util.List;
 import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
-
+/** Classe para os métodos referentes a Turma
+ * 
+ * @author Cative
+ *
+ */
 public class TurmaDAO {
 	private static Connection con;
 	private static PreparedStatement stmt;
 	private static ResultSet rs;
 
-
+	/** Método para iniciar a conexão com o banco
+	 * @author Cative */
 	public	TurmaDAO() throws Exception {
 		con = Conexao.getConexao();
 		}
 	
+	
+	/** Método que <b>adiciona</b> uma tupla na tabela
+	 *  TB_USUARIO_has_TB_TURMA
+	 *  Irá adicionar um aluno em uma turma específica
+	 *  @param idUsuario - identificador do usuário
+	 *  @param idTurma - identificador da turma
+	 *  @author Cative*/
 	public int adicionaAlunoEmTurma(int idUsuario, int idTurma) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_USUARIO_has_TB_TURMA(TB_USUARIO_id_usuario, TB_TURMA_id_turma) VALUES(?, ?)");
 		stmt.setInt(1, idUsuario);
@@ -28,6 +40,14 @@ public class TurmaDAO {
 		return stmt.executeUpdate();
 	}
 	
+	
+
+	/** Método que <b>adiciona</b> na tabela
+	 * TB_TURMA 
+	 * uma turma
+	 * @param nomeTurma - nome da Turma  
+	 * nao havendo repetições
+	 * @author Cative*/
 	public Turma addTurma(String nomeTurma) throws Exception {
 				
 		stmt = con.prepareStatement("INSERT INTO TB_TURMA(NOME_TURMA) VALUES(?)",PreparedStatement.RETURN_GENERATED_KEYS);
@@ -48,6 +68,10 @@ public class TurmaDAO {
 		}
 	}
 	
+	/** Método que <b>retorna</b> uma lista
+	 * dos alunos de uma turma específica
+	 * @param idUsuario - identificador do usuário
+	 * @author Cative*/
 	public List getListTurmas(int idUsuario) throws Exception {
 		stmt = con.prepareStatement("select * from tb_turma as t join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where u.id_usuario = ?;");
 		stmt.setInt(1, idUsuario);
@@ -62,6 +86,11 @@ public class TurmaDAO {
 			return turmas;
 		}
 	
+	
+	/** Método que <b>seleciona</b> uma tupla da tabela
+	 * TB_TURMA
+	 * @param idTurma - identificador da turma
+	 * @author Cative */
 	public Turma getTurma(int idTurma) throws Exception{
 		stmt = con.prepareStatement
 				("select * from TB_TURMA where ID_TURMA=?");
@@ -78,6 +107,10 @@ public class TurmaDAO {
 		}
 	}
 	
+	
+	/** Método que <b>deleta<b> uma tupla da tabela
+	 * TB_TURMA
+	 * @author Cative */
 	public int kill(int idTurma) throws Exception {
 		stmt = con.prepareStatement
 				("delete from TB_TURMA where ID_TURMA=?");
@@ -85,6 +118,10 @@ public class TurmaDAO {
 		return stmt.executeUpdate();
 	}
 	
+	
+	/** Método que <b>atualiza</b> uma tupla da tabela
+	 * TB_TURMA
+	 * @author Cative */
 	public int attTurma(int idTurma) throws Exception {
 		stmt = con.prepareStatement("update * from tb_turma where id_turma=?");
 		stmt.setInt(1, idTurma);
@@ -92,6 +129,11 @@ public class TurmaDAO {
 		return rs;
 	}
 	
+	
+	/** Método para <b>validar</b>
+	 * se uma turma existe atráves do
+	 * @param nomeTurma - nome atribuído a turma
+	 * @author Cative  */
 	public Turma validaTurma(Turma turma) throws Exception {
 		Turma turmaRetorno = null;
 		String sql = "select * from tb_turma where nome_turma=?";
@@ -111,9 +153,16 @@ public class TurmaDAO {
 		}
 		return turmaRetorno;
 }
+	
+	/** 
+	 * Método para <b>selecionar</b> uma turma de um certo professor
+	 * @return
+	 * @throws Exception
+	 */
 	public List getDirecMissao() throws Exception {
 		Usuario usu = new Usuario();
-		stmt = con.prepareStatement("select id_turma, nome_turma, cor_turma from tb_turma as t join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where u.id_usuario = ?;");
+		stmt = con.prepareStatement("select id_turma, nome_turma, cor_turma from tb_turma as t join tb_usuario_has_tb_turma as tu "
+				+ "on t.id_turma = tu.tb_turma_id_turma join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario where u.id_usuario = ?;");
 		stmt.setInt(1, usu.getIdUsuario());
 		rs = stmt.executeQuery();
 		List<Turma> turmaM = new ArrayList<Turma>();
@@ -126,6 +175,13 @@ public class TurmaDAO {
 			return turmaM;
 		}	
 	
+	/**
+	 * Método para <b>selecionar</b> uma turma através do
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 * @author Cative
+	 */
 	public Turma getTurmaById(int id) throws Exception{
 		stmt = con.prepareStatement("select * from TB_turma where id_turma = ?");
 		stmt.setInt(1, id);
@@ -140,7 +196,9 @@ public class TurmaDAO {
 			return new Turma();
 		}
 	}
-
+	
+	/** Método para fechar a conexão com o banco 
+	 * @author Cative*/
 	public void fechar() throws Exception{
 		con.close();
 	}

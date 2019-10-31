@@ -13,7 +13,9 @@ import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
 /**
+ * Classe para <b>cadastrar</b> um usuário no sistema
  * Servlet implementation class CadastraUsuario
+ * @author Cative
  */
 @WebServlet("/CadastraUsuario")
 public class CadastraUsuario extends HttpServlet {

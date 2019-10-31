@@ -5,7 +5,21 @@ import java.util.regex.Pattern;
 import br.com.cative.beans.Usuario;
 import br.com.cative.dao.UsuarioDAO;
 
+/**
+ * Classe para validar as regras de negócio
+ * @author Cative
+ *
+ */
 public class UsuarioBO {
+	
+		/**
+		 * Método para <b>validar<b> a quantidade de caracteres do
+		 * nome, senha do usuário, se o e-mail está correto
+		 * e verificar se o mesmo já existe no sistema
+		 * @param user
+		 * @return
+		 * @throws Exception
+		 */
 		public String verificaUsuario(Usuario user) throws Exception{
 		if(user.getNome().length()>20) {
 			return "Nome inválido";
