@@ -192,6 +192,12 @@ public class MissaoDAO {
 		return missoes;
 	}
 	 
+	public int concluiMissao(int idMissao) throws Exception {
+		stmt = con.prepareStatement("UPDATE TB_MISSAO SET MISSAO_CONCLUIDA = 1 WHERE ID_MISSAO = ?");
+		stmt.setInt(1, idMissao);
+		int rs = stmt.executeUpdate();
+		return rs;
+	}
 	
 	/** Método para fechar a conexão com o banco 
 	 * @author Cative*/

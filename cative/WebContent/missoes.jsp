@@ -46,7 +46,7 @@
 	                List<Missao> missoes = missaoDAO.getMissoes(idUsuario);
 	        		for(Missao m: missoes) {	        	
 	        		%>
-                <div class="card-missao jsCardMissao" data-cor="<% out.print(m.getCorMissao()); %>" data-cod="a1" data-descricao=""
+                <div class="card-missao jsCardMissao" data-cor="<% out.print(m.getCorMissao()); %>" data-cod="<% out.print(m.getIdMissao()); %>" data-descricao=""
                     data-titulo="<% out.print(m.getObjetivo()); %>" data-estrelas="<% out.print(m.getPontos()); %>">
                     
                     <div class="card-missao__imagem primary">
@@ -103,15 +103,15 @@
                 </div>
             </div>
             <div class="modal-missao__footer">
-                <button class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
+                <a href="./ConcluiMissao" class="button button--primary button--xs-small jsConcluiMissao jsModalCorMissao">
                     Concluída
-                </button>
+                </a>
             </div>
         </div>
     </div>    
 	
 	<script src="./assets/js/barra-navegacao.js"></script>
-	<script charset="UTF-8" src="./assets/js/main.js"></script>    
+	<script charset="UTF-8" src="./assets/js/main.js?a=1"></script>    
 </body>
 
 </html>
