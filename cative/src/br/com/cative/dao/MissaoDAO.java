@@ -9,6 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import br.com.cative.beans.Missao;
+import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
 
@@ -192,6 +193,34 @@ public class MissaoDAO {
 		return missoes;
 	}
 	 
+	public Missao getMissaoById(int id) throws Exception{
+		stmt = con.prepareStatement("select * from tb_missao where id_missao = ?");
+		stmt.setInt(1, id);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			return new Missao(
+					rs.getInt("ID_MISSAO"),
+					rs.getString("OBJETIVO_MISSAO"),
+					rs.getString("DESCRICAO_MISSAO"),
+					rs.getString("IMAGEM_MISSAO"), 
+					rs.getInt("PONTOS_MISSAO"), 
+					rs.getString("COR_MISSAO") 
+							   );
+		} else {
+			return new Missao();
+		}
+	}
+	
+	public Missao editarMissao(Missao missao) throws Exception {
+		stmt = con.prepareStatement("update tb_missao set objetivo_missao=?, descricao_missao=?, imagem_missao=?, pontos_missao=?, cor_missao=? where id_missao=?");
+		stmt.setString(1, missao.getObjetivo());
+		stmt.setString(2, missao.getDescricao());
+		stmt.setString(3, missao.getImgMissao());
+		stmt.setInt(4, missao.getPontos());
+		stmt.setString(5, missao.getCorMissao());
+		stmt.executeQuery();
+		return missao;
+	}
 	
 	/** Método para fechar a conexão com o banco 
 	 * @author Cative*/
