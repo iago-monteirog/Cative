@@ -32,7 +32,6 @@ public class ConcluiMissao extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		int idMissao = Integer.parseInt(request.getParameter("id_missao"));
-		
 		try {
 			MissaoDAO dao = new MissaoDAO();
 			dao.concluiMissao(idMissao);			
