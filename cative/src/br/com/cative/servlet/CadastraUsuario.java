@@ -1,6 +1,7 @@
 package br.com.cative.servlet;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,7 +48,6 @@ public class CadastraUsuario extends HttpServlet {
 		String nome = request.getParameter("nome_usuario");
 		String email = request.getParameter("email_usuario");
 		String senha = request.getParameter("senha_usuario");
-		
 		
 		Usuario usuario = new Usuario();
 		

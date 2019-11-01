@@ -4,7 +4,6 @@ public class Usuario {
 	
 	private int idUsuario;
 	private String nome;
-	private String sobrenome;
 	private String senha;
 	private String email;
 	private int tipoUsuario;
@@ -24,12 +23,13 @@ public class Usuario {
 	public Usuario() {
 		super();
 	}
-	public Usuario(int idUsuario, String nome, String sobrenome, String senha, String email, int tipoUsuario,
-			String foto, String tema, int pontuacao) {
+	
+	
+	public Usuario(int idUsuario, String nome, String senha, String email, int tipoUsuario, String foto, String tema,
+			int pontuacao) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
-		this.sobrenome = sobrenome;
 		this.senha = senha;
 		this.email = email;
 		this.tipoUsuario = tipoUsuario;
@@ -37,6 +37,7 @@ public class Usuario {
 		this.tema = tema;
 		this.pontuacao = pontuacao;
 	}
+	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -48,12 +49,6 @@ public class Usuario {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
 	}
 	public String getEmail() {
 		return email;

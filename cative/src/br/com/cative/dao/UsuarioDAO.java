@@ -40,9 +40,8 @@ public class UsuarioDAO {
 		 * @author Cative
 		 */
 		public int addUsuario(Usuario user) throws Exception {
-			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, SOBRENOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?, ?,?)");
+			stmt=con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, TIPO_USUARIO, FOTO_USUARIO, TEMA_USUARIO) VALUE(?, ?, ?, ?, ?,?)");
 			stmt.setString(1, user.getNome());
-			stmt.setString(2, user.getSobrenome());
 			stmt.setString(3, user.getSenha());
 			stmt.setString(4, user.getEmail());
 			stmt.setInt(5, user.getTipoUsuario());
@@ -98,7 +97,7 @@ public class UsuarioDAO {
 			
 			if(rs.next()) {
 				return new Usuario( rs.getInt("ID_USUARIO"), rs.getString("NOME_USUARIO"), 
-									rs.getString("SOBRENOME_USUARIO"), rs.getString("SENHA_USUARIO"), 
+									rs.getString("SENHA_USUARIO"), 
 									rs.getString("EMAIL_USUARIO"), rs.getInt("TIPO_USUARIO"),
 									rs.getString("FOTO_USUARIO"), rs.getString("TEMA_USUARIO"),
 									rs.getInt("PONTOS_USUARIO"));
@@ -123,8 +122,7 @@ public class UsuarioDAO {
 			
 			if(rs.next()) {
 				return new Usuario(rs.getInt("ID_USUARIO"), 
-								   rs.getString("NOME_USUARIO"), 
-								   rs.getString("SOBRENOME_USUARIO"), 
+								   rs.getString("NOME_USUARIO"),
 								   rs.getString("SENHA_USUARIO"), 
 								   rs.getString("EMAIL_USUARIO"), 
 								   rs.getInt("TIPO_USUARIO"),
@@ -277,11 +275,10 @@ public class UsuarioDAO {
 		public void atualizaPerfil(Usuario usuario) throws Exception {
 			stmt = con.prepareStatement
 			("UPDATE TB_USUARIO SET "
-			+ "NOME_USUARIO = ?, SOBRENOME_USUARIO = ?, EMAIL_USUARIO = ?, SENHA_USUARIO = ?, TEMA_USUARIO = ?, FOTO_USUARIO = ? "
+			+ "NOME_USUARIO = ?, EMAIL_USUARIO = ?, SENHA_USUARIO = ?, TEMA_USUARIO = ?, FOTO_USUARIO = ? "
 			+ "WHERE ID_USUARIO = ?");
 			
 			stmt.setString(1, usuario.getNome());
-			stmt.setString(2, usuario.getSobrenome());
 			stmt.setString(3, usuario.getEmail());
 			stmt.setString(4, usuario.getSenha());
 			stmt.setString(5, usuario.getTema());
@@ -307,7 +304,6 @@ public class UsuarioDAO {
 				aluno.add(new Usuario(
 						rs.getInt("ID_USUARIO"),
 						rs.getString("NOME_USUARIO"),
-						rs.getString("SOBRENOME_USUARIO"),
 						rs.getString("senha_USUARIO"),
 						rs.getString("EMAIL_USUARIO"),
 						rs.getInt("TIPO_USUARIO"),

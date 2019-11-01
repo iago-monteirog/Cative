@@ -45,7 +45,7 @@
 	         		MissaoDAO missaoDAO = new MissaoDAO();
 	                List<Missao> missoes = missaoDAO.getMissoes(idUsuario);
 	        		for(Missao m: missoes) {	        	
-	        		%>
+	        	%>
                 <div class="card-missao jsCardMissao" data-cor="<% out.print(m.getCorMissao()); %>" data-cod="<% out.print(m.getIdMissao()); %>" data-descricao=""
                     data-titulo="<% out.print(m.getObjetivo()); %>" data-estrelas="<% out.print(m.getPontos()); %>">
                     
