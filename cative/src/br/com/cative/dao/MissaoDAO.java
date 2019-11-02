@@ -110,7 +110,7 @@ public class MissaoDAO {
 	 * @author Cative */
 	public int delMissao(int idMissao) throws Exception {
 		stmt = con.prepareStatement
-				("delete from TB_MISSAO where ID_MISSAO=?");
+				("delete from TB_Usuario_has_tb_missao where tb_missao_ID_MISSAO=?");
 		stmt.setInt(1, idMissao);
 		return stmt.executeUpdate();
 	}

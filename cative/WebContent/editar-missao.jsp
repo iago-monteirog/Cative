@@ -146,7 +146,7 @@
         <div class="perfil-section-title form__section-title">
           <h3>Área de perigo</h3>
         </div>
-        <a class="button--danger button--small jsToggleModoEdicao">
+        <a href="./DeletaMissao" class="button--danger button--small jsToggleModoEdicao">
           Deletar missão
         </a>
       </div>

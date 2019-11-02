@@ -1,26 +1,27 @@
 package br.com.cative.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import br.com.cative.beans.Missao;
 import br.com.cative.dao.MissaoDAO;
 
 /**
- * Servlet implementation class ConcluiMissao
+ * Servlet implementation class DeletaMissao
  */
-@WebServlet("/ConcluiMissao")
-public class ConcluiMissao extends HttpServlet {
+@WebServlet("/DeletaMissao")
+public class DeletaMissao extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConcluiMissao() {
+    public DeletaMissao() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +32,14 @@ public class ConcluiMissao extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		int idMissao = Integer.parseInt(request.getParameter("id_missao"));
-		
+		int idMissao = Integer.parseInt(request.getParameter("id"));
 		try {
 			MissaoDAO dao = new MissaoDAO();
-			HttpSession sessionUsuario = request.getSession(true);
-			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
-			dao.concluiMissao(idMissao, idUsuario);
-			int pontos = dao.getPontosById(idMissao);
-			dao.concluiMissaoPontos(pontos, idUsuario);
-		} catch (Exception e) {
+			dao.delMissao(idMissao);
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getHeader("referer"));
+		response.sendRedirect(request.getHeader("turmas.jsp"));
 	}
 
 	/**
