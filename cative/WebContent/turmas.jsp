@@ -37,14 +37,14 @@
 		List<Turma> turmas = turmadao.getListTurmas(idUsuario);
       	for(Turma turma : turmas) {
       %>
-        <div class="turma jsTurma primary" tabindex="0">
+        <a href="turma.jsp?id=<%out.print(turma.getIdTurma());%>" class="turma jsTurma primary" tabindex="0">
           <span class="turma__tira"></span>
           <div class="turma__nome">
-          <a href="turma.jsp?id=<%out.print(turma.getIdTurma());%>">
+        
             <% out.print(turma.getNomeTurma()); %>
-           </a>
+    
           </div>
-        </div>
+        </a>
          <% } %>
       </div>
     </div>
