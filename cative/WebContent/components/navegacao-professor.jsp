@@ -1,19 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
 
-	import="br.com.cative.beans.Usuario"
-	import="br.com.cative.dao.UsuarioDAO"
 %>
 <%
-	UsuarioDAO dao = new UsuarioDAO();
-	Usuario usuario = dao.getUsuario(1);
 	
-	String nome = usuario.getNome();
-	//nome = nome.split(" ")[0];
-	int estrelas = usuario.getPontuacao();
-	
-	
-	String cor = (String)request.getAttribute("corAluno");
+	String cor = (String)request.getAttribute("corAluno") == null ? "" : (String)request.getAttribute("corAluno");
 %> 
   <nav class="navegacao jsCorPerfil" style="background-color: <% out.print(cor); %>">
     <div class="navegacao__top">
@@ -58,18 +49,6 @@
     <div class="navegacao__overlay jsMenuMobile">
       <div class="navegacao__items">
         <div class="navegacao__top-items">
-          <div class="navegacao__perfil navegacao__item">
-            <div class="navegacao__column-1">
-              <div class="navegacao__perfil-pic">
-                <img src="assets/img/foto-aluno.png" alt="">
-              </div>
-            </div>
-            <div class="navegacao__column-2">
-              <div class="navegacao__nome">
-                <% out.print(nome); %>
-              </div>
-            </div>
-          </div>
           <div class="navegacao__button navegacao__item">
             <a href="nova-missao.jsp" class="cta-nova-missao">
               Nova missão
