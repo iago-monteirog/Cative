@@ -86,11 +86,7 @@ public class MissaoDAO {
 	 *   */
 	public List getMissoes(int idUsuario) throws Exception{
 		stmt = con.prepareStatement
-		("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao "
-				+ "join tb_turma as t on t.id_turma = tt.tb_turma_id_turma "
-				+ "join tb_usuario_has_tb_turma as tu on t.id_turma = tu.tb_turma_id_turma "
-				+ "join tb_usuario as u on u.id_usuario = tu.tb_usuario_id_usuario "
-				+ "where id_usuario = ? and (missao_concluida = 0)");
+		("select * from tb_missao as m join tb_usuario_has_tb_missao as tm on m.id_missao = tm.tb_missao_id_missao join tb_usuario as u on u.id_usuario = tm.tb_usuario_id_usuario where id_usuario=? and (missao_concluida=0);");
 		stmt.setInt(1, idUsuario);
 		rs = stmt.executeQuery();
 		List<Missao> missoes = new ArrayList<Missao>();
@@ -178,7 +174,7 @@ public class MissaoDAO {
 	 * @author Cative*/
 	public List filtraMissoes(int id) throws Exception{
 		stmt = con.prepareStatement
-				("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao join tb_turma as t on t.id_turma = tt.tb_turma_id_turma where id_turma = ? and (missao_concluida = 0);");
+				("select * from tb_missao as m join tb_turma_has_tb_missao as tt on m.id_missao = tt.tb_missao_id_missao join tb_turma as t on t.id_turma = tt.tb_turma_id_turma where id_turma = ?;");
 		stmt.setInt(1, id);
 		rs = stmt.executeQuery();
 		List<Missao> missoes = new ArrayList<Missao>();
@@ -227,11 +223,19 @@ public class MissaoDAO {
 		return missao;
 	}
 	
-	public int concluiMissao(int idMissao) throws Exception {
-		stmt = con.prepareStatement("UPDATE TB_MISSAO SET MISSAO_CONCLUIDA = 1 WHERE ID_MISSAO = ?");
+	public int concluiMissao(int idMissao, int idUsuario) throws Exception {
+		stmt = con.prepareStatement("UPDATE TB_usuario_has_tb_missao SET MISSAO_CONCLUIDA = 1 WHERE tb_missao_ID_MISSAO = ? and(tb_usuario_id_usuario=?)");
 		stmt.setInt(1, idMissao);
+		stmt.setInt(2, idUsuario);
 		int rs = stmt.executeUpdate();
 		return rs;
+	}
+	
+	public int adicionaMissaoEmAluno(int idUsuario, int idMissao) throws Exception {
+		stmt = con.prepareStatement("INSERT INTO TB_usuario_has_TB_Missao(TB_usuario_id_usuario, TB_missao_id_missao) VALUES(?, ?)");
+		stmt.setInt(1, idUsuario);
+		stmt.setInt(2, idMissao);
+		return stmt.executeUpdate();
 	}
 	
 	/** Método para fechar a conexão com o banco 

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cative.beans.Missao;
 import br.com.cative.beans.Turma;
+import br.com.cative.beans.Usuario;
 import br.com.cative.dao.MissaoDAO;
+import br.com.cative.dao.UsuarioDAO;
 
 /**
  * Classe para <b>cadastrar</b> uma missão no sistema
@@ -65,6 +67,12 @@ public class CadastraMissao extends HttpServlet {
 			MissaoDAO missaodao = new MissaoDAO();
 			missaodao.adicionaMissao(missao);
 			missaodao.adicionaMissaoEmTurma(idTurma, missao.getIdMissao());
+			UsuarioDAO usuariodao = new UsuarioDAO();
+			int idUsuario = usuariodao.getUsuarioByIdTurma(idTurma);
+			while(idUsuario != 0) {
+				missaodao.adicionaMissaoEmAluno(idUsuario, missao.getIdMissao());
+				idUsuario++;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

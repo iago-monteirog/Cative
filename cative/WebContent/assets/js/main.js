@@ -95,7 +95,7 @@ let modalMissao = {
     modalMissao.btnConcluiMissao.href = `./ConcluiMissao?id_missao=${codigo}`;
     
     let editarMissao = document.querySelector('.jsEditarMissao');
-    editarMissao.href = `editar-missao.jsp?id=${codigo}`;
+    !!editarMissao ? editarMissao.href = `editar-missao.jsp?id=${codigo}` : null;
   },
 }
 

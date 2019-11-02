@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cative.beans.Turma;
 import br.com.cative.beans.Usuario;
 import br.com.cative.conexao.Conexao;
 
@@ -370,6 +371,16 @@ public class UsuarioDAO {
 				return usuario;
 			}
 		}
+		
+		public int getUsuarioByIdTurma(int idTurma) throws Exception{
+			stmt = con.prepareStatement("select id_usuario from tb_usuario as u join tb_usuario_has_tb_turma as tt on u.id_usuario = tt.tb_usuario_id_usuario join tb_turma as t on t.id_turma = tt.tb_turma_id_turma where id_turma=? and (tipo_usuario=2);");
+			stmt.setInt(1, idTurma);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				return rs.getInt("id_usuario");
+			}
+				return rs.getInt("id_usuario");
+			}
 		
 		/**
 		 * Método para fechar a conexão com o banco 

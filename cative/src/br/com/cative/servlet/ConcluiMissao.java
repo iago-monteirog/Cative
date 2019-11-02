@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.cative.dao.MissaoDAO;
 
@@ -32,9 +33,12 @@ public class ConcluiMissao extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		int idMissao = Integer.parseInt(request.getParameter("id_missao"));
+		
 		try {
 			MissaoDAO dao = new MissaoDAO();
-			dao.concluiMissao(idMissao);			
+			HttpSession sessionUsuario = request.getSession(true);
+			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
+			dao.concluiMissao(idMissao, idUsuario);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
