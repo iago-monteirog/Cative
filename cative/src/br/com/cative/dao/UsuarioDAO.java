@@ -256,10 +256,10 @@ public class UsuarioDAO {
 		 * @throws Exception
 		 * @author Cative
 		 */
-		public int getQuantidadeMissoesConcluidas() throws Exception {
-			stmt = con.prepareStatement("SELECT COUNT(*) FROM TB_MISSAO");
+		public int getQuantidadeMissoesConcluidas(int id) throws Exception {
+			stmt = con.prepareStatement("SELECT COUNT(*) FROM TB_USUARIO_HAS_TB_MISSAO WHERE MISSAO_CONCLUIDA=1 and(tb_usuario_id_usuario=?);");
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
-			
 			if(rs.next()) {
 				return rs.getInt("COUNT(*)");				
 			} else {

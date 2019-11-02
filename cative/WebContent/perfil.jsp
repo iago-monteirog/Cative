@@ -17,14 +17,14 @@
  	
 	if(email != null) {
 		UsuarioDAO dao = new UsuarioDAO();
-		Usuario usuario = dao.getUsuarioByEmail(email);
-		qtdMissoes = dao.getQuantidadeMissoesConcluidas();	
+		Usuario usuario = dao.getUsuarioByEmail(email);	
 		nome = usuario.getNome() == null ? "" : usuario.getNome();
 		tema = usuario.getTema();
 		pontos = usuario.getPontuacao();
 		id = usuario.getIdUsuario();
 		foto = usuario.getFoto();
 		senha = usuario.getSenha();
+		qtdMissoes = dao.getQuantidadeMissoesConcluidas(id);
 	}
 	
 %>
