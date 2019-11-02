@@ -4,12 +4,12 @@
     int id = Integer.parseInt(request.getParameter("id"));
     String nometurma = "";
     String corturma = "";
-    if(id == 0) {
-    	TurmaDAO turmadao = new TurmaDAO();
-    	Turma turma = turmadao.getTurmaById(id);
-    	nometurma = turma.getNomeTurma();
-    	corturma = turma.getCorTurma();
-    }
+    
+  	TurmaDAO turmadao = new TurmaDAO();
+  	Turma turma = turmadao.getTurmaById(id);
+  	nometurma = turma.getNomeTurma();
+  	corturma = turma.getCorTurma();
+  
     %>
 <!DOCTYPE html>
 <html lang="en">
