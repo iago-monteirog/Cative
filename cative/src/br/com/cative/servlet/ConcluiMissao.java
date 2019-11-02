@@ -38,12 +38,13 @@ public class ConcluiMissao extends HttpServlet {
 			MissaoDAO dao = new MissaoDAO();
 			HttpSession sessionUsuario = request.getSession(true);
 			Integer idUsuario = (Integer) sessionUsuario.getAttribute("idUsuario");
-			dao.concluiMissao(idMissao, idUsuario);			
+			dao.concluiMissao(idMissao, idUsuario);
+			int pontos = dao.getPontosById(idMissao);
+			System.out.println(dao.getPontosById(idMissao));
+			dao.concluiMissaoPontos(pontos, idUsuario);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		response.sendRedirect(request.getHeader("referer"));
 	}
 

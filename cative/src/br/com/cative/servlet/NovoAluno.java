@@ -57,6 +57,7 @@ public class NovoAluno extends HttpServlet {
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		usuario.setTipoUsuario(2);
+		usuario.setPontuacao(0);
 		
 		Turma turma = new Turma();
 		turma.setIdTurma(idTurma);

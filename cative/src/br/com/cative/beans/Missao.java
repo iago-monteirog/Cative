@@ -30,13 +30,10 @@ public class Missao implements Comparable<Missao> {
 		super();
 	}
 	
-	
-	public Missao(String objetivo) {
+	public Missao(int pontos) {
 		super();
-		this.objetivo = objetivo;
+		this.pontos = pontos;
 	}
-
-
 
 	public Missao(int idMissao, String objetivo, String descricao, String imgMissao, int pontos, String corMissao) {
 		super();

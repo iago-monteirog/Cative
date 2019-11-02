@@ -231,6 +231,25 @@ public class MissaoDAO {
 		return rs;
 	}
 	
+	public int concluiMissaoPontos(int pontos, int idUsuario) throws Exception {
+		stmt = con.prepareStatement("UPDATE TB_usuario SET pontos_usuario = (pontos_usuario + ?) WHERE id_usuario = ? ");
+		stmt.setInt(1, pontos);
+		stmt.setInt(2, idUsuario);
+		int rs = stmt.executeUpdate();
+		return rs;
+	}
+	
+	public int getPontosById(int id) throws Exception{
+		stmt = con.prepareStatement("select pontos_missao from tb_missao where id_missao = ?");
+		stmt.setInt(1, id);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+		return rs.getInt("PONTOS_MISSAO");				  
+		} else {
+		return 0;
+		}
+	}
+	
 	public int adicionaMissaoEmAluno(int idUsuario, int idMissao) throws Exception {
 		stmt = con.prepareStatement("INSERT INTO TB_usuario_has_TB_Missao(TB_usuario_id_usuario, TB_missao_id_missao) VALUES(?, ?)");
 		stmt.setInt(1, idUsuario);

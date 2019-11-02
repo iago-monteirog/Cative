@@ -356,11 +356,12 @@ public class UsuarioDAO {
 		 * @author Cative
 		 */
 		public Usuario addUsuTurma(Usuario usuario) throws Exception  {
-			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, SENHA_USUARIO, TIPO_USUARIO) VALUES(?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+			stmt = con.prepareStatement("INSERT INTO TB_USUARIO(NOME_USUARIO, EMAIL_USUARIO, SENHA_USUARIO, TIPO_USUARIO, PONTOS_USUARIO) VALUES(?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getEmail());
 			stmt.setString(3, usuario.getSenha());
 			stmt.setInt(4, usuario.getTipoUsuario());
+			stmt.setInt(5, usuario.getPontuacao());
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
 			if(rs.next()) {
